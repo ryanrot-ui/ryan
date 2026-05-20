@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cocha Korean Restaurant — Chinese-Korean fusion cuisine in Shin-Okubo, Tokyo. Samgyeopsal, hot pot, all-you-can-drink & more." />
+  <title>Cocha | Chinese-Korean Fusion · Shin-Okubo, Tokyo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-korean">코차</span>
+        <span class="logo-text">Cocha</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#menu" class="nav-link">Menu</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#reservation" class="nav-btn">Reserve a Table</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section id="home" class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tagline">Chinese-Korean Fusion · 新大久保 Shin-Okubo, Tokyo</span>
+      <h1 class="hero-title">Bold Flavors,<br /><em>Real Soul</em></h1>
+      <p class="hero-subtitle">
+        Cocha brings the best of Chinese-Korean fusion to the heart of Shin-Okubo —
+        premium samgyeopsal, sizzling hot pots, all-you-can-drink, and an atmosphere
+        that's upscale without taking itself too seriously.
+      </p>
+      <div class="hero-ctas">
+        <a href="#reservation" class="btn btn-primary">Reserve a Table</a>
+        <a href="#menu" class="btn btn-outline">View Our Menu</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><i class="fas fa-fire"></i><span>Korean BBQ</span></div>
+        <div class="badge"><i class="fas fa-leaf"></i><span>Fresh Daily</span></div>
+        <div class="badge"><i class="fas fa-star"></i><span>Highly Rated</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll to explore</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== HIGHLIGHTS ========== -->
+  <section class="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-fire-flame-curved"></i></div>
+          <h3>Korean BBQ</h3>
+          <p>Grill premium cuts tableside — bulgogi, galbi, and samgyeopsal prepared the authentic way.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-bowl-rice"></i></div>
+          <h3>Traditional Dishes</h3>
+          <p>From hearty jjigae stews to vibrant bibimbap bowls, every dish tells a story rooted in Korean heritage.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-pepper-hot"></i></div>
+          <h3>House-Made Kimchi</h3>
+          <p>Our kimchi and banchan side dishes are made fresh in-house using generations-old recipes.</p>
+        </div>
+        <div class="highlight-card reveal">
+          <div class="highlight-icon"><i class="fas fa-wine-glass"></i></div>
+          <h3>Korean Drinks</h3>
+          <p>Soju, makgeolli rice wine, and Korean craft beers — the perfect pairing for every meal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MENU ========== -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Our Menu</span>
+        <h2>Crafted with Authentic Flavors</h2>
+        <p>Every dish is prepared with premium ingredients and traditional Korean techniques passed down through generations.</p>
+      </div>
+
+      <div class="menu-tabs reveal">
+        <button class="tab-btn active" data-tab="starters">Starters</button>
+        <button class="tab-btn" data-tab="bbq">Korean BBQ</button>
+        <button class="tab-btn" data-tab="mains">Main Dishes</button>
+        <button class="tab-btn" data-tab="drinks">Drinks</button>
+      </div>
+
+      <div class="menu-content">
+        <!-- Starters -->
+        <div class="tab-panel active" id="tab-starters">
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#3a1a0a,#7a3520)">
+                <span class="menu-emoji">🥟</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Mandu</h4><span class="price">$9</span>
+                </div>
+                <p>Handcrafted Korean dumplings, steamed or pan-fried, filled with pork, tofu, and vegetables.</p>
+                <span class="tag">Vegetarian option</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a2a0a,#3a5520)">
+                <span class="menu-emoji">🥞</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Pajeon</h4><span class="price">$12</span>
+                </div>
+                <p>Crispy Korean savory pancake loaded with green onions and choice of seafood or vegetables.</p>
+                <span class="tag">Shareable</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#3a0a0a,#8a1520)">
+                <span class="menu-emoji">🌶️</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Tteokbokki</h4><span class="price">$11</span>
+                </div>
+                <p>Chewy rice cakes in our signature spicy gochujang sauce with fish cakes and boiled eggs.</p>
+                <span class="tag">Spicy</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#0a1a3a,#153560)">
+                <span class="menu-emoji">🍜</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Japchae</h4><span class="price">$13</span>
+                </div>
+                <p>Stir-fried glass noodles with colorful vegetables and beef, seasoned with sesame oil and soy sauce.</p>
+                <span class="tag">Popular</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BBQ -->
+        <div class="tab-panel" id="tab-bbq">
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#2a0a0a,#6a1010)">
+                <span class="menu-emoji">🥩</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Bulgogi</h4><span class="price">$24</span>
+                </div>
+                <p>Thinly sliced marinated beef grilled tableside. Sweet, savory, and incredibly tender.</p>
+                <span class="tag">Best Seller</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a0a0a,#4a1515)">
+                <span class="menu-emoji">🍖</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Galbi (Short Ribs)</h4><span class="price">$29</span>
+                </div>
+                <p>Premium beef short ribs marinated in our house blend of soy, pear, and garlic. Flame-grilled to perfection.</p>
+                <span class="tag">Chef's Pick</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#2a1a0a,#5a3010)">
+                <span class="menu-emoji">🐷</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Samgyeopsal</h4><span class="price">$22</span>
+                </div>
+                <p>Thick-cut pork belly grilled at the table, served with lettuce wraps, garlic, and ssamjang sauce.</p>
+                <span class="tag">Signature</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#0a1a2a,#153040)">
+                <span class="menu-emoji">🍗</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Dak Galbi</h4><span class="price">$20</span>
+                </div>
+                <p>Spicy marinated chicken thigh grilled tableside with sweet potato, cabbage, and rice cakes.</p>
+                <span class="tag">Spicy</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mains -->
+        <div class="tab-panel" id="tab-mains">
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a2a0a,#304520)">
+                <span class="menu-emoji">🍚</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Bibimbap</h4><span class="price">$17</span>
+                </div>
+                <p>Warm rice topped with seasoned vegetables, a fried egg, and gochujang sauce. Served in a sizzling stone bowl.</p>
+                <span class="tag">Vegetarian</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#2a0a1a,#601530)">
+                <span class="menu-emoji">🫕</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Kimchi Jjigae</h4><span class="price">$16</span>
+                </div>
+                <p>Rich and deeply flavorful kimchi stew with pork belly and silken tofu. A true Korean comfort classic.</p>
+                <span class="tag">Comfort Food</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#0a1a2a,#152840)">
+                <span class="menu-emoji">🦀</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Sundubu Jjigae</h4><span class="price">$16</span>
+                </div>
+                <p>Silky soft tofu stew in a spicy broth with clams, shrimp, and a cracked egg. Served boiling hot.</p>
+                <span class="tag">Spicy · Seafood</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a1a0a,#3a3515)">
+                <span class="menu-emoji">🍲</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Doenjang Jjigae</h4><span class="price">$15</span>
+                </div>
+                <p>Traditional fermented soybean paste stew with zucchini, mushrooms, and silken tofu.</p>
+                <span class="tag">Traditional</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drinks -->
+        <div class="tab-panel" id="tab-drinks">
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a1a2a,#253050)">
+                <span class="menu-emoji">🍶</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Soju</h4><span class="price">$7</span>
+                </div>
+                <p>Korea's iconic distilled spirit. Available in original, peach, grape, and strawberry flavors.</p>
+                <span class="tag">Classic</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#1a2a1a,#253525)">
+                <span class="menu-emoji">🍺</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Makgeolli</h4><span class="price">$9</span>
+                </div>
+                <p>Traditional Korean milky rice wine — lightly sweet, slightly fizzy, and deeply satisfying.</p>
+                <span class="tag">Traditional</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#2a1a0a,#503010)">
+                <span class="menu-emoji">🧋</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Boba Tea</h4><span class="price">$6</span>
+                </div>
+                <p>Creamy milk tea with chewy tapioca pearls. Available in taro, matcha, brown sugar, and classic.</p>
+                <span class="tag">Non-Alcoholic</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img" style="background: linear-gradient(135deg,#0a2a2a,#104040)">
+                <span class="menu-emoji">🫖</span>
+              </div>
+              <div class="menu-item-info">
+                <div class="menu-item-header">
+                  <h4>Barley Tea</h4><span class="price">$3</span>
+                </div>
+                <p>Traditional Korean roasted barley tea — nutty, warm, and complimentary with every meal.</p>
+                <span class="tag">Complimentary</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cta reveal">
+        <p>All mains are served with complimentary banchan (Korean side dishes) — kimchi, japchae, and seasoned spinach.</p>
+        <a href="#contact" class="btn btn-primary">Order or Reserve</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT ========== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images reveal">
+          <div class="about-img-main"></div>
+          <div class="about-img-secondary"></div>
+          <div class="about-stat">
+            <strong>10+</strong>
+            <span>Years of Tradition</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <span class="section-tag">Our Story</span>
+          <h2>Where Every Dish Tells a Story</h2>
+          <p class="about-lead">
+            Cocha is a Chinese-Korean fusion restaurant nestled in the heart of Shin-Okubo, Tokyo's vibrant Korean district.
+            We blend the bold, communal spirit of Korean BBQ with the depth and variety of Chinese flavors —
+            creating a dining experience unlike anything else in the neighborhood.
+          </p>
+          <p>
+            Our menu spans straw-grilled samgyeopsal, haemul jeongol hot pots, yukhoe tartare, and more —
+            served in a modern, upscale space with great music, friendly staff, and an all-you-can-drink option
+            perfect for groups who like to take their time.
+          </p>
+          <div class="about-values">
+            <div class="value">
+              <i class="fas fa-check-circle"></i>
+              <span>Authentic Korean recipes</span>
+            </div>
+            <div class="value">
+              <i class="fas fa-check-circle"></i>
+              <span>Fresh, locally sourced ingredients</span>
+            </div>
+            <div class="value">
+              <i class="fas fa-check-circle"></i>
+              <span>House-made kimchi & banchan</span>
+            </div>
+            <div class="value">
+              <i class="fas fa-check-circle"></i>
+              <span>Welcoming atmosphere for all</span>
+            </div>
+          </div>
+          <a href="#contact" class="btn btn-primary">Meet Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALLERY ========== -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Gallery</span>
+        <h2>A Feast for the Eyes</h2>
+      </div>
+      <div class="gallery-grid reveal">
+        <div class="gallery-item gi-large">
+          <img src="images/hotpot.jpg" alt="Haemul Jeongol – Seafood Hot Pot" loading="lazy" />
+          <div class="gallery-overlay"><span>Haemul Hot Pot</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/interior.jpg" alt="Cocha Restaurant Interior" loading="lazy" />
+          <div class="gallery-overlay"><span>Our Space</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="images/yukhoe.jpg" alt="Yukhoe – Korean Beef Tartare" loading="lazy" />
+          <div class="gallery-overlay"><span>Yukhoe Tartare</span></div>
+        </div>
+        <div class="gallery-item gi-tall">
+          <img src="images/samgyeopsal.jpg" alt="Samgyeopsal – Grilled Pork Belly" loading="lazy" />
+          <div class="gallery-overlay"><span>Samgyeopsal BBQ</span></div>
+        </div>
+        <div class="gallery-item" style="background:linear-gradient(135deg,#1a0a2a 0%,#3a1560 100%)">
+          <div class="gallery-overlay"><span>More Coming Soon</span></div>
+        </div>
+        <div class="gallery-item" style="background:linear-gradient(135deg,#2a0a1a 0%,#601535 100%)">
+          <div class="gallery-overlay"><span>Desserts</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Reviews</span>
+        <h2>What Our Guests Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings">
+            <span>Food 5/5</span><span>Service 5/5</span><span>Atmosphere 4/5</span>
+          </div>
+          <p>"The vibe is more mature than other drinking places in the area. The quality of the food is way higher — if not the best — than most restaurants in Shin-Okubo. Staff is very friendly, the place is extremely clean, and they play great music (not just K-pop). Would recommend to bigger groups who want to have a drink and eat Chinese-Korean fusion food."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div>
+              <strong>Google Review</strong>
+              <span>Group of 4 · Shin-Okubo</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings">
+            <span>Food 5/5</span><span>Service 5/5</span><span>Atmosphere 5/5</span>
+          </div>
+          <p>"Ordering is very easy — just scan the QR code and choose directly from your smartphone. The service is fast and the staff is extremely kind. They brought us forks without us even asking, and offered us a tiramisu shaved ice as a surprise. A special thank you to Mimi, who was truly kind, polite, and helpful. The food is very good and the price is fair. Highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div>
+              <strong>Google Review</strong>
+              <span>Verified Visit</span>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings">
+            <span>Group of 3–4</span>
+          </div>
+          <p>"I had the samgyeopsal set — incredibly filling. It came with kimchi jjigae, minari buchimgae, white rice, and eight small side dishes. All of this for just ¥3,000! The samgyeopsal had a different flavor from other places — grilled on straw, smoky and delicious. The buchimgae had large shrimp, crispy outside. All-you-can-drink included for ¥4,299 total. Very satisfied!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div>
+              <strong>Google Review</strong>
+              <span>Samgyeopsal Set · ¥4,299 AYCE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RESERVATION ========== -->
+  <section id="reservation" class="reservation-section">
+    <div class="container">
+      <div class="reservation-grid">
+        <div class="reservation-info reveal">
+          <span class="section-tag">Reservations</span>
+          <h2>Book Your Table</h2>
+          <p>Reserve your spot for an unforgettable Korean dining experience. Walk-ins welcome based on availability.</p>
+          <div class="info-items">
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Hours</strong>
+                <span>Mon–Thu: 11:30am – 10pm</span>
+                <span>Fri–Sat: 11:30am – 11pm</span>
+                <span>Sunday: 12pm – 9pm</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Phone</strong>
+                <span><a href="tel:+1234567890">(123) 456-7890</a></span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>Email</strong>
+                <span><a href="mailto:hello@cocharestaurant.com">hello@cocharestaurant.com</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reservation-form-wrap reveal">
+          <form class="reservation-form" id="reservationForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" placeholder="Jane" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" placeholder="Doe" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resDate">Date</label>
+                <input type="date" id="resDate" required />
+              </div>
+              <div class="form-group">
+                <label for="resTime">Time</label>
+                <select id="resTime" required>
+                  <option value="">Select time</option>
+                  <option>11:30 AM</option>
+                  <option>12:00 PM</option>
+                  <option>12:30 PM</option>
+                  <option>1:00 PM</option>
+                  <option>6:00 PM</option>
+                  <option>6:30 PM</option>
+                  <option>7:00 PM</option>
+                  <option>7:30 PM</option>
+                  <option>8:00 PM</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guests">Guests</label>
+                <select id="guests" required>
+                  <option>1 Guest</option>
+                  <option selected>2 Guests</option>
+                  <option>3 Guests</option>
+                  <option>4 Guests</option>
+                  <option>5 Guests</option>
+                  <option>6+ Guests</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" placeholder="(123) 456-7890" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">Special Requests</label>
+              <textarea id="notes" rows="3" placeholder="Allergies, celebrations, seating preferences..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Confirm Reservation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Find Us</span>
+        <h2>Visit Cocha</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <i class="fas fa-location-dot"></i>
+          <h4>Address</h4>
+          <p>新大久保 Shin-Okubo<br />Shinjuku, Tokyo, Japan</p>
+          <a href="https://share.google/N77ue1SKT3GtEyS7L" target="_blank" rel="noopener" class="link">Get Directions →</a>
+        </div>
+        <div class="contact-card reveal">
+          <i class="fas fa-qrcode"></i>
+          <h4>QR Ordering</h4>
+          <p>Scan your table QR code to order directly from your phone — fast, easy, no waiting.</p>
+          <span class="link">Available at every table</span>
+        </div>
+        <div class="contact-card reveal">
+          <i class="fas fa-share-nodes"></i>
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="map-placeholder reveal">
+        <i class="fas fa-map-location-dot"></i>
+        <p>Replace this with your Google Maps embed</p>
+        <code>&lt;iframe src="YOUR_GOOGLE_MAPS_EMBED_URL" ...&gt;&lt;/iframe&gt;</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-korean">코차</span>
+            <span class="logo-text">Cocha</span>
+          </a>
+          <p>Authentic Korean cuisine crafted with passion, tradition, and the finest ingredients.</p>
+        </div>
+        <div class="footer-nav">
+          <h5>Navigate</h5>
+          <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reservation">Reservations</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h5>Hours</h5>
+          <ul>
+            <li>Mon–Thu: 11:30am – 10pm</li>
+            <li>Fri–Sat: 11:30am – 11pm</li>
+            <li>Sunday: 12pm – 9pm</li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h5>Follow Us</h5>
+          <div class="social-links">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Cocha Korean Restaurant. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
