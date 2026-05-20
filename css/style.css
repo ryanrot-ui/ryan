@@ -19,8 +19,8 @@
   --shadow:    0 20px 60px rgba(0,0,0,0.5);
   --radius:    12px;
   --transition:0.3s ease;
-  --font-head: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-head: 'Noto Serif JP', 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Noto Sans JP', 'Inter', system-ui, sans-serif;
 }
 
 html { scroll-behavior: smooth; }
@@ -153,18 +153,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 10px;
 }
-.logo-korean {
-  font-family: var(--font-head);
-  font-size: 26px;
+.logo-main {
+  font-family: 'Noto Serif JP', Georgia, serif;
+  font-size: 22px;
+  font-weight: 700;
   color: var(--gold);
+  letter-spacing: 0.12em;
   line-height: 1;
 }
-.logo-text {
-  font-family: var(--font-head);
-  font-size: 22px;
-  color: var(--white);
-  font-weight: 600;
-  letter-spacing: 0.05em;
+.logo-sub {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  font-weight: 400;
 }
 .nav-links {
   display: flex;
@@ -284,16 +286,27 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border-radius: 20px;
 }
 .hero-title {
-  font-family: var(--font-head);
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 600;
-  color: var(--white);
-  line-height: 1.05;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   margin-bottom: 24px;
 }
-.hero-title em {
-  font-style: italic;
+.hero-title-main {
+  font-family: 'Noto Serif JP', Georgia, serif;
+  font-size: clamp(5rem, 18vw, 11rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-shadow: 0 0 80px rgba(200,150,62,0.25);
+}
+.hero-title-sub {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-weight: 300;
   color: var(--gold);
+  letter-spacing: 0.4em;
 }
 .hero-subtitle {
   font-size: 17px;
@@ -319,12 +332,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 13px;
-  color: rgba(249,245,240,0.6);
+  font-size: 12px;
+  color: rgba(249,245,240,0.55);
+  letter-spacing: 0.06em;
 }
-.badge i {
-  color: var(--gold);
-  font-size: 14px;
+.badge-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
 }
 .hero-scroll {
   position: absolute;
@@ -377,23 +393,17 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-6px);
   box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
-.highlight-icon {
-  width: 64px; height: 64px;
-  background: rgba(200,150,62,0.1);
-  border: 1px solid rgba(200,150,62,0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 24px;
-  font-size: 22px;
-  color: var(--gold);
-  transition: all var(--transition);
+.highlight-num {
+  font-family: 'Noto Serif JP', Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(200,150,62,0.25);
+  margin-bottom: 16px;
+  line-height: 1;
+  transition: color var(--transition);
 }
-.highlight-card:hover .highlight-icon {
-  background: var(--gold);
-  color: var(--bg);
-  box-shadow: 0 0 30px rgba(200,150,62,0.4);
+.highlight-card:hover .highlight-num {
+  color: var(--gold);
 }
 .highlight-card h3 {
   font-family: var(--font-head);

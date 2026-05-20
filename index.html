@@ -1,288 +1,222 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Cocha Korean Restaurant — Chinese-Korean fusion cuisine in Shin-Okubo, Tokyo. Samgyeopsal, hot pot, all-you-can-drink & more." />
-  <title>Cocha | Chinese-Korean Fusion · Shin-Okubo, Tokyo</title>
+  <meta name="description" content="COCHA（コチャ）— 新大久保の韓国中国融合料理。わら焼きサムギョプサル、ナッコプセ、マーラーしゃぶ、飲み放題。" />
+  <title>COCHA — 新大久保 韓国中国料理</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-  <!-- ========== NAVIGATION ========== -->
+  <!-- NAV -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <a href="#home" class="nav-logo">
-        <span class="logo-korean">코차</span>
-        <span class="logo-text">Cocha</span>
+        <span class="logo-main">COCHA</span>
+        <span class="logo-sub">コチャ</span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#menu" class="nav-link">Menu</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-        <li><a href="#reservation" class="nav-btn">Reserve a Table</a></li>
+        <li><a href="#home"        class="nav-link active">トップ</a></li>
+        <li><a href="#menu"        class="nav-link">メニュー</a></li>
+        <li><a href="#about"       class="nav-link">店舗紹介</a></li>
+        <li><a href="#contact"     class="nav-link">アクセス</a></li>
+        <li><a href="#reservation" class="nav-btn">ご予約</a></li>
       </ul>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- ========== HERO ========== -->
+  <!-- HERO -->
   <section id="home" class="hero">
     <div class="hero-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <span class="hero-tagline">Chinese-Korean Fusion · 新大久保 Shin-Okubo, Tokyo</span>
-      <h1 class="hero-title">Bold Flavors,<br /><em>Real Soul</em></h1>
+      <span class="hero-tagline">新大久保 — 韓国中国融合料理</span>
+      <h1 class="hero-title">
+        <span class="hero-title-main">COCHA</span>
+        <span class="hero-title-sub">コチャ</span>
+      </h1>
       <p class="hero-subtitle">
-        Cocha brings the best of Chinese-Korean fusion to the heart of Shin-Okubo —
-        premium samgyeopsal, sizzling hot pots, all-you-can-drink, and an atmosphere
-        that's upscale without taking itself too seriously.
+        わら焼き、ナッコプセ、マーラーしゃぶ。<br>
+        飲んで、食べて、語り合う夜をここで。
       </p>
       <div class="hero-ctas">
-        <a href="#reservation" class="btn btn-primary">Reserve a Table</a>
-        <a href="#menu" class="btn btn-outline">View Our Menu</a>
+        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
+        <a href="#menu"        class="btn btn-outline">メニューを見る</a>
       </div>
       <div class="hero-badges">
-        <div class="badge"><i class="fas fa-fire"></i><span>Korean BBQ</span></div>
-        <div class="badge"><i class="fas fa-leaf"></i><span>Fresh Daily</span></div>
-        <div class="badge"><i class="fas fa-star"></i><span>Highly Rated</span></div>
+        <div class="badge"><span class="badge-dot"></span><span>飲み放題あり</span></div>
+        <div class="badge"><span class="badge-dot"></span><span>QRオーダー</span></div>
+        <div class="badge"><span class="badge-dot"></span><span>Googleレビュー高評価</span></div>
       </div>
     </div>
     <div class="hero-scroll">
-      <span>Scroll to explore</span>
+      <span>scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
-  <!-- ========== HIGHLIGHTS ========== -->
+  <!-- HIGHLIGHTS -->
   <section class="highlights">
     <div class="container">
       <div class="highlights-grid">
         <div class="highlight-card reveal">
-          <div class="highlight-icon"><i class="fas fa-fire-flame-curved"></i></div>
-          <h3>Korean BBQ</h3>
-          <p>Grill premium cuts tableside — bulgogi, galbi, and samgyeopsal prepared the authentic way.</p>
+          <div class="highlight-num">01</div>
+          <h3>わら焼きサムギョプサル</h3>
+          <p>藁の香りをまとわせた豚バラを鉄板で焼き上げる、COCHAでしか味わえない一皿。きのこ・もやし・炒めキムチと共にどうぞ。</p>
         </div>
         <div class="highlight-card reveal">
-          <div class="highlight-icon"><i class="fas fa-bowl-rice"></i></div>
-          <h3>Traditional Dishes</h3>
-          <p>From hearty jjigae stews to vibrant bibimbap bowls, every dish tells a story rooted in Korean heritage.</p>
+          <div class="highlight-num">02</div>
+          <h3>ナッコプセ</h3>
+          <p>タコ・コプチャン・エビを旨辛ダレで煮込む韓国の定番鍋料理。専用ライスと一緒に、最後の一滴まで楽しめます。</p>
         </div>
         <div class="highlight-card reveal">
-          <div class="highlight-icon"><i class="fas fa-pepper-hot"></i></div>
-          <h3>House-Made Kimchi</h3>
-          <p>Our kimchi and banchan side dishes are made fresh in-house using generations-old recipes.</p>
+          <div class="highlight-num">03</div>
+          <h3>UFOマーラーしゃぶ</h3>
+          <p>花びら状に並べた肉を、しびれる麻辣スープでしゃぶしゃぶ。ピーナッツダレをつけると、また違う旨みが広がります。</p>
         </div>
         <div class="highlight-card reveal">
-          <div class="highlight-icon"><i class="fas fa-wine-glass"></i></div>
-          <h3>Korean Drinks</h3>
-          <p>Soju, makgeolli rice wine, and Korean craft beers — the perfect pairing for every meal.</p>
+          <div class="highlight-num">04</div>
+          <h3>充実のドリンク</h3>
+          <p>チャミスル・マッコリ・生サワー・ハイボール・プレミアムウイスキーまで幅広く取り揃え。飲み放題コースもあります。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== MENU ========== -->
+  <!-- MENU -->
   <section id="menu" class="menu-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Our Menu</span>
-        <h2>Crafted with Authentic Flavors</h2>
-        <p>Every dish is prepared with premium ingredients and traditional Korean techniques passed down through generations.</p>
+        <span class="section-tag">MENU</span>
+        <h2>メニュー</h2>
+        <p>ランチセットからディナーまで、韓国と中国の味が一つのテーブルに。</p>
       </div>
 
       <div class="menu-tabs reveal">
-        <button class="tab-btn active" data-tab="signature">Signature</button>
-        <button class="tab-btn" data-tab="sets">Lunch Sets</button>
-        <button class="tab-btn" data-tab="plates">Small Plates</button>
-        <button class="tab-btn" data-tab="drinks">Drinks</button>
-        <button class="tab-btn" data-tab="desserts">Desserts</button>
+        <button class="tab-btn active" data-tab="signature">おすすめ</button>
+        <button class="tab-btn" data-tab="sets">ランチセット</button>
+        <button class="tab-btn" data-tab="plates">一品料理</button>
+        <button class="tab-btn" data-tab="drinks">ドリンク</button>
+        <button class="tab-btn" data-tab="desserts">デザート</button>
       </div>
 
       <div class="menu-content">
 
-        <!-- SIGNATURE -->
+        <!-- おすすめ -->
         <div class="tab-panel active" id="tab-signature">
           <div class="menu-grid">
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a1a0a,#6a3010)">
-                <span class="menu-emoji">🔥</span>
-              </div>
+              <div class="menu-item-img gallery-sam"><div class="gallery-art"><div class="ga-pan"></div><div class="ga-pork"></div><div class="ga-kimchi"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>わら焼きサムギョプサル</h4><span class="price">¥4,380</span>
-                </div>
-                <p>Straw-smoked pork belly grilled on iron plate with mushrooms, kimchi, bean sprouts, and tortilla. A uniquely smoky flavor you won't find anywhere else.</p>
-                <span class="tag">COCHA Signature</span>
+                <div class="menu-item-header"><h4>わら焼きサムギョプサル</h4><span class="price">¥4,380</span></div>
+                <p>藁で燻した豚バラを鉄板焼き。きのこ・もやし・玉ねぎ・ニラ和え・炒めキムチ・トルティーヤ付き。</p>
+                <span class="tag">COCHA名物</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a0a2a,#4a1060)">
-                <span class="menu-emoji">🐙</span>
-              </div>
+              <div class="menu-item-img gallery-hotpot"><div class="gallery-art"><div class="ga-pot"></div><div class="ga-center"></div><div class="ga-shine"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>ナッコプセ</h4><span class="price">¥4,380</span>
-                </div>
-                <p>Octopus, gopchang (intestine), and shrimp simmered with vegetables in a rich, spicy sauce. A Korean street food legend — served with nakkopse-dedicated rice.</p>
-                <span class="tag">Spicy · Must-Try</span>
+                <div class="menu-item-header"><h4>ナッコプセ</h4><span class="price">¥4,380</span></div>
+                <p>タコ・コプチャン・エビを旨辛ダレで炒め煮。専用ライスと一緒にどうぞ。</p>
+                <span class="tag">辛口 · 人気No.1</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#0a1a2a,#103060)">
-                <span class="menu-emoji">🌊</span>
-              </div>
+              <div class="menu-item-img gallery-interior"><div class="gallery-art"><div class="ga-room"></div><div class="ga-glow"></div><div class="ga-tables"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>COCHA UFO マーラーしゃぶ</h4><span class="price">¥4,180</span>
-                </div>
-                <p>Beautifully fanned meat petals shabu-shabu'd in a numbing mala broth. Add peanut sauce for a rich, creamy finish. Stunning to look at, even better to eat.</p>
-                <span class="tag">Chinese-Korean Fusion</span>
+                <div class="menu-item-header"><h4>COCHA UFOマーラーしゃぶ</h4><span class="price">¥4,180</span></div>
+                <p>花びら状のお肉を麻辣スープでしゃぶしゃぶ。ピーナッツダレで味変も楽しめます。</p>
+                <span class="tag">中韓フュージョン</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a0a1a,#601035)">
-                <span class="menu-emoji">⏱️</span>
-              </div>
+              <div class="menu-item-img gallery-yukhoe"><div class="gallery-art"><div class="ga-beef"></div><div class="ga-yolk"></div><div class="ga-avo"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>&lt;15分&gt; ポッサム盛り合わせ</h4><span class="price">¥4,380</span>
-                </div>
-                <p>Wait 15 minutes and watch your bossam finish tableside — steamed pork belly at its absolute peak. The anticipation is part of the experience.</p>
-                <span class="tag">Tableside Finish</span>
+                <div class="menu-item-header"><h4>&lt;15分&gt; ポッサム盛り合わせ</h4><span class="price">¥4,380</span></div>
+                <p>15分待てば、いちばん美味しい蒸しポッサムがテーブルで完成。見て楽しい、待って美味しい一品。</p>
+                <span class="tag">テーブル仕上げ</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a2a0a,#356010)">
-                <span class="menu-emoji">🏔️</span>
-              </div>
+              <div class="menu-item-img gallery-sam"><div class="gallery-art"><div class="ga-pan"></div><div class="ga-pork"></div><div class="ga-kimchi"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>富士山マーラー鍋</h4><span class="price">¥4,380</span>
-                </div>
-                <p>A dramatic mala hot pot presented like Mt. Fuji — bold, spicy Sichuan broth loaded with premium ingredients. The centerpiece of any group table.</p>
-                <span class="tag">Group Dish · Spicy</span>
+                <div class="menu-item-header"><h4>富士山マーラー鍋</h4><span class="price">¥4,380</span></div>
+                <p>富士山のように盛り付けられた迫力の麻辣鍋。グループのテーブルを彩る一品。</p>
+                <span class="tag">辛口 · グループ向け</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a2a0a,#606010)">
-                <span class="menu-emoji">🌿</span>
-              </div>
+              <div class="menu-item-img gallery-hotpot"><div class="gallery-art"><div class="ga-pot"></div><div class="ga-center"></div><div class="ga-shine"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>COCHA ミナリ豚チュムロク</h4><span class="price">¥4,180</span>
-                </div>
-                <p>Pork neck grilled with fresh minari (Korean water parsley) — fragrant, tender, and a COCHA house favourite.</p>
-                <span class="tag">House Favourite</span>
-              </div>
-            </div>
-            <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a0a0a,#501010)">
-                <span class="menu-emoji">🧪</span>
-              </div>
-              <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>プデチゲ</h4><span class="price">¥4,080</span>
-                </div>
-                <p>Korea's beloved army stew — SPAM, sausage, kimchi, ramyeon, and cheese in a spicy broth. Hearty, nostalgic, and deeply satisfying.</p>
-                <span class="tag">Korean Soul Food</span>
-              </div>
-            </div>
-            <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#0a1a1a,#106060)">
-                <span class="menu-emoji">⭐</span>
-              </div>
-              <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>プレミアム薬膳ペクスク</h4><span class="price">¥20,000</span>
-                </div>
-                <p>Nagoya Cochin chicken × whole Korean abalone, finished with a selection of premium medicinal herbs. COCHA's ultimate premium experience — reservation recommended.</p>
-                <span class="tag">Premium · Seasonal</span>
+                <div class="menu-item-header"><h4>プレミアム薬膳ペクスク</h4><span class="price">¥20,000</span></div>
+                <p>名古屋コーチン × 韓国産丸ごとアワビ。厳選した漢方素材で仕上げたCOCHAのプレミアム薬膳料理。</p>
+                <span class="tag">季節限定 · 要予約</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- LUNCH SETS -->
+        <!-- ランチセット -->
         <div class="tab-panel" id="tab-sets">
-          <p class="menu-note">Available <strong>11:00 – 16:00 (L.O. 4:00pm)</strong> · Each set saves approx. ¥1,000 vs. ordering à la carte · Serves 2–3 people</p>
+          <p class="menu-note"><strong>11:00〜16:00（L.O. 15:30）</strong>のご提供。各セットはアラカルトより約1,000円お得。2〜3名様向け。</p>
           <div class="menu-grid">
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a1a0a,#6a3010)">
-                <span class="menu-emoji">🔥</span>
-              </div>
+              <div class="menu-item-img gallery-sam"><div class="gallery-art"><div class="ga-pan"></div><div class="ga-pork"></div><div class="ga-kimchi"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>わら焼きサムギョプサル SET</h4><span class="price">¥6,980</span>
-                </div>
-                <p>Straw-grilled samgyeopsal + minari ebi chijimi + jjigae + 8 side dishes + rice × 2 + sangchu set.</p>
-                <span class="tag">Best Value</span>
+                <div class="menu-item-header"><h4>わら焼きサムギョプサル SET</h4><span class="price">¥6,980</span></div>
+                <p>サムギョプサル + ミナリエビチヂミ + チゲ + おかず8種 + ライス×2 + サンチュセット</p>
+                <span class="tag">一番人気</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a0a2a,#4a1060)">
-                <span class="menu-emoji">🐙</span>
-              </div>
+              <div class="menu-item-img gallery-hotpot"><div class="gallery-art"><div class="ga-pot"></div><div class="ga-center"></div><div class="ga-shine"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>ナッコプセ SET</h4><span class="price">¥6,580</span>
-                </div>
-                <p>Nakgopse + meat chijimi + gyeranjiim + 8 side dishes + nakgopse rice × 2.</p>
-                <span class="tag">Popular</span>
+                <div class="menu-item-header"><h4>ナッコプセ SET</h4><span class="price">¥6,580</span></div>
+                <p>ナッコプセ + 肉チヂミ + ケランチム + おかず8種 + 専用ライス×2</p>
+                <span class="tag">お得セット</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#0a1a2a,#103060)">
-                <span class="menu-emoji">🌊</span>
-              </div>
+              <div class="menu-item-img gallery-interior"><div class="gallery-art"><div class="ga-room"></div><div class="ga-glow"></div><div class="ga-tables"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>マーラーしゃぶしゃぶ SET</h4><span class="price">¥6,480</span>
-                </div>
-                <p>Mala shabu-shabu + kurobuta pork + egg fried rice + 8 side dishes.</p>
-                <span class="tag">Fusion Pick</span>
+                <div class="menu-item-header"><h4>マーラーしゃぶしゃぶ SET</h4><span class="price">¥6,480</span></div>
+                <p>マーラーしゃぶ + クォバロウ + 卵チャーハン + おかず8種</p>
+                <span class="tag">中韓フュージョン</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a0a1a,#601035)">
-                <span class="menu-emoji">🍲</span>
-              </div>
+              <div class="menu-item-img gallery-yukhoe"><div class="gallery-art"><div class="ga-beef"></div><div class="ga-yolk"></div><div class="ga-avo"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>プデチゲ SET</h4><span class="price">¥6,800</span>
-                </div>
-                <p>Budae jjigae + japchae + minari ebi chijimi + 8 side dishes + rice × 2 + ramyeon noodles.</p>
-                <span class="tag">Most Complete</span>
+                <div class="menu-item-header"><h4>プデチゲ SET</h4><span class="price">¥6,800</span></div>
+                <p>プデチゲ + チャプチェ + ミナリエビチヂミ + おかず8種 + ライス×2 + ラーメンサリ</p>
+                <span class="tag">ボリューム満点</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a2a0a,#356010)">
-                <span class="menu-emoji">🌿</span>
-              </div>
+              <div class="menu-item-img gallery-sam"><div class="gallery-art"><div class="ga-pan"></div><div class="ga-pork"></div><div class="ga-kimchi"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header">
-                  <h4>ミナリ豚チュムロク SET</h4><span class="price">¥6,580</span>
-                </div>
-                <p>Minari pork chumuruk + minari seafood chijimi + jjigae + 8 side dishes + sangchu set.</p>
-                <span class="tag">Fresh &amp; Aromatic</span>
+                <div class="menu-item-header"><h4>ミナリ豚チュムロク SET</h4><span class="price">¥6,580</span></div>
+                <p>ミナリチュムロク + ミナリ海鮮チヂミ + チゲ + おかず8種 + サンチュセット</p>
+                <span class="tag">さっぱり系</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- SMALL PLATES -->
+        <!-- 一品料理 -->
         <div class="tab-panel" id="tab-plates">
           <div class="menu-category-section">
-            <h3 class="menu-category-title">チヂミ / Pancakes</h3>
+            <h3 class="menu-category-title">チヂミ</h3>
             <div class="menu-list">
-              <div class="menu-list-item reveal"><span>トリュフチーズジャガイモチヂミ</span><span class="price">¥1,280</span></div>
+              <div class="menu-list-item reveal"><span>トリュフチーズじゃがいもチヂミ</span><span class="price">¥1,280</span></div>
               <div class="menu-list-item reveal"><span>ミナリ海鮮チヂミ</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>トウモロコシチヂミ</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>ミナリエビチヂミ</span><span class="price">¥1,480</span></div>
@@ -290,9 +224,9 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">チキン / Chicken</h3>
+            <h3 class="menu-category-title">チキン</h3>
             <div class="menu-list">
-              <div class="menu-list-item reveal"><span>COCHA チポレチキン</span><span class="price">¥1,480</span></div>
+              <div class="menu-list-item reveal"><span>COCHAチポレチキン</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>マーラーヤンニョムチキン</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>ユーリンチー風チキン</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>フライドチキン</span><span class="price">¥1,200</span></div>
@@ -300,7 +234,7 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">炒め物 / Stir-Fries</h3>
+            <h3 class="menu-category-title">炒め物</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>チャプチェ</span><span class="price">¥1,080</span></div>
               <div class="menu-list-item reveal"><span>チュクミ炒め</span><span class="price">¥1,580</span></div>
@@ -312,7 +246,7 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">HOT POT / スープ</h3>
+            <h3 class="menu-category-title">鍋・スープ</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>ニラもつ鍋</span><span class="price">¥3,980</span></div>
               <div class="menu-list-item reveal"><span>特選ミナリコムタン</span><span class="price">¥1,780</span></div>
@@ -323,11 +257,11 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">一品料理 / À la Carte</h3>
+            <h3 class="menu-category-title">一品料理</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>炙りユッケビビムカルグス</span><span class="price">¥1,850</span></div>
               <div class="menu-list-item reveal"><span>ボッサムカルビビびん麺</span><span class="price">¥3,280</span></div>
-              <div class="menu-list-item reveal"><span>クォバロウ (酢豚)</span><span class="price">¥1,560</span></div>
+              <div class="menu-list-item reveal"><span>クォバロウ（酢豚）</span><span class="price">¥1,560</span></div>
               <div class="menu-list-item reveal"><span>マーラーエビマヨ</span><span class="price">¥1,280</span></div>
               <div class="menu-list-item reveal"><span>BBQポークチーズフォンデュ</span><span class="price">¥1,480</span></div>
               <div class="menu-list-item reveal"><span>牛バラ巻き</span><span class="price">¥2,480</span></div>
@@ -337,7 +271,7 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">ご飯物 / Rice</h3>
+            <h3 class="menu-category-title">ご飯物</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>卵炒飯</span><span class="price">¥1,080</span></div>
               <div class="menu-list-item reveal"><span>卵えび炒飯</span><span class="price">¥1,280</span></div>
@@ -347,10 +281,10 @@
           </div>
         </div>
 
-        <!-- DRINKS -->
+        <!-- ドリンク -->
         <div class="tab-panel" id="tab-drinks">
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🍺 ビール / Beer</h3>
+            <h3 class="menu-category-title">ビール</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>プレミアムモルツ生ビール</span><span class="price">¥550</span></div>
               <div class="menu-list-item reveal"><span>CASS 中瓶</span><span class="price">¥950</span></div>
@@ -360,27 +294,27 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🍋 生サワー / Fresh Sours</h3>
+            <h3 class="menu-category-title">生サワー</h3>
             <div class="menu-list">
-              <div class="menu-list-item reveal"><span>生レモン / グレープフルーツ / マスカット</span><span class="price">¥680</span></div>
-              <div class="menu-list-item reveal"><span>生パイナップル / イチゴ / キウイ</span><span class="price">¥680</span></div>
-              <div class="menu-list-item reveal"><span>生マンゴ / ミックスベリー</span><span class="price">¥680</span></div>
+              <div class="menu-list-item reveal"><span>生レモン・グレープフルーツ・マスカット</span><span class="price">¥680</span></div>
+              <div class="menu-list-item reveal"><span>生パイナップル・イチゴ・キウイ</span><span class="price">¥680</span></div>
+              <div class="menu-list-item reveal"><span>生マンゴ・ミックスベリー</span><span class="price">¥680</span></div>
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🥃 ハイボール / Highballs</h3>
+            <h3 class="menu-category-title">ハイボール</h3>
             <div class="menu-list">
-              <div class="menu-list-item reveal"><span>角ハイボール / ジンジャー / コーク</span><span class="price">¥530</span></div>
+              <div class="menu-list-item reveal"><span>角ハイボール・ジンジャー・コーク</span><span class="price">¥530</span></div>
               <div class="menu-list-item reveal"><span>AOハイボール</span><span class="price">¥850</span></div>
               <div class="menu-list-item reveal"><span>白州ハイボール</span><span class="price">¥1,200</span></div>
               <div class="menu-list-item reveal"><span>山崎ハイボール</span><span class="price">¥1,200</span></div>
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🍶 韓国酒 / Korean Spirits</h3>
+            <h3 class="menu-category-title">韓国酒</h3>
             <div class="menu-list">
-              <div class="menu-list-item reveal"><span>チャミスル (Original)</span><span class="price">¥950</span></div>
-              <div class="menu-list-item reveal"><span>チャミスル各種 (Muscat / GF / Peach / Strawberry / Plum)</span><span class="price">¥1,000</span></div>
+              <div class="menu-list-item reveal"><span>チャミスル オリジナル</span><span class="price">¥950</span></div>
+              <div class="menu-list-item reveal"><span>チャミスル各種（マスカット・グレフル・ピーチ・イチゴ・すもも）</span><span class="price">¥1,000</span></div>
               <div class="menu-list-item reveal"><span>ジンロイズバック / セロゼロシューガ</span><span class="price">¥1,000</span></div>
               <div class="menu-list-item reveal"><span>生マッコリ</span><span class="price">¥1,280</span></div>
               <div class="menu-list-item reveal"><span>ヌリンマウルマッコリ</span><span class="price">¥1,680</span></div>
@@ -388,7 +322,7 @@
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🍾 プレミアムボトル / Premium Bottles</h3>
+            <h3 class="menu-category-title">プレミアムボトル</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>山崎シングルモルト</span><span class="price">¥35,000</span></div>
               <div class="menu-list-item reveal"><span>山崎 12年</span><span class="price">¥65,000</span></div>
@@ -397,11 +331,11 @@
               <div class="menu-list-item reveal"><span>マッカラン 12年</span><span class="price">¥30,000</span></div>
               <div class="menu-list-item reveal"><span>マッカラン 18年</span><span class="price">¥120,000</span></div>
               <div class="menu-list-item reveal"><span>ジョニーウォーカー ブルーラベル</span><span class="price">¥70,000</span></div>
-              <div class="menu-list-item reveal"><span>ヴーヴ クリコ / モエ / ドン ペリニヨン</span><span class="price">¥600~</span></div>
+              <div class="menu-list-item reveal"><span>ヴーヴ クリコ / モエ / ドン ペリニヨン</span><span class="price">応相談</span></div>
             </div>
           </div>
           <div class="menu-category-section">
-            <h3 class="menu-category-title">🧃 ソフトドリンク / Soft Drinks</h3>
+            <h3 class="menu-category-title">ソフトドリンク</h3>
             <div class="menu-list">
               <div class="menu-list-item reveal"><span>コーラ / ゼロコーラ / ジンジャーエール / サイダー</span><span class="price">¥400</span></div>
               <div class="menu-list-item reveal"><span>ウーロン茶 / トウモロコシ茶 / ジャスミン茶</span><span class="price">¥400</span></div>
@@ -410,57 +344,31 @@
           </div>
         </div>
 
-        <!-- DESSERTS -->
+        <!-- デザート -->
         <div class="tab-panel" id="tab-desserts">
           <div class="menu-grid">
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a1a2a,#3a3060)">
-                <span class="menu-emoji">🍧</span>
-              </div>
+              <div class="menu-item-img gallery-bingsu"><div class="gallery-art"><div class="ga-ice"></div><div class="ga-tiramisu"></div></div></div>
               <div class="menu-item-info">
                 <div class="menu-item-header"><h4>ティラミスビンス</h4><span class="price">¥1,280</span></div>
-                <p>Korean shaved ice with a tiramisu twist — the dessert that guests keep mentioning in reviews. A COCHA original.</p>
-                <span class="tag">COCHA Original</span>
+                <p>レビューでも話題のCOCHAオリジナルかき氷。ティラミス風の仕上がりで、食後の締めにちょうどいい。</p>
+                <span class="tag">COCHA オリジナル</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a0a1a,#601035)">
-                <span class="menu-emoji">🍓</span>
-              </div>
+              <div class="menu-item-img gallery-hotpot"><div class="gallery-art"><div class="ga-pot"></div><div class="ga-center"></div></div></div>
               <div class="menu-item-info">
                 <div class="menu-item-header"><h4>いちごビンス</h4><span class="price">¥1,280</span></div>
-                <p>Fluffy shaved ice loaded with fresh strawberry — sweet, cold, and the perfect way to end a meal.</p>
-                <span class="tag">Seasonal Favourite</span>
+                <p>フレッシュいちごを使ったかき氷。ふわふわの氷と甘酸っぱいソースが好評。</p>
+                <span class="tag">定番人気</span>
               </div>
             </div>
             <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a2a0a,#354a10)">
-                <span class="menu-emoji">🥭</span>
-              </div>
+              <div class="menu-item-img gallery-soju"><div class="gallery-art"><div class="ga-bottle"></div><div class="ga-light"></div></div></div>
               <div class="menu-item-info">
-                <div class="menu-item-header"><h4>マンゴビンス</h4><span class="price">¥1,280</span></div>
-                <p>Tropical mango shaved ice — sunshine in a bowl.</p>
-                <span class="tag">Popular</span>
-              </div>
-            </div>
-            <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#2a1a0a,#503010)">
-                <span class="menu-emoji">🌾</span>
-              </div>
-              <div class="menu-item-info">
-                <div class="menu-item-header"><h4>きなこビンス</h4><span class="price">¥1,280</span></div>
-                <p>Traditional kinako (roasted soybean flour) shaved ice — nutty, delicate, and deeply Japanese-Korean.</p>
-                <span class="tag">Traditional</span>
-              </div>
-            </div>
-            <div class="menu-item reveal">
-              <div class="menu-item-img" style="background:linear-gradient(135deg,#1a1a1a,#353535)">
-                <span class="menu-emoji">🍑</span>
-              </div>
-              <div class="menu-item-info">
-                <div class="menu-item-header"><h4>白桃ビンス</h4><span class="price">¥1,280</span></div>
-                <p>White peach shaved ice — elegant, floral, and refreshingly light.</p>
-                <span class="tag">Summer Special</span>
+                <div class="menu-item-header"><h4>マンゴ / 白桃 / きなこビンス</h4><span class="price">¥1,280</span></div>
+                <p>季節のビンス各種。甘さ控えめで食後にぴったり。</p>
+                <span class="tag">各種あり</span>
               </div>
             </div>
           </div>
@@ -469,13 +377,13 @@
       </div>
 
       <div class="menu-cta reveal">
-        <p>All mains are served with complimentary banchan (Korean side dishes) — kimchi, japchae, and seasoned spinach.</p>
-        <a href="#contact" class="btn btn-primary">Order or Reserve</a>
+        <p>メインには全8種のおかず（バンチャン）が付きます。テーブルでのQRオーダーで、スムーズにご注文いただけます。</p>
+        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== ABOUT ========== -->
+  <!-- ABOUT -->
   <section id="about" class="about-section">
     <div class="container">
       <div class="about-grid">
@@ -483,225 +391,140 @@
           <div class="about-img-main about-interior"></div>
           <div class="about-img-secondary about-food"></div>
           <div class="about-stat">
-            <strong>★5</strong>
-            <span>Google Reviews</span>
+            <strong>★ 5</strong>
+            <span>Googleレビュー</span>
           </div>
         </div>
         <div class="about-content reveal">
-          <span class="section-tag">Our Story</span>
-          <h2>Where Every Dish Tells a Story</h2>
+          <span class="section-tag">ABOUT</span>
+          <h2>COCHAについて</h2>
           <p class="about-lead">
-            Cocha is a Chinese-Korean fusion restaurant nestled in the heart of Shin-Okubo, Tokyo's vibrant Korean district.
-            We blend the bold, communal spirit of Korean BBQ with the depth and variety of Chinese flavors —
-            creating a dining experience unlike anything else in the neighborhood.
+            新大久保に新しい味わいを。韓国料理と中国料理の融合──それがCOCHAのスタイルです。
           </p>
           <p>
-            Our menu spans straw-grilled samgyeopsal, haemul jeongol hot pots, yukhoe tartare, and more —
-            served in a modern, upscale space with great music, friendly staff, and an all-you-can-drink option
-            perfect for groups who like to take their time.
+            藁で燻したサムギョプサル、しびれるマーラーしゃぶしゃぶ、鮮度抜群のナッコプセ。
+            どれも、ここでしか食べられない一皿です。おかず8種・QRオーダー・飲み放題コースも充実。
+            グループでのお食事・飲み会・記念日にも、ぜひご利用ください。
           </p>
           <div class="about-values">
-            <div class="value">
-              <i class="fas fa-check-circle"></i>
-              <span>Chinese-Korean fusion cuisine</span>
-            </div>
-            <div class="value">
-              <i class="fas fa-check-circle"></i>
-              <span>Straw-grilled samgyeopsal</span>
-            </div>
-            <div class="value">
-              <i class="fas fa-check-circle"></i>
-              <span>All-you-can-drink available</span>
-            </div>
-            <div class="value">
-              <i class="fas fa-check-circle"></i>
-              <span>QR code ordering at every table</span>
-            </div>
-            <div class="value">
-              <i class="fas fa-check-circle"></i>
-              <span>Great music — not just K-pop</span>
-            </div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>韓国中国融合料理</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>わら焼きサムギョプサル</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>飲み放題コースあり</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>QRコードで簡単注文</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>K-POPだけじゃない、いい音楽</span></div>
           </div>
-          <a href="#contact" class="btn btn-primary">Meet Us</a>
+          <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== GALLERY ========== -->
+  <!-- GALLERY -->
   <section class="gallery-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Gallery</span>
-        <h2>A Feast for the Eyes</h2>
+        <span class="section-tag">GALLERY</span>
+        <h2>料理ギャラリー</h2>
       </div>
       <div class="gallery-grid reveal">
-
-        <!-- Hotpot: silver pan + pearl seafood + crimson gochujang + green onion -->
         <div class="gallery-item gi-large gallery-hotpot">
-          <div class="gallery-art">
-            <div class="ga-pot"></div>
-            <div class="ga-center"></div>
-            <div class="ga-shine"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>ナッコプセ</span>
-            <em>Octopus · Shrimp · Gochujang</em>
-          </div>
+          <div class="gallery-art"><div class="ga-pot"></div><div class="ga-center"></div><div class="ga-shine"></div></div>
+          <div class="gallery-overlay"><span>ナッコプセ</span><em>タコ · コプチャン · エビ</em></div>
         </div>
-
-        <!-- Interior: near-black + warm amber kitchen glow + COCHA orange signage -->
         <div class="gallery-item gallery-interior">
-          <div class="gallery-art">
-            <div class="ga-room"></div>
-            <div class="ga-glow"></div>
-            <div class="ga-tables"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>Our Space</span>
-            <em>Shin-Okubo, Tokyo</em>
-          </div>
+          <div class="gallery-art"><div class="ga-room"></div><div class="ga-glow"></div><div class="ga-tables"></div></div>
+          <div class="gallery-overlay"><span>店内</span><em>新大久保 · 東京</em></div>
         </div>
-
-        <!-- Yukhoe: deep burgundy beef + vivid orange egg yolk + avocado green -->
         <div class="gallery-item gallery-yukhoe">
-          <div class="gallery-art">
-            <div class="ga-beef"></div>
-            <div class="ga-yolk"></div>
-            <div class="ga-avo"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>ユッケ</span>
-            <em>Beef Tartare · Egg Yolk · Avocado</em>
-          </div>
+          <div class="gallery-art"><div class="ga-beef"></div><div class="ga-yolk"></div><div class="ga-avo"></div></div>
+          <div class="gallery-overlay"><span>ユッケ</span><em>生牛肉 · 卵黄 · アボカド</em></div>
         </div>
-
-        <!-- Samgyeopsal: golden-brown pork + bright kimchi red + iron pan + greens -->
         <div class="gallery-item gi-tall gallery-sam">
-          <div class="gallery-art">
-            <div class="ga-pan"></div>
-            <div class="ga-pork"></div>
-            <div class="ga-kimchi"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>わら焼きサムギョプサル</span>
-            <em>Straw-Smoked Pork Belly</em>
-          </div>
+          <div class="gallery-art"><div class="ga-pan"></div><div class="ga-pork"></div><div class="ga-kimchi"></div></div>
+          <div class="gallery-overlay"><span>わら焼きサムギョプサル</span><em>COCHA名物</em></div>
         </div>
-
-        <!-- Bingsu: icy blue-white with tiramisu brown -->
         <div class="gallery-item gallery-bingsu">
-          <div class="gallery-art">
-            <div class="ga-ice"></div>
-            <div class="ga-tiramisu"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>ティラミスビンス</span>
-            <em>Korean Shaved Ice</em>
-          </div>
+          <div class="gallery-art"><div class="ga-ice"></div><div class="ga-tiramisu"></div></div>
+          <div class="gallery-overlay"><span>ティラミスビンス</span><em>オリジナルデザート</em></div>
         </div>
-
-        <!-- Soju cocktails: emerald glass, cold light -->
         <div class="gallery-item gallery-soju">
-          <div class="gallery-art">
-            <div class="ga-bottle"></div>
-            <div class="ga-light"></div>
-          </div>
-          <div class="gallery-overlay">
-            <span>チャミスル & 生サワー</span>
-            <em>Korean Spirits & Fresh Sours</em>
-          </div>
+          <div class="gallery-art"><div class="ga-bottle"></div><div class="ga-light"></div></div>
+          <div class="gallery-overlay"><span>チャミスル・生サワー</span><em>韓国酒各種</em></div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- ========== TESTIMONIALS ========== -->
+  <!-- REVIEWS -->
   <section class="testimonials-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Reviews</span>
-        <h2>What Our Guests Say</h2>
+        <span class="section-tag">REVIEWS</span>
+        <h2>お客様の声</h2>
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <div class="review-ratings">
-            <span>Food 5/5</span><span>Service 5/5</span><span>Atmosphere 4/5</span>
-          </div>
-          <p>"The vibe is more mature than other drinking places in the area. The quality of the food is way higher — if not the best — than most restaurants in Shin-Okubo. Staff is very friendly, the place is extremely clean, and they play great music (not just K-pop). Would recommend to bigger groups who want to have a drink and eat Chinese-Korean fusion food."</p>
+          <div class="review-ratings"><span>料理 5/5</span><span>サービス 5/5</span><span>雰囲気 4/5</span></div>
+          <p>「新大久保の他の飲み屋より落ち着いた雰囲気で、料理のクオリティは周辺でもトップクラス。スタッフも感じよく、店内も清潔。音楽もK-POPだけじゃなくて、グループでゆっくり飲みたい人に本当におすすめです。」</p>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fab fa-google"></i></div>
-            <div>
-              <strong>Google Review</strong>
-              <span>Group of 4 · Shin-Okubo</span>
-            </div>
+            <div><strong>Googleレビュー</strong><span>グループ利用</span></div>
           </div>
         </div>
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <div class="review-ratings">
-            <span>Food 5/5</span><span>Service 5/5</span><span>Atmosphere 5/5</span>
-          </div>
-          <p>"Ordering is very easy — just scan the QR code and choose directly from your smartphone. The service is fast and the staff is extremely kind. They brought us forks without us even asking, and offered us a tiramisu shaved ice as a surprise. A special thank you to Mimi, who was truly kind, polite, and helpful. The food is very good and the price is fair. Highly recommended."</p>
+          <div class="review-ratings"><span>料理 5/5</span><span>サービス 5/5</span><span>雰囲気 5/5</span></div>
+          <p>「QRコードで注文できて便利。スタッフの方がとても親切で、フォークを頼む前に持ってきてくれたり、ティラミスのビンスをサービスしてくれたり。MIMIさんの対応が特に素晴らしかったです。料理も美味しくて価格も納得。」</p>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fab fa-google"></i></div>
-            <div>
-              <strong>Google Review</strong>
-              <span>Verified Visit</span>
-            </div>
+            <div><strong>Googleレビュー</strong><span>来店済み</span></div>
           </div>
         </div>
         <div class="testimonial-card reveal">
           <div class="stars">★★★★★</div>
-          <div class="review-ratings">
-            <span>Group of 3–4</span>
-          </div>
-          <p>"I had the samgyeopsal set — incredibly filling. It came with kimchi jjigae, minari buchimgae, white rice, and eight small side dishes. All of this for just ¥3,000! The samgyeopsal had a different flavor from other places — grilled on straw, smoky and delicious. The buchimgae had large shrimp, crispy outside. All-you-can-drink included for ¥4,299 total. Very satisfied!"</p>
+          <div class="review-ratings"><span>3〜4名で来店</span></div>
+          <p>「サムギョプサルセットを注文。セットだけで¥3,000、飲み放題込みで¥4,299と大満足。藁焼きのサムギョプサルは他と全然違う燻煙の香りで美味しかった。チヂミも大きなエビが入っていて外はカリッと。チゲもご飯が進む濃厚な味。」</p>
           <div class="testimonial-author">
             <div class="author-avatar"><i class="fab fa-google"></i></div>
-            <div>
-              <strong>Google Review</strong>
-              <span>Samgyeopsal Set · ¥4,299 AYCE</span>
-            </div>
+            <div><strong>Googleレビュー</strong><span>サムギョプサルセット · 飲み放題¥4,299</span></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== RESERVATION ========== -->
+  <!-- RESERVATION -->
   <section id="reservation" class="reservation-section">
     <div class="container">
       <div class="reservation-grid">
         <div class="reservation-info reveal">
-          <span class="section-tag">Reservations</span>
-          <h2>Book Your Table</h2>
-          <p>Reserve your spot for an unforgettable Korean dining experience. Walk-ins welcome based on availability.</p>
+          <span class="section-tag">RESERVATION</span>
+          <h2>ご予約</h2>
+          <p>ご予約はフォームまたはお電話にて承ります。当日のお席は空き状況によりご案内いたします。</p>
           <div class="info-items">
             <div class="info-item">
               <i class="fas fa-clock"></i>
               <div>
-                <strong>Hours</strong>
-                <span>Mon–Thu: 11:30am – 10pm</span>
-                <span>Fri–Sat: 11:30am – 11pm</span>
-                <span>Sunday: 12pm – 9pm</span>
+                <strong>営業時間</strong>
+                <span>月〜木 11:30〜22:00</span>
+                <span>金・土 11:30〜23:00</span>
+                <span>日曜日 12:00〜21:00</span>
               </div>
             </div>
             <div class="info-item">
               <i class="fas fa-phone"></i>
               <div>
-                <strong>Phone</strong>
+                <strong>電話</strong>
                 <span><a href="tel:+81362789201">03-6278-9201</a></span>
               </div>
             </div>
             <div class="info-item">
               <i class="fas fa-location-dot"></i>
               <div>
-                <strong>Address</strong>
-                <span>1-8010 Hyakunincho, Shinjuku City</span>
-                <span>Tokyo 169-0073</span>
+                <strong>住所</strong>
+                <span>〒169-0073</span>
+                <span>東京都新宿区百人町1-8010</span>
               </div>
             </div>
           </div>
@@ -710,146 +533,136 @@
           <form class="reservation-form" id="reservationForm">
             <div class="form-row">
               <div class="form-group">
-                <label for="firstName">First Name</label>
-                <input type="text" id="firstName" placeholder="Jane" required />
+                <label for="firstName">お名前（姓）</label>
+                <input type="text" id="firstName" placeholder="山田" required />
               </div>
               <div class="form-group">
-                <label for="lastName">Last Name</label>
-                <input type="text" id="lastName" placeholder="Doe" required />
+                <label for="lastName">お名前（名）</label>
+                <input type="text" id="lastName" placeholder="太郎" required />
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="resDate">Date</label>
+                <label for="resDate">ご来店日</label>
                 <input type="date" id="resDate" required />
               </div>
               <div class="form-group">
-                <label for="resTime">Time</label>
+                <label for="resTime">ご来店時間</label>
                 <select id="resTime" required>
-                  <option value="">Select time</option>
-                  <option>11:30 AM</option>
-                  <option>12:00 PM</option>
-                  <option>12:30 PM</option>
-                  <option>1:00 PM</option>
-                  <option>6:00 PM</option>
-                  <option>6:30 PM</option>
-                  <option>7:00 PM</option>
-                  <option>7:30 PM</option>
-                  <option>8:00 PM</option>
+                  <option value="">時間を選ぶ</option>
+                  <option>11:30</option><option>12:00</option><option>12:30</option>
+                  <option>18:00</option><option>18:30</option><option>19:00</option>
+                  <option>19:30</option><option>20:00</option><option>20:30</option>
                 </select>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="guests">Guests</label>
+                <label for="guests">人数</label>
                 <select id="guests" required>
-                  <option>1 Guest</option>
-                  <option selected>2 Guests</option>
-                  <option>3 Guests</option>
-                  <option>4 Guests</option>
-                  <option>5 Guests</option>
-                  <option>6+ Guests</option>
+                  <option>1名</option><option selected>2名</option><option>3名</option>
+                  <option>4名</option><option>5名</option><option>6名以上</option>
                 </select>
               </div>
               <div class="form-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" placeholder="(123) 456-7890" />
+                <label for="phone">電話番号</label>
+                <input type="tel" id="phone" placeholder="090-0000-0000" />
               </div>
             </div>
             <div class="form-group">
-              <label for="notes">Special Requests</label>
-              <textarea id="notes" rows="3" placeholder="Allergies, celebrations, seating preferences..."></textarea>
+              <label for="notes">ご要望・アレルギー等</label>
+              <textarea id="notes" rows="3" placeholder="アレルギー、記念日のご利用、お席のご希望など"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">Confirm Reservation</button>
+            <button type="submit" class="btn btn-primary btn-full">予約を確定する</button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CONTACT ========== -->
+  <!-- CONTACT / MAP -->
   <section id="contact" class="contact-section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Find Us</span>
-        <h2>Visit Cocha</h2>
+        <span class="section-tag">ACCESS</span>
+        <h2>アクセス</h2>
       </div>
       <div class="contact-grid">
         <div class="contact-card reveal">
           <i class="fas fa-location-dot"></i>
-          <h4>Address</h4>
-          <p>1-8010 Hyakunincho<br />Shinjuku City, Tokyo 169-0073</p>
-          <a href="https://share.google/N77ue1SKT3GtEyS7L" target="_blank" rel="noopener" class="link">Get Directions →</a>
+          <h4>住所</h4>
+          <p>〒169-0073<br>東京都新宿区百人町1-8010</p>
+          <a href="https://share.google/N77ue1SKT3GtEyS7L" target="_blank" rel="noopener" class="link">地図を開く</a>
         </div>
         <div class="contact-card reveal">
-          <i class="fas fa-qrcode"></i>
-          <h4>QR Ordering</h4>
-          <p>Scan your table QR code to order directly from your phone — fast, easy, no waiting.</p>
-          <span class="link">Available at every table</span>
+          <i class="fas fa-phone"></i>
+          <h4>電話</h4>
+          <p>03-6278-9201</p>
+          <a href="tel:+81362789201" class="link">電話をかける</a>
         </div>
         <div class="contact-card reveal">
           <i class="fas fa-share-nodes"></i>
-          <h4>Follow Us</h4>
+          <h4>SNS</h4>
           <div class="social-links">
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+            <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
           </div>
         </div>
       </div>
       <div class="map-embed reveal">
         <iframe
           src="https://maps.google.com/maps?q=1-8010+Hyakunincho,Shinjuku+City,Tokyo+169-0073,Japan&output=embed&z=16"
-          width="100%" height="360" style="border:0;border-radius:12px;filter:grayscale(0.3) contrast(1.1);"
+          width="100%" height="360"
+          style="border:0;border-radius:12px;filter:grayscale(0.3) contrast(1.1);"
           allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Cocha Korean Restaurant Location">
+          title="COCHA 店舗地図">
         </iframe>
       </div>
     </div>
   </section>
 
-  <!-- ========== FOOTER ========== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="#home" class="nav-logo">
-            <span class="logo-korean">코차</span>
-            <span class="logo-text">Cocha</span>
+            <span class="logo-main">COCHA</span>
+            <span class="logo-sub">コチャ</span>
           </a>
-          <p>Authentic Korean cuisine crafted with passion, tradition, and the finest ingredients.</p>
+          <p>新大久保の韓国中国融合料理。<br>わら焼き、鍋、マーラー、飲み放題。</p>
         </div>
         <div class="footer-nav">
-          <h5>Navigate</h5>
+          <h5>ページ</h5>
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#reservation">Reservations</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#home">トップ</a></li>
+            <li><a href="#menu">メニュー</a></li>
+            <li><a href="#about">店舗紹介</a></li>
+            <li><a href="#reservation">ご予約</a></li>
+            <li><a href="#contact">アクセス</a></li>
           </ul>
         </div>
         <div class="footer-nav">
-          <h5>Hours</h5>
+          <h5>営業時間</h5>
           <ul>
-            <li>Mon–Thu: 11:30am – 10pm</li>
-            <li>Fri–Sat: 11:30am – 11pm</li>
-            <li>Sunday: 12pm – 9pm</li>
+            <li>月〜木 11:30〜22:00</li>
+            <li>金・土 11:30〜23:00</li>
+            <li>日曜 12:00〜21:00</li>
+            <li>〒169-0073 東京都新宿区百人町1-8010</li>
           </ul>
         </div>
         <div class="footer-social">
-          <h5>Follow Us</h5>
+          <h5>フォローする</h5>
           <div class="social-links">
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="Yelp"><i class="fab fa-yelp"></i></a>
+            <a href="#" aria-label="X"><i class="fab fa-x-twitter"></i></a>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 Cocha Korean Restaurant. All rights reserved.</p>
+        <p>&copy; 2026 COCHA — コチャ 新大久保. All rights reserved.</p>
       </div>
     </div>
   </footer>
