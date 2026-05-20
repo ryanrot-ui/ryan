@@ -1002,28 +1002,9 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transform: translateY(-2px);
 }
 
-.map-placeholder {
-  height: 280px;
-  background: var(--bg3);
-  border: 1px dashed rgba(200,150,62,0.3);
+.map-embed {
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: var(--muted);
-  text-align: center;
-  padding: 24px;
-}
-.map-placeholder i { font-size: 36px; color: rgba(200,150,62,0.3); }
-.map-placeholder p { font-size: 14px; }
-.map-placeholder code {
-  font-size: 12px;
-  background: var(--bg);
-  padding: 8px 16px;
-  border-radius: 4px;
-  color: var(--gold);
+  overflow: hidden;
   border: 1px solid var(--border);
 }
 
