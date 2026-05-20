@@ -43,7 +43,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
-    // Re-trigger reveal for newly shown items
     document.querySelectorAll('#tab-' + tab + ' .reveal').forEach(el => {
       el.classList.remove('visible');
       setTimeout(() => observer.observe(el), 10);
