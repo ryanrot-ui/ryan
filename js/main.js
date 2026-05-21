@@ -75,11 +75,11 @@ if (form) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    btn.textContent = 'Reservation Confirmed! ✓';
+    btn.textContent = 'ご予約を受け付けました ✓';
     btn.style.background = '#2ecc71';
     btn.disabled = true;
     setTimeout(() => {
-      btn.textContent = 'Confirm Reservation';
+      btn.textContent = '予約を確定する';
       btn.style.background = '';
       btn.disabled = false;
       form.reset();
@@ -143,7 +143,7 @@ if (cursor && cursorDot) {
 // Scroll-driven stagger for sibling grid items
 function applyScrollStagger() {
   const groups = document.querySelectorAll(
-    '.highlights-grid, .gallery-grid, .menu-grid, .reviews-grid'
+    '.highlights-grid, .gallery-grid, .menu-grid, .testimonials-grid'
   );
   groups.forEach(grid => {
     grid.querySelectorAll('.reveal, .reveal-scale').forEach((el, i) => {
@@ -152,17 +152,3 @@ function applyScrollStagger() {
   });
 }
 applyScrollStagger();
-
-// Subtle tilt on highlight cards as you scroll
-const highlightCards = document.querySelectorAll('.highlight-card');
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  highlightCards.forEach((card, i) => {
-    const rect = card.getBoundingClientRect();
-    const center = rect.top + rect.height / 2;
-    const viewCenter = window.innerHeight / 2;
-    const dist = (center - viewCenter) / window.innerHeight;
-    const tiltY = dist * 3 * (i % 2 === 0 ? 1 : -1);
-    card.style.transform = `translateY(${dist * -6}px) rotateX(${tiltY * 0.4}deg)`;
-  });
-}, { passive: true });
