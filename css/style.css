@@ -1231,13 +1231,13 @@ body * { cursor: none; }
 }
 
 /* Instagram-only wide pill (used when just one platform) */
-.social-ig {
+.social-links a.social-ig {
   width: auto;
   height: 40px;
   padding: 0 20px;
   gap: 10px;
 }
-.social-ig span {
+.social-links a.social-ig span {
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.2em;
@@ -1294,6 +1294,8 @@ body * { cursor: none; }
   font-size: 13px;
   color: var(--text3);
   transition: color 0.3s ease;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .footer-nav a:hover { color: var(--gold); }
 .footer-social .social-links { justify-content: flex-start; margin-top: 0; }
