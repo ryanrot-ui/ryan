@@ -93,3 +93,41 @@ window.addEventListener('scroll', () => {
     heroBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
   }
 });
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+if (cursor && cursorDot) {
+  let mouseX = 0, mouseY = 0;
+  let cursorX = 0, cursorY = 0;
+
+  document.addEventListener('mousemove', e => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top = mouseY + 'px';
+  });
+
+  // Smooth lag on the ring
+  (function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.12;
+    cursorY += (mouseY - cursorY) * 0.12;
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    requestAnimationFrame(animateCursor);
+  })();
+
+  document.querySelectorAll('a, button, .menu-item, .gallery-item, .highlight-card, .tab-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    cursorDot.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    cursorDot.style.opacity = '1';
+  });
+}
