@@ -1309,6 +1309,12 @@ body * { cursor: none; }
   background: radial-gradient(ellipse at 40% 30%, #1a3a2a 0%, #0a2018 40%, #0a1010 100%);
 }
 
+/* Hide custom cursor on touch / mobile devices */
+@media (hover: none), (max-width: 768px) {
+  .cursor, .cursor-dot { display: none !important; }
+  body, body * { cursor: auto !important; }
+}
+
 /* =====================
    RESPONSIVE
    ===================== */
