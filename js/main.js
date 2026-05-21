@@ -9,19 +9,39 @@ window.addEventListener('scroll', () => {
 // Mobile menu
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
+
+function lockScroll() {
+  const scrollY = window.scrollY;
+  document.body.style.position = 'fixed';
+  document.body.style.top = `-${scrollY}px`;
+  document.body.style.width = '100%';
+  document.body.style.overflow = 'hidden';
+}
+
+function unlockScroll() {
+  const scrollY = -parseInt(document.body.style.top || '0', 10);
+  document.body.style.position = '';
+  document.body.style.top = '';
+  document.body.style.width = '';
+  document.body.style.overflow = '';
+  window.scrollTo(0, scrollY);
+}
+
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   navLinks.classList.toggle('open');
-  const isOpen = navLinks.classList.contains('open');
-  document.body.style.overflow = isOpen ? 'hidden' : '';
-  document.documentElement.style.overflow = isOpen ? 'hidden' : '';
+  if (navLinks.classList.contains('open')) {
+    lockScroll();
+  } else {
+    unlockScroll();
+  }
 });
+
 navLinks.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => {
     hamburger.classList.remove('open');
     navLinks.classList.remove('open');
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
+    unlockScroll();
   });
 });
 
