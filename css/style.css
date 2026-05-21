@@ -75,29 +75,34 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
    ===================== */
 .cursor {
   position: fixed;
-  width: 36px; height: 36px;
-  border: 1px solid rgba(184,137,58,0.5);
+  width: 32px; height: 32px;
+  border: 1px solid rgba(184,137,58,0.45);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9997;
   transform: translate(-50%,-50%);
-  transition: width 0.3s var(--ease), height 0.3s var(--ease),
-              border-color 0.3s ease, opacity 0.3s ease;
+  transition: width 0.4s var(--ease-out), height 0.4s var(--ease-out),
+              border-color 0.3s ease, background 0.3s ease, opacity 0.3s ease;
+  mix-blend-mode: exclusion;
 }
 .cursor-dot {
   position: fixed;
-  width: 4px; height: 4px;
+  width: 5px; height: 5px;
   background: var(--gold);
   border-radius: 50%;
   pointer-events: none;
-  z-index: 9997;
+  z-index: 9999;
   transform: translate(-50%,-50%);
-  transition: transform 0.1s;
+  transition: transform 0.15s var(--ease-out), opacity 0.3s ease;
 }
 .cursor.hover {
-  width: 60px; height: 60px;
-  border-color: var(--gold);
-  background: var(--gold-dim);
+  width: 44px; height: 44px;
+  border-color: rgba(184,137,58,0.9);
+  background: rgba(184,137,58,0.06);
+  mix-blend-mode: normal;
+}
+.cursor-dot.hover {
+  transform: translate(-50%,-50%) scale(1.6);
 }
 body * { cursor: none; }
 
@@ -206,21 +211,52 @@ body * { cursor: none; }
 .btn-full { width: 100%; justify-content: center; }
 
 /* =====================
-   REVEAL ANIMATION
+   REVEAL ANIMATIONS
    ===================== */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transform: translateY(36px);
+  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
 }
 .reveal.visible { opacity: 1; transform: none; }
 
 .reveal-left {
   opacity: 0;
-  transform: translateX(-28px);
-  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+  transform: translateX(-40px);
+  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
 }
 .reveal-left.visible { opacity: 1; transform: none; }
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 1.1s var(--ease-out), transform 1.1s var(--ease-out);
+}
+.reveal-right.visible { opacity: 1; transform: none; }
+
+/* Scale reveal — for headings and labels */
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition: opacity 1.2s var(--ease-out), transform 1.2s var(--ease-out);
+  transform-origin: center bottom;
+}
+.reveal-scale.visible { opacity: 1; transform: none; }
+
+/* Slow ambient reveal — for decorative/background elements */
+.reveal-slow {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1.6s var(--ease-out), transform 1.6s var(--ease-out);
+}
+.reveal-slow.visible { opacity: 1; transform: none; }
+
+/* Stagger delay utilities */
+.d1 { transition-delay: 0.08s; }
+.d2 { transition-delay: 0.16s; }
+.d3 { transition-delay: 0.24s; }
+.d4 { transition-delay: 0.32s; }
+.d5 { transition-delay: 0.42s; }
 
 /* =====================
    NAVIGATION

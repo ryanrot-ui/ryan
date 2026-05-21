@@ -54,12 +54,13 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, i) => {
     if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      setTimeout(() => entry.target.classList.add('visible'), i * 100);
       observer.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+}, { threshold: 0.10 });
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-slow')
+  .forEach(el => observer.observe(el));
 
 // Reservation form
 const form = document.getElementById('reservationForm');
@@ -104,22 +105,29 @@ if (cursor && cursorDot) {
   document.addEventListener('mousemove', e => {
     mouseX = e.clientX;
     mouseY = e.clientY;
+    // Dot snaps instantly
     cursorDot.style.left = mouseX + 'px';
     cursorDot.style.top = mouseY + 'px';
   });
 
-  // Smooth lag on the ring
+  // Ring follows with smooth inertia lag
   (function animateCursor() {
-    cursorX += (mouseX - cursorX) * 0.12;
-    cursorY += (mouseY - cursorY) * 0.12;
+    cursorX += (mouseX - cursorX) * 0.10;
+    cursorY += (mouseY - cursorY) * 0.10;
     cursor.style.left = cursorX + 'px';
     cursor.style.top = cursorY + 'px';
     requestAnimationFrame(animateCursor);
   })();
 
   document.querySelectorAll('a, button, .menu-item, .gallery-item, .highlight-card, .tab-btn').forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      cursorDot.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      cursorDot.classList.remove('hover');
+    });
   });
 
   document.addEventListener('mouseleave', () => {
@@ -131,3 +139,30 @@ if (cursor && cursorDot) {
     cursorDot.style.opacity = '1';
   });
 }
+
+// Scroll-driven stagger for sibling grid items
+function applyScrollStagger() {
+  const groups = document.querySelectorAll(
+    '.highlights-grid, .gallery-grid, .menu-grid, .reviews-grid'
+  );
+  groups.forEach(grid => {
+    grid.querySelectorAll('.reveal, .reveal-scale').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.10) + 's';
+    });
+  });
+}
+applyScrollStagger();
+
+// Subtle tilt on highlight cards as you scroll
+const highlightCards = document.querySelectorAll('.highlight-card');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  highlightCards.forEach((card, i) => {
+    const rect = card.getBoundingClientRect();
+    const center = rect.top + rect.height / 2;
+    const viewCenter = window.innerHeight / 2;
+    const dist = (center - viewCenter) / window.innerHeight;
+    const tiltY = dist * 3 * (i % 2 === 0 ? 1 : -1);
+    card.style.transform = `translateY(${dist * -6}px) rotateX(${tiltY * 0.4}deg)`;
+  });
+}, { passive: true });
