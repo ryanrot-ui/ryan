@@ -222,6 +222,26 @@ const t = [
   // Reviews
   ['.testimonials-section .section-tag', 'REVIEWS', 'REVIEWS'],
   ['.testimonials-section h2', 'お客様の声', 'Guest Reviews'],
+  // Review card 1
+  ['.testimonial-card:nth-child(1) .review-ratings span:nth-child(1)', '料理 5/5', 'Food 5/5'],
+  ['.testimonial-card:nth-child(1) .review-ratings span:nth-child(2)', 'サービス 5/5', 'Service 5/5'],
+  ['.testimonial-card:nth-child(1) .review-ratings span:nth-child(3)', '雰囲気 4/5', 'Ambiance 4/5'],
+  ['.testimonial-card:nth-child(1) p', '「新大久保の他の飲み屋より落ち着いた雰囲気で、料理のクオリティは周辺でもトップクラス。スタッフも感じよく、店内も清潔。音楽もK-POPだけじゃなくて、グループでゆっくり飲みたい人に本当におすすめです。」', '"More relaxed than other spots in Shin-Okubo, with top-tier food quality in the area. Staff are friendly, the space is clean, and the music goes beyond K-pop. Highly recommended for groups who want to take their time over drinks."'],
+  ['.testimonial-card:nth-child(1) .testimonial-author strong', '小林 花', 'Kobayashi Hana'],
+  ['.testimonial-card:nth-child(1) .testimonial-author span', 'Googleレビュー · 地元のガイド', 'Google Review · Local Guide'],
+  // Review card 2
+  ['.testimonial-card:nth-child(2) .review-ratings span:nth-child(1)', '料理 5/5', 'Food 5/5'],
+  ['.testimonial-card:nth-child(2) .review-ratings span:nth-child(2)', 'サービス 5/5', 'Service 5/5'],
+  ['.testimonial-card:nth-child(2) .review-ratings span:nth-child(3)', '雰囲気 5/5', 'Ambiance 5/5'],
+  ['.testimonial-card:nth-child(2) p', '「QRコードで注文できて便利。スタッフの方がとても親切で、フォークを頼む前に持ってきてくれたり、ティラミスのビンスをサービスしてくれたり。MIMIさんの対応が特に素晴らしかったです。料理も美味しくて価格も納得。」', '"QR code ordering was convenient. The staff were incredibly attentive — they brought forks before we even asked, and comped us tiramisu. MIMI was especially wonderful. Delicious food at fair prices."'],
+  ['.testimonial-card:nth-child(2) .testimonial-author strong', '佐藤 めい', 'Sato Mei'],
+  ['.testimonial-card:nth-child(2) .testimonial-author span', 'Googleレビュー · 来店済み', 'Google Review · Visited'],
+  // Review card 3
+  ['.testimonial-card:nth-child(3) .review-ratings span:nth-child(1)', '3〜4名で来店', 'Group of 3–4'],
+  ['.testimonial-card:nth-child(3) .review-ratings span:nth-child(2)', '飲み放題コース利用', 'All-you-can-drink course'],
+  ['.testimonial-card:nth-child(3) p', '「サムギョプサルセットを注文。セットだけで¥3,000、飲み放題込みで¥4,299と大満足。藁焼きのサムギョプサルは他と全然違う燻煙の香りで美味しかった。チヂミも大きなエビが入っていて外はカリッと。チゲもご飯が進む濃厚な味。」', '"Ordered the samgyeopsal set — great value at ¥3,000, and only ¥4,299 with all-you-can-drink. The straw-smoked pork had a unique smoky depth unlike anywhere else. The pajeon was crispy with big shrimp, and the jjigae was rich and hearty."'],
+  ['.testimonial-card:nth-child(3) .testimonial-author strong', '山本 慎一', 'Yamamoto Shinichi'],
+  ['.testimonial-card:nth-child(3) .testimonial-author span', 'Googleレビュー · 飲み放題コース利用', 'Google Review · All-you-can-drink course'],
   // Reservation
   ['#reservation .section-tag', 'RESERVATION', 'RESERVATION'],
   ['#reservation .reservation-info h2', 'ご予約', 'Reservations'],
