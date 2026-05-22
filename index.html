@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja" translate="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google" content="notranslate" />
+  <meta http-equiv="Content-Language" content="ja" />
+  <meta name="description" content="足軽（Ashikaru）— 新宿区大久保のフット&ボディマッサージ。24時間営業・完全個室・PayPay/楽天Pay対応。03-6205-9266" />
+  <title>ASHIKARU 足軽 — 新宿区大久保 フット&ボディマッサージ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Noto+Serif+JP:wght@300;400;500;600&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="scrollProgress"></div>
+
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-main">ASHIKARU</span>
+        <span class="logo-sub">足軽</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home"        class="nav-link active">トップ</a></li>
+        <li><a href="#menu"        class="nav-link">コース</a></li>
+        <li><a href="#about"       class="nav-link">店舗紹介</a></li>
+        <li><a href="#contact"     class="nav-link">アクセス</a></li>
+        <li><a href="#reservation" class="nav-btn">ご予約</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Switch to English"><i class="fas fa-globe"></i> EN</button>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=85')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-tagline">新宿区大久保 — フット&ボディマッサージ</span>
+      <h1 class="hero-title">
+        <span class="hero-title-main">ASHIKARU</span>
+        <span class="hero-title-sub">足軽</span>
+      </h1>
+      <p class="hero-subtitle">
+        深夜も、早朝も。24時間いつでも、<br>
+        あなたの疲れた心と体を癒します。
+      </p>
+      <div class="hero-ctas">
+        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
+        <a href="#menu"        class="btn btn-outline">コースを見る</a>
+      </div>
+      <div class="hero-badges">
+        <div class="badge"><span class="badge-dot"></span><span>24時間営業</span></div>
+        <div class="badge"><span class="badge-dot"></span><span>完全個室</span></div>
+        <div class="badge"><span class="badge-dot"></span><span>Google ★4.8</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights">
+    <div class="container">
+      <div class="highlights-grid">
+        <div class="highlight-card reveal d1">
+          <div class="highlight-num">01</div>
+          <h3>24時間・年中無休</h3>
+          <p>深夜・早朝・祝日もご利用可能。仕事帰り、旅のお疲れに、いつでもお立ち寄りください。新宿のど真ん中で365日お待ちしています。</p>
+        </div>
+        <div class="highlight-card reveal d2">
+          <div class="highlight-num">02</div>
+          <h3>フット&ボディ専門</h3>
+          <p>足裏反射区療法から全身リラクゼーションまで。熟練セラピストが、あなたの疲れの箇所に合わせた施術をご提供します。</p>
+        </div>
+        <div class="highlight-card reveal d3">
+          <div class="highlight-num">03</div>
+          <h3>新宿・大久保駅近</h3>
+          <p>大久保駅から徒歩5分、新宿駅からも好アクセス。完全個室で、周りを気にせずゆっくりとご利用いただけます。</p>
+        </div>
+        <div class="highlight-card reveal d4">
+          <div class="highlight-num">04</div>
+          <h3>各種キャッシュレス対応</h3>
+          <p>PayPay・楽天Pay・クレジットカードなど各種決済に対応。現金はもちろん、スマートフォン決済でスムーズにお支払いいただけます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES / MENU -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <div class="section-header reveal-scale">
+        <span class="section-tag">COURSE</span>
+        <h2>コース・料金</h2>
+        <p>お体の状態に合わせて、最適なコースをお選びください。</p>
+      </div>
+
+      <div class="menu-tabs reveal">
+        <button class="tab-btn active" data-tab="foot">フットマッサージ</button>
+        <button class="tab-btn" data-tab="body">ボディマッサージ</button>
+        <button class="tab-btn" data-tab="combo">コンビネーション</button>
+        <button class="tab-btn" data-tab="options">オプション</button>
+        <span class="tab-indicator" id="tabIndicator"></span>
+      </div>
+
+      <div class="menu-content">
+
+        <!-- フットマッサージ -->
+        <div class="tab-panel active" id="tab-foot">
+          <p class="menu-note"><strong>足裏反射区療法（中国式足揉み）</strong>足裏の反射区を丁寧に刺激し、全身の血行促進・疲労回復を促します。施術は専用の個室にて行います。</p>
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80" alt="フットマッサージ 30分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>フットマッサージ 30分</h4><span class="price">¥3,000</span></div>
+                <p>足裏の主要反射区を重点的にほぐします。ちょっとした疲れ取りに最適なショートコース。</p>
+                <span class="tag">お試し</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80" alt="フットマッサージ 60分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>フットマッサージ 60分</h4><span class="price">¥5,500</span></div>
+                <p>足裏全体・ふくらはぎ・すねまで丁寧にほぐします。1日の疲れをしっかりとケアする人気コース。</p>
+                <span class="tag">人気No.1</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80" alt="フットマッサージ 90分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>フットマッサージ 90分</h4><span class="price">¥7,500</span></div>
+                <p>足全体から膝上まで丁寧にケア。慢性的な疲れや浮腫みにお悩みの方に特におすすめです。</p>
+                <span class="tag">じっくりケア</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=80" alt="フットマッサージ 120分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>フットマッサージ 120分</h4><span class="price">¥9,500</span></div>
+                <p>最も丁寧な足の施術。足裏から太ももまで全体をほぐし、深いリラクゼーションへと導きます。</p>
+                <span class="tag">プレミアム</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ボディマッサージ -->
+        <div class="tab-panel" id="tab-body">
+          <p class="menu-note"><strong>全身リラクゼーション</strong>背中・肩・腰・首など全身の筋肉をほぐします。長時間のデスクワークや立ち仕事でお疲れの方に。施術は専用の個室にて行います。</p>
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=600&q=80" alt="ボディマッサージ 30分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>ボディマッサージ 30分</h4><span class="price">¥3,500</span></div>
+                <p>背中・肩を中心にほぐすショートコース。肩こりや背中の張りに効果的です。</p>
+                <span class="tag">肩こり解消</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="ボディマッサージ 60分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>ボディマッサージ 60分</h4><span class="price">¥6,000</span></div>
+                <p>上半身全体をしっかりとケア。背中・肩・首・腕まで丁寧にほぐします。人気の定番コース。</p>
+                <span class="tag">定番人気</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="ボディマッサージ 90分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>ボディマッサージ 90分</h4><span class="price">¥8,500</span></div>
+                <p>全身をくまなくケア。背中・肩・首・腰・臀部まで、深部の筋肉までほぐします。</p>
+                <span class="tag">全身ケア</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1607081692251-9d14e12a741b?auto=format&fit=crop&w=600&q=80" alt="ボディマッサージ 120分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>ボディマッサージ 120分</h4><span class="price">¥10,500</span></div>
+                <p>最上級のボディケア体験。時間をかけて全身をほぐし、心身ともに深い癒しへと導きます。</p>
+                <span class="tag">最上級</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- コンビネーション -->
+        <div class="tab-panel" id="tab-combo">
+          <p class="menu-note"><strong>フット+ボディのセットコース</strong>足裏から全身まで、組み合わせることでより深いリラクゼーション効果が得られます。個別に頼むよりもお得なコンビネーション価格です。</p>
+          <div class="menu-grid">
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80" alt="コンビネーション 60分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>コンビネーション 60分</h4><span class="price">¥6,000</span></div>
+                <p>フットマッサージ30分 + 肩・首ほぐし30分。足から上半身まで効率よくケアします。</p>
+                <span class="tag">お得コース</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80" alt="コンビネーション 90分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>コンビネーション 90分</h4><span class="price">¥8,500</span></div>
+                <p>フットマッサージ45分 + ボディマッサージ45分。足裏から背中まで全身を丁寧にほぐします。</p>
+                <span class="tag">大人気</span>
+              </div>
+            </div>
+            <div class="menu-item reveal">
+              <div class="menu-item-img"><img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=600&q=80" alt="コンビネーション 120分" loading="lazy"/></div>
+              <div class="menu-item-info">
+                <div class="menu-item-header"><h4>コンビネーション 120分</h4><span class="price">¥11,000</span></div>
+                <p>フットマッサージ60分 + ボディマッサージ60分。最上級の全身リラクゼーション体験。</p>
+                <span class="tag">贅沢コース</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- オプション -->
+        <div class="tab-panel" id="tab-options">
+          <p class="menu-note"><strong>いずれのコースにも追加可能です。</strong>施術前またはご予約時にお伝えください。スタッフにご相談いただければ最適な組み合わせをご提案します。</p>
+          <div class="menu-category-section">
+            <h3 class="menu-category-title">オプション追加</h3>
+            <div class="menu-list">
+              <div class="menu-list-item reveal"><span>ヘッド&ネックマッサージ（15分）</span><span class="price">+¥1,000</span></div>
+              <div class="menu-list-item reveal"><span>アロマオイルトリートメント</span><span class="price">+¥1,500</span></div>
+              <div class="menu-list-item reveal"><span>ホットストーンセラピー</span><span class="price">+¥2,000</span></div>
+              <div class="menu-list-item reveal"><span>ディープティシュー（深部集中）</span><span class="price">+¥1,500</span></div>
+            </div>
+          </div>
+          <div class="menu-category-section">
+            <h3 class="menu-category-title">その他のサービス</h3>
+            <div class="menu-list">
+              <div class="menu-list-item reveal"><span>カップル同時施術（2名様同時）</span><span class="price">各 -¥500</span></div>
+              <div class="menu-list-item reveal"><span>延長 30分</span><span class="price">+¥2,500〜</span></div>
+              <div class="menu-list-item reveal"><span>着替え・タオル</span><span class="price">無料</span></div>
+              <div class="menu-list-item reveal"><span>ドリンクサービス（施術後）</span><span class="price">無料</span></div>
+            </div>
+          </div>
+          <div class="menu-category-section">
+            <h3 class="menu-category-title">お支払い方法</h3>
+            <div class="menu-list">
+              <div class="menu-list-item reveal"><span>現金</span><span class="price">◎</span></div>
+              <div class="menu-list-item reveal"><span>PayPay</span><span class="price">◎</span></div>
+              <div class="menu-list-item reveal"><span>楽天Pay</span><span class="price">◎</span></div>
+              <div class="menu-list-item reveal"><span>クレジットカード（各種）</span><span class="price">◎</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-cta reveal">
+        <p>初めてのご来店の方も、お気軽にご相談ください。お体の状態に合わせて最適なコースをご提案いたします。</p>
+        <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-images reveal">
+          <div class="about-img-main" style="background-image:url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=85'); background-size:cover; background-position:center;"></div>
+          <div class="about-img-secondary" style="background-image:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=85'); background-size:cover; background-position:center;"></div>
+          <div class="about-stat">
+            <strong>Google ★4.8</strong>
+            <span>新宿区大久保</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <span class="section-tag">ABOUT</span>
+          <h2>足軽について</h2>
+          <p class="about-lead">
+            「足が軽くなれば、心も軽くなる。」——それが足軽のコンセプトです。
+          </p>
+          <p>
+            新宿区大久保のフット&ボディマッサージ専門サロン「足軽」では、熟練セラピストが一人ひとりのお体の状態に合わせた施術をご提供しています。中国伝統の足裏反射区療法をベースに、全身のリラクゼーションまで幅広くケアいたします。24時間365日営業なので、仕事帰りや深夜でもいつでもご利用いただけます。
+          </p>
+          <div class="about-values">
+            <div class="value"><i class="fas fa-check-circle"></i><span>24時間・年中無休営業</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>完全個室・プライベート空間</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>熟練セラピストによる本格施術</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>PayPay・楽天Payなどキャッシュレス対応</span></div>
+            <div class="value"><i class="fas fa-check-circle"></i><span>大久保駅から徒歩5分・新宿駅からも好アクセス</span></div>
+          </div>
+          <a href="#reservation" class="btn btn-primary">ご予約はこちら</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery-section">
+    <div class="container">
+      <div class="section-header reveal-scale">
+        <span class="section-tag">GALLERY</span>
+        <h2>サロンギャラリー</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal d1">
+          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80" alt="フットマッサージ" loading="lazy" />
+          <div class="gallery-overlay"><span>フットマッサージ</span><em>足裏反射区療法</em></div>
+        </div>
+        <div class="gallery-item reveal d2">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="個室施術ルーム" loading="lazy" />
+          <div class="gallery-overlay"><span>個室施術ルーム</span><em>完全プライベート空間</em></div>
+        </div>
+        <div class="gallery-item reveal d3">
+          <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=800&q=80" alt="ホットストーン" loading="lazy" />
+          <div class="gallery-overlay"><span>ホットストーン</span><em>オプション施術</em></div>
+        </div>
+        <div class="gallery-item reveal d2">
+          <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80" alt="ボディマッサージ" loading="lazy" />
+          <div class="gallery-overlay"><span>ボディマッサージ</span><em>全身リラクゼーション</em></div>
+        </div>
+        <div class="gallery-item reveal d3">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80" alt="くつろぎの空間" loading="lazy" />
+          <div class="gallery-overlay"><span>くつろぎの空間</span><em>落ち着いた雰囲気</em></div>
+        </div>
+        <div class="gallery-item reveal d4">
+          <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80" alt="フットケア" loading="lazy" />
+          <div class="gallery-overlay"><span>フットケア</span><em>丁寧な施術</em></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div class="section-header reveal-scale">
+        <span class="section-tag">REVIEWS</span>
+        <h2>お客様の声</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings"><span id="rv1-tag1">フット 5/5</span><span id="rv1-tag2">サービス 5/5</span><span id="rv1-tag3">清潔感 5/5</span></div>
+          <p id="rv1-text">「仕事帰りに立ち寄りました。深夜でも清潔感があって、スタッフの方がとても親切です。フット60分コースを受けましたが、足の疲れがすっきりと取れました。価格も納得できます。また必ず来ます。」</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div><strong id="rv1-name">田中 美佳</strong><span id="rv1-sub">Googleレビュー · 来店済み</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings"><span id="rv2-tag1">ボディ 5/5</span><span id="rv2-tag2">施術 5/5</span><span id="rv2-tag3">立地 5/5</span></div>
+          <p id="rv2-text">「24時間対応というのが本当に助かります。夜勤明けに来られるのはここくらいです。セラピストの技術も高く、慢性的な肩こりや腰の痛みが施術後にかなり楽になりました。個室なので安心して受けられます。」</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div><strong id="rv2-name">山田 誠</strong><span id="rv2-sub">Googleレビュー · 地元のガイド</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="stars">★★★★★</div>
+          <div class="review-ratings"><span id="rv3-tag1">初来店</span><span id="rv3-tag2">コンビ 90分</span></div>
+          <p id="rv3-text">「初めての利用でしたが、スタッフの方が丁寧に施術内容を説明してくださいました。コンビネーション90分コースを試したところ、終わった後の体の軽さが全然違います。大久保駅から近くて便利です。おすすめ！」</p>
+          <div class="testimonial-author">
+            <div class="author-avatar"><i class="fab fa-google"></i></div>
+            <div><strong id="rv3-name">朴 志英</strong><span id="rv3-sub">Googleレビュー · 新宿区在住</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION / BOOKING -->
+  <section id="reservation" class="reservation-section">
+    <div class="container">
+      <div class="reservation-grid">
+        <div class="reservation-info reveal">
+          <span class="section-tag">BOOKING</span>
+          <h2>ご予約</h2>
+          <p>ご予約はフォームまたはお電話にて承ります。当日のご予約もお気軽にどうぞ。</p>
+          <div class="info-items">
+            <div class="info-item">
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>営業時間</strong>
+                <span>24時間営業（年中無休）</span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>電話</strong>
+                <span><a href="tel:+81362059266">03-6205-9266</a></span>
+              </div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-location-dot"></i>
+              <div>
+                <strong>住所</strong>
+                <span>〒169-0072</span>
+                <span>東京都新宿区大久保1-17-3 305号</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reservation-form-wrap reveal">
+          <form class="reservation-form" id="reservationForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">お名前（姓）</label>
+                <input type="text" id="firstName" placeholder="山田" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">お名前（名）</label>
+                <input type="text" id="lastName" placeholder="太郎" required />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resDate">ご来店日</label>
+                <input type="date" id="resDate" required />
+              </div>
+              <div class="form-group">
+                <label for="resTime">ご来店時間</label>
+                <select id="resTime" required>
+                  <option value="">時間を選ぶ</option>
+                  <option>0:00</option><option>0:30</option>
+                  <option>1:00</option><option>1:30</option>
+                  <option>2:00</option><option>2:30</option>
+                  <option>3:00</option><option>3:30</option>
+                  <option>4:00</option><option>4:30</option>
+                  <option>5:00</option><option>5:30</option>
+                  <option>6:00</option><option>6:30</option>
+                  <option>7:00</option><option>7:30</option>
+                  <option>8:00</option><option>8:30</option>
+                  <option>9:00</option><option>9:30</option>
+                  <option>10:00</option><option>10:30</option>
+                  <option>11:00</option><option>11:30</option>
+                  <option>12:00</option><option>12:30</option>
+                  <option>13:00</option><option>13:30</option>
+                  <option>14:00</option><option>14:30</option>
+                  <option>15:00</option><option>15:30</option>
+                  <option>16:00</option><option>16:30</option>
+                  <option>17:00</option><option>17:30</option>
+                  <option>18:00</option><option>18:30</option>
+                  <option>19:00</option><option>19:30</option>
+                  <option>20:00</option><option>20:30</option>
+                  <option>21:00</option><option>21:30</option>
+                  <option>22:00</option><option>22:30</option>
+                  <option>23:00</option><option>23:30</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guests">ご希望コース</label>
+                <select id="guests" required>
+                  <option>フットマッサージ 30分</option>
+                  <option>フットマッサージ 60分</option>
+                  <option selected>フットマッサージ 90分</option>
+                  <option>フットマッサージ 120分</option>
+                  <option>ボディマッサージ 30分</option>
+                  <option>ボディマッサージ 60分</option>
+                  <option>ボディマッサージ 90分</option>
+                  <option>ボディマッサージ 120分</option>
+                  <option>コンビネーション 60分</option>
+                  <option>コンビネーション 90分</option>
+                  <option>コンビネーション 120分</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="phone">電話番号</label>
+                <input type="tel" id="phone" placeholder="090-0000-0000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="notes">ご要望・気になる箇所など</label>
+              <textarea id="notes" rows="3" placeholder="肩こり・腰痛・お体で気になる箇所など、なんでもお気軽にどうぞ"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">予約を確定する</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / MAP -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-header reveal-scale">
+        <span class="section-tag">ACCESS</span>
+        <h2>アクセス</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card reveal">
+          <i class="fas fa-location-dot"></i>
+          <h4>住所</h4>
+          <p>〒169-0072<br>東京都新宿区大久保<br>1-17-3 305号室</p>
+          <a href="https://maps.google.com/?q=305+1+Chome-17-3+Okubo+Shinjuku+Tokyo" target="_blank" rel="noopener" class="link">地図を開く</a>
+        </div>
+        <div class="contact-card reveal">
+          <i class="fas fa-phone"></i>
+          <h4>電話</h4>
+          <p>03-6205-9266<br><small style="font-size:11px; letter-spacing:0.05em;">24時間受付中</small></p>
+          <a href="tel:+81362059266" class="link">電話をかける</a>
+        </div>
+        <div class="contact-card reveal">
+          <i class="fas fa-clock"></i>
+          <h4>営業時間</h4>
+          <p>24時間営業<br>年中無休</p>
+          <a href="#reservation" class="link">今すぐ予約する</a>
+        </div>
+      </div>
+      <div class="map-embed reveal">
+        <iframe
+          src="https://maps.google.com/maps?q=35.7018,139.7037&output=embed&z=17"
+          width="100%"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="足軽 店舗地図">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-main">ASHIKARU</span>
+            <span class="logo-sub">足軽</span>
+          </a>
+          <p>新宿区大久保のフット&ボディマッサージ。<br>24時間営業・完全個室・各種決済対応。</p>
+        </div>
+        <div class="footer-nav">
+          <h5>ページ</h5>
+          <ul>
+            <li><a href="#home">トップ</a></li>
+            <li><a href="#menu">コース</a></li>
+            <li><a href="#about">店舗紹介</a></li>
+            <li><a href="#reservation">ご予約</a></li>
+            <li><a href="#contact">アクセス</a></li>
+          </ul>
+        </div>
+        <div class="footer-nav">
+          <h5>営業時間・アクセス</h5>
+          <ul>
+            <li>24時間営業（年中無休）</li>
+            <li>〒169-0072</li>
+            <li>東京都新宿区大久保1-17-3 305号</li>
+            <li>TEL: 03-6205-9266</li>
+          </ul>
+        </div>
+        <div class="footer-social">
+          <h5>お支払い</h5>
+          <div class="payment-list">
+            <span><i class="fas fa-check" style="color:var(--gold); margin-right:8px; font-size:10px;"></i>PayPay</span>
+            <span><i class="fas fa-check" style="color:var(--gold); margin-right:8px; font-size:10px;"></i>楽天Pay</span>
+            <span><i class="fas fa-check" style="color:var(--gold); margin-right:8px; font-size:10px;"></i>クレジットカード</span>
+            <span><i class="fas fa-check" style="color:var(--gold); margin-right:8px; font-size:10px;"></i>現金</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 足軽 Ashikaru — 新宿区大久保. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button id="scrollTop" aria-label="ページ上部へ戻る"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
