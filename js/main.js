@@ -2,11 +2,21 @@
 
 const isTouch = window.matchMedia('(hover: none)').matches;
 
-// Navbar scroll effect
-const navbar = document.getElementById('navbar');
+// Navbar scroll + progress bar + scroll-to-top
+const navbar    = document.getElementById('navbar');
+const progress  = document.getElementById('scrollProgress');
+const scrollTop = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 60);
+  const scrolled = window.scrollY;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  navbar.classList.toggle('scrolled', scrolled > 60);
+  if (progress) progress.style.width = (scrolled / maxScroll * 100) + '%';
+  if (scrollTop) scrollTop.classList.toggle('visible', scrolled > 600);
 }, { passive: true });
+
+if (scrollTop) {
+  scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
 
 // Mobile menu — iOS-safe scroll lock
 const hamburger = document.getElementById('hamburger');

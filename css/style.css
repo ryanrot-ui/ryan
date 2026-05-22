@@ -56,6 +56,45 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Scroll progress bar */
+#scrollProgress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(to right, var(--gold), var(--gold-lt));
+  z-index: 9999;
+  transition: width 0.08s linear;
+  pointer-events: none;
+}
+
+/* Scroll-to-top button */
+#scrollTop {
+  position: fixed;
+  bottom: 40px; right: 40px;
+  width: 44px; height: 44px;
+  background: rgba(8,6,4,0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-h);
+  border-radius: var(--radius);
+  color: var(--gold);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease),
+              background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+  z-index: 900;
+  pointer-events: none;
+}
+#scrollTop.visible { opacity: 1; transform: none; pointer-events: auto; }
+#scrollTop:hover { background: var(--gold); color: var(--bg); border-color: var(--gold); }
+#scrollTop:active { transform: scale(0.92); }
+
 /* Grain overlay — cinematic texture */
 body::after {
   content: '';
@@ -199,6 +238,7 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
   transform: translateY(-2px);
 }
 
+.btn:active { transform: scale(0.97) translateY(0) !important; }
 .btn-full { width: 100%; justify-content: center; }
 
 /* =====================
@@ -649,7 +689,14 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 }
 
 .tab-panel { display: none; }
-.tab-panel.active { display: block; }
+.tab-panel.active {
+  display: block;
+  animation: tabReveal 0.45s var(--ease-out) forwards;
+}
+@keyframes tabReveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
 
 .menu-grid {
   display: grid;
@@ -781,12 +828,21 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
   font-size: 13.5px;
   color: var(--text2);
   gap: 16px;
-  transition: color 0.25s ease, padding-left 0.25s ease;
+  position: relative;
+  transition: color 0.25s ease, padding-left 0.3s var(--ease);
 }
-.menu-list-item:hover {
-  color: var(--text);
-  padding-left: 8px;
+.menu-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 2px; height: 60%;
+  background: var(--gold);
+  transition: transform 0.3s var(--ease);
+  transform-origin: center;
 }
+.menu-list-item:hover { color: var(--text); padding-left: 12px; }
+.menu-list-item:hover::before { transform: translateY(-50%) scaleY(1); }
 .menu-list-item .price { white-space: nowrap; flex-shrink: 0; font-size: 13px; }
 
 .menu-cta {
@@ -1010,9 +1066,12 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 .testimonial-card {
   background: var(--bg2);
   padding: 52px 44px;
-  transition: background 0.4s var(--ease);
+  transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease);
 }
-.testimonial-card:hover { background: var(--bg3); }
+.testimonial-card:hover {
+  background: var(--bg3);
+  box-shadow: inset 0 0 0 1px rgba(184,137,58,0.18);
+}
 
 .stars {
   font-size: 12px;
@@ -1152,7 +1211,10 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
 }
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea:focus {
+  border-color: rgba(184,137,58,0.6);
+  box-shadow: 0 0 0 3px rgba(184,137,58,0.08);
+}
 .form-group input::placeholder,
 .form-group textarea::placeholder { color: var(--text3); }
 .form-group select option { background: var(--bg2); }
@@ -1382,7 +1444,14 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
     gap: 36px;
     z-index: 999;
   }
-  .nav-links.open { display: flex; }
+  .nav-links.open {
+    display: flex;
+    animation: navFadeIn 0.35s var(--ease-out) forwards;
+  }
+  @keyframes navFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
   .nav-links.open .nav-link { font-size: 14px; }
   .nav-links.open .nav-btn { font-size: 12px; }
   .hamburger { display: flex; z-index: 1001; }
@@ -1426,4 +1495,5 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
   .gallery-item:nth-child(6) { display: block; }
   .hero-badges { gap: 20px; flex-direction: column; align-items: center; }
   .about-img-secondary { display: none; }
+  #scrollTop { bottom: 24px; right: 20px; }
 }
