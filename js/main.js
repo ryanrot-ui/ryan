@@ -259,6 +259,163 @@ const t = [
   ['.footer-grid > :nth-child(3) ul li:nth-child(1)', '月〜木・日 10:00〜翌1:00', 'Mon–Thu &amp; Sun  10:00–1:00'],
   ['.footer-grid > :nth-child(3) ul li:nth-child(2)', '金・土 10:00〜翌5:00', 'Fri–Sat  10:00–5:00'],
   ['.footer-bottom p', '© 2026 COCHA — コチャ 新大久保. All rights reserved.', '© 2026 COCHA — Shin-Okubo, Tokyo. All rights reserved.'],
+
+  // ── Signature menu items ──
+  ['#tab-signature .menu-item:nth-child(1) h4', 'わら焼きサムギョプサル', 'Straw-Smoked Samgyeopsal'],
+  ['#tab-signature .menu-item:nth-child(1) .menu-item-info > p', '藁で燻した豚バラを鉄板焼き。きのこ・もやし・玉ねぎ・ニラ和え・炒めキムチ・トルティーヤ付き。', 'Straw-smoked pork belly seared on a cast-iron griddle. Served with mushrooms, bean sprouts, onion, chive salad, stir-fried kimchi, and tortillas.'],
+  ['#tab-signature .menu-item:nth-child(1) .tag', 'COCHA名物', 'COCHA Signature'],
+  ['#tab-signature .menu-item:nth-child(2) h4', 'ナッコプセ', 'Nakkopsae'],
+  ['#tab-signature .menu-item:nth-child(2) .menu-item-info > p', 'タコ・コプチャン・エビを旨辛ダレで炒め煮。専用ライスと一緒にどうぞ。', 'Octopus, beef tripe, and shrimp braised in a spicy sauce. Best enjoyed with the signature rice.'],
+  ['#tab-signature .menu-item:nth-child(2) .tag', '辛口 · 人気No.1', 'Spicy · Most Popular'],
+  ['#tab-signature .menu-item:nth-child(3) h4', 'COCHA UFOマーラーしゃぶ', 'COCHA UFO Maala Shabu-Shabu'],
+  ['#tab-signature .menu-item:nth-child(3) .menu-item-info > p', '花びら状のお肉を麻辣スープでしゃぶしゃぶ。ピーナッツダレで味変も楽しめます。', 'Petal-arranged meat cooked in a numbing maala broth. Try with peanut sauce for an extra flavour dimension.'],
+  ['#tab-signature .menu-item:nth-child(3) .tag', '中韓フュージョン', 'Korean-Chinese Fusion'],
+  ['#tab-signature .menu-item:nth-child(4) h4', '&lt;15分&gt; ポッサム盛り合わせ', '&lt;15 min&gt; Bossam Platter'],
+  ['#tab-signature .menu-item:nth-child(4) .menu-item-info > p', '15分待てば、いちばん美味しい蒸しポッサムがテーブルで完成。見て楽しい、待って美味しい一品。', 'Wait 15 minutes and the most delicious steamed bossam is finished right at your table — a showstopper worth the wait.'],
+  ['#tab-signature .menu-item:nth-child(4) .tag', 'テーブル仕上げ', 'Table-Side Finish'],
+  ['#tab-signature .menu-item:nth-child(5) h4', '富士山マーラー鍋', 'Mt. Fuji Maala Hot Pot'],
+  ['#tab-signature .menu-item:nth-child(5) .menu-item-info > p', '富士山のように盛り付けられた迫力の麻辣鍋。グループのテーブルを彩る一品。', 'A dramatic maala hot pot piled high like Mt. Fuji — a centrepiece dish that delights the whole table.'],
+  ['#tab-signature .menu-item:nth-child(5) .tag', '辛口 · グループ向け', 'Spicy · Great for Groups'],
+  ['#tab-signature .menu-item:nth-child(6) h4', 'プレミアム薬膳ペクスク', 'Premium Herbal Peksuk'],
+  ['#tab-signature .menu-item:nth-child(6) .menu-item-info > p', '名古屋コーチン × 韓国産丸ごとアワビ。厳選した漢方素材で仕上げたCOCHAのプレミアム薬膳料理。', 'Nagoya Cochin chicken × whole Korean abalone, finished with carefully selected herbal ingredients. A premium medicinal soup exclusive to COCHA.'],
+  ['#tab-signature .menu-item:nth-child(6) .tag', '季節限定 · 要予約', 'Seasonal · Reservation Required'],
+
+  // ── Lunch sets ──
+  ['#tab-sets .menu-note', '<strong>11:00〜16:00（L.O. 15:30）</strong>のご提供。各セットはアラカルトより約1,000円お得。2〜3名様向け。', '<strong>Available 11:00–16:00 (L.O. 15:30).</strong> Sets are approx. ¥1,000 less than ordering à la carte. Serves 2–3 people.'],
+  ['#tab-sets .menu-item:nth-child(1) h4', 'わら焼きサムギョプサル SET', 'Straw-Smoked Samgyeopsal SET'],
+  ['#tab-sets .menu-item:nth-child(1) .menu-item-info > p', 'サムギョプサル + ミナリエビチヂミ + チゲ + おかず8種 + ライス×2 + サンチュセット', 'Samgyeopsal + Minari Shrimp Pajeon + Jjigae + 8 banchan + Rice ×2 + Sangchu Set'],
+  ['#tab-sets .menu-item:nth-child(1) .tag', '一番人気', 'Most Popular'],
+  ['#tab-sets .menu-item:nth-child(2) h4', 'ナッコプセ SET', 'Nakkopsae SET'],
+  ['#tab-sets .menu-item:nth-child(2) .menu-item-info > p', 'ナッコプセ + 肉チヂミ + ケランチム + おかず8種 + 専用ライス×2', 'Nakkopsae + Meat Pajeon + Gyeran Jjim + 8 banchan + Signature Rice ×2'],
+  ['#tab-sets .menu-item:nth-child(2) .tag', 'お得セット', 'Great Value'],
+  ['#tab-sets .menu-item:nth-child(3) h4', 'マーラーしゃぶしゃぶ SET', 'Maala Shabu-Shabu SET'],
+  ['#tab-sets .menu-item:nth-child(3) .menu-item-info > p', 'マーラーしゃぶ + クォバロウ + 卵チャーハン + おかず8種', 'Maala Shabu + Sweet &amp; Sour Pork + Egg Fried Rice + 8 banchan'],
+  ['#tab-sets .menu-item:nth-child(3) .tag', '中韓フュージョン', 'Korean-Chinese Fusion'],
+  ['#tab-sets .menu-item:nth-child(4) h4', 'プデチゲ SET', 'Budae Jjigae SET'],
+  ['#tab-sets .menu-item:nth-child(4) .menu-item-info > p', 'プデチゲ + チャプチェ + ミナリエビチヂミ + おかず8種 + ライス×2 + ラーメンサリ', 'Budae Jjigae + Japchae + Minari Shrimp Pajeon + 8 banchan + Rice ×2 + Ramen Noodles'],
+  ['#tab-sets .menu-item:nth-child(4) .tag', 'ボリューム満点', 'Hearty &amp; Filling'],
+  ['#tab-sets .menu-item:nth-child(5) h4', 'ミナリ豚チュムロク SET', 'Minari Pork Chumuruk SET'],
+  ['#tab-sets .menu-item:nth-child(5) .menu-item-info > p', 'ミナリチュムロク + ミナリ海鮮チヂミ + チゲ + おかず8種 + サンチュセット', 'Minari Chumuruk + Minari Seafood Pajeon + Jjigae + 8 banchan + Sangchu Set'],
+  ['#tab-sets .menu-item:nth-child(5) .tag', 'さっぱり系', 'Light &amp; Fresh'],
+
+  // ── À la carte — category titles ──
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-category-title', 'チヂミ', 'Pajeon (Korean Pancakes)'],
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-category-title', 'チキン', 'Chicken'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-category-title', '炒め物', 'Stir-Fry'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-category-title', '鍋・スープ', 'Hot Pot &amp; Soup'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-category-title', '一品料理', 'À la Carte Dishes'],
+  ['#tab-plates .menu-category-section:nth-child(6) .menu-category-title', 'ご飯物', 'Rice Dishes'],
+  // チヂミ items
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-list-item:nth-child(1) span:first-child', 'トリュフチーズじゃがいもチヂミ', 'Truffle Cheese Potato Pajeon'],
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-list-item:nth-child(2) span:first-child', 'ミナリ海鮮チヂミ', 'Minari Seafood Pajeon'],
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-list-item:nth-child(3) span:first-child', 'トウモロコシチヂミ', 'Corn Pajeon'],
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-list-item:nth-child(4) span:first-child', 'ミナリエビチヂミ', 'Minari Shrimp Pajeon'],
+  ['#tab-plates .menu-category-section:nth-child(1) .menu-list-item:nth-child(5) span:first-child', '肉チヂミ', 'Meat Pajeon'],
+  // チキン items
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-list-item:nth-child(1) span:first-child', 'COCHAチポレチキン', 'COCHA Chipotle Chicken'],
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-list-item:nth-child(2) span:first-child', 'マーラーヤンニョムチキン', 'Maala Yangnyeom Chicken'],
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-list-item:nth-child(3) span:first-child', 'ユーリンチー風チキン', 'Yurinchi-Style Chicken'],
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-list-item:nth-child(4) span:first-child', 'フライドチキン', 'Fried Chicken'],
+  ['#tab-plates .menu-category-section:nth-child(2) .menu-list-item:nth-child(5) span:first-child', 'ゆず醤油チキン', 'Yuzu Soy Sauce Chicken'],
+  // 炒め物 items
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(1) span:first-child', 'チャプチェ', 'Japchae (Glass Noodles)'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(2) span:first-child', 'チュクミ炒め', 'Stir-Fried Baby Octopus'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(3) span:first-child', 'イカ炒め', 'Stir-Fried Squid'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(4) span:first-child', 'チーズタッカルビ炒め', 'Cheese Tteokgalbi Stir-Fry'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(5) span:first-child', '豚肉炒め', 'Stir-Fried Pork'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(6) span:first-child', '豆苗炒め', 'Stir-Fried Pea Shoots'],
+  ['#tab-plates .menu-category-section:nth-child(3) .menu-list-item:nth-child(7) span:first-child', 'トマト卵炒め', 'Tomato &amp; Egg Stir-Fry'],
+  // 鍋・スープ items
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(1) span:first-child', 'ニラもつ鍋', 'Garlic Chive Offal Hot Pot'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(2) span:first-child', '特選ミナリコムタン', 'Premium Minari Gomtang (Bone Broth Soup)'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(3) span:first-child', 'スンドゥブチゲ', 'Sundubu Jjigae (Soft Tofu Stew)'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(4) span:first-child', 'キムチチゲ', 'Kimchi Jjigae (Kimchi Stew)'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(5) span:first-child', '味噌チゲ', 'Doenjang Jjigae (Soybean Paste Stew)'],
+  ['#tab-plates .menu-category-section:nth-child(4) .menu-list-item:nth-child(6) span:first-child', 'カニと卵スープ', 'Crab and Egg Soup'],
+  // 一品料理 items
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(1) span:first-child', '炙りユッケビビムカルグス', 'Seared Yukhoe Bibim Noodles'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(2) span:first-child', 'ボッサムカルビビびん麺', 'Bossam Galbi Cold Noodles'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(3) span:first-child', 'クォバロウ（酢豚）', 'Guo Bao Rou (Sweet &amp; Sour Pork)'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(4) span:first-child', 'マーラーエビマヨ', 'Maala Shrimp Mayo'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(5) span:first-child', 'BBQポークチーズフォンデュ', 'BBQ Pork Cheese Fondue'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(6) span:first-child', '牛バラ巻き', 'Beef Short Rib Rolls'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(7) span:first-child', '豆腐豚キムチ', 'Tofu Pork Kimchi'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(8) span:first-child', '鉄板ミナリ豚トロ', 'Iron Plate Minari Pork Jowl'],
+  ['#tab-plates .menu-category-section:nth-child(5) .menu-list-item:nth-child(9) span:first-child', 'ブンモジャトッポギセット', 'Bun Mo Ja Tteokbokki Set'],
+  // ご飯物 items
+  ['#tab-plates .menu-category-section:nth-child(6) .menu-list-item:nth-child(1) span:first-child', '卵炒飯', 'Egg Fried Rice'],
+  ['#tab-plates .menu-category-section:nth-child(6) .menu-list-item:nth-child(2) span:first-child', '卵えび炒飯', 'Egg &amp; Shrimp Fried Rice'],
+  ['#tab-plates .menu-category-section:nth-child(6) .menu-list-item:nth-child(3) span:first-child', 'キムチ炒飯', 'Kimchi Fried Rice'],
+  ['#tab-plates .menu-category-section:nth-child(6) .menu-list-item:nth-child(4) span:first-child', 'セルフおにぎり', 'DIY Rice Balls'],
+
+  // ── Drinks — category titles ──
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-category-title', 'ビール', 'Beer'],
+  ['#tab-drinks .menu-category-section:nth-child(2) .menu-category-title', '生サワー', 'Fresh Sours'],
+  ['#tab-drinks .menu-category-section:nth-child(3) .menu-category-title', 'ハイボール', 'Highball'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-category-title', '韓国酒', 'Korean Spirits'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-category-title', 'プレミアムボトル', 'Premium Bottles'],
+  ['#tab-drinks .menu-category-section:nth-child(6) .menu-category-title', 'ソフトドリンク', 'Soft Drinks'],
+  // ビール items
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-list-item:nth-child(1) span:first-child', 'プレミアムモルツ生ビール', 'Premium Malts Draft Beer'],
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-list-item:nth-child(2) span:first-child', 'CASS 中瓶', 'CASS (medium bottle)'],
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-list-item:nth-child(3) span:first-child', 'TERA 中瓶', 'TERA (medium bottle)'],
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-list-item:nth-child(4) span:first-child', 'アサヒ 中瓶', 'Asahi (medium bottle)'],
+  ['#tab-drinks .menu-category-section:nth-child(1) .menu-list-item:nth-child(5) span:first-child', 'チンタオ 小瓶', 'Tsingtao (small bottle)'],
+  // 生サワー items
+  ['#tab-drinks .menu-category-section:nth-child(2) .menu-list-item:nth-child(1) span:first-child', '生レモン・グレープフルーツ・マスカット', 'Fresh Lemon / Grapefruit / Muscat'],
+  ['#tab-drinks .menu-category-section:nth-child(2) .menu-list-item:nth-child(2) span:first-child', '生パイナップル・イチゴ・キウイ', 'Fresh Pineapple / Strawberry / Kiwi'],
+  ['#tab-drinks .menu-category-section:nth-child(2) .menu-list-item:nth-child(3) span:first-child', '生マンゴ・ミックスベリー', 'Fresh Mango / Mixed Berry'],
+  // ハイボール items
+  ['#tab-drinks .menu-category-section:nth-child(3) .menu-list-item:nth-child(1) span:first-child', '角ハイボール・ジンジャー・コーク', 'Kaku Highball / Ginger / Coke'],
+  ['#tab-drinks .menu-category-section:nth-child(3) .menu-list-item:nth-child(2) span:first-child', 'AOハイボール', 'AO Highball'],
+  ['#tab-drinks .menu-category-section:nth-child(3) .menu-list-item:nth-child(3) span:first-child', '白州ハイボール', 'Hakushu Highball'],
+  ['#tab-drinks .menu-category-section:nth-child(3) .menu-list-item:nth-child(4) span:first-child', '山崎ハイボール', 'Yamazaki Highball'],
+  // 韓国酒 items
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(1) span:first-child', 'チャミスル オリジナル', 'Chamisul Original'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(2) span:first-child', 'チャミスル各種（マスカット・グレフル・ピーチ・イチゴ・すもも）', 'Chamisul Flavours (Muscat / Grapefruit / Peach / Strawberry / Plum)'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(3) span:first-child', 'ジンロイズバック / セロゼロシューガ', 'Jinro Is Back / Zero-Zero Sugar'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(4) span:first-child', '生マッコリ', 'Fresh Makgeolli'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(5) span:first-child', 'ヌリンマウルマッコリ', 'Nulrin Maul Makgeolli'],
+  ['#tab-drinks .menu-category-section:nth-child(4) .menu-list-item:nth-child(6) span:first-child', '一品眞露', 'Ippin Jinro'],
+  // プレミアムボトル items
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(1) span:first-child', '山崎シングルモルト', 'Yamazaki Single Malt'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(2) span:first-child', '山崎 12年', 'Yamazaki 12 Year'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(3) span:first-child', '白州シングルモルト', 'Hakushu Single Malt'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(4) span:first-child', '響ブレンダードチョイス', 'Hibiki Blender\'s Choice'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(5) span:first-child', 'マッカラン 12年', 'The Macallan 12 Year'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(6) span:first-child', 'マッカラン 18年', 'The Macallan 18 Year'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(7) span:first-child', 'ジョニーウォーカー ブルーラベル', 'Johnnie Walker Blue Label'],
+  ['#tab-drinks .menu-category-section:nth-child(5) .menu-list-item:nth-child(8) span:first-child', 'ヴーヴ クリコ / モエ / ドン ペリニヨン', 'Veuve Clicquot / Moët / Dom Pérignon'],
+  // ソフトドリンク items
+  ['#tab-drinks .menu-category-section:nth-child(6) .menu-list-item:nth-child(1) span:first-child', 'コーラ / ゼロコーラ / ジンジャーエール / サイダー', 'Cola / Zero Cola / Ginger Ale / Lemon Soda'],
+  ['#tab-drinks .menu-category-section:nth-child(6) .menu-list-item:nth-child(2) span:first-child', 'ウーロン茶 / トウモロコシ茶 / ジャスミン茶', 'Oolong Tea / Corn Tea / Jasmine Tea'],
+  ['#tab-drinks .menu-category-section:nth-child(6) .menu-list-item:nth-child(3) span:first-child', 'オレンジ / カルピス / 梨ジュース', 'Orange / Calpis / Pear Juice'],
+
+  // ── Desserts ──
+  ['#tab-desserts .menu-item:nth-child(1) h4', 'ティラミスビンス', 'Tiramisu Bingsu'],
+  ['#tab-desserts .menu-item:nth-child(1) .menu-item-info > p', 'レビューでも話題のCOCHAオリジナルかき氷。ティラミス風の仕上がりで、食後の締めにちょうどいい。', 'A COCHA-original shaved ice that has gone viral online. Tiramisu-inspired flavours — the perfect way to end your meal.'],
+  ['#tab-desserts .menu-item:nth-child(1) .tag', 'COCHA オリジナル', 'COCHA Original'],
+  ['#tab-desserts .menu-item:nth-child(2) h4', 'いちごビンス', 'Strawberry Bingsu'],
+  ['#tab-desserts .menu-item:nth-child(2) .menu-item-info > p', 'フレッシュいちごを使ったかき氷。ふわふわの氷と甘酸っぱいソースが好評。', 'Shaved ice made with fresh strawberries. The fluffy ice and sweet-tangy sauce are guest favourites.'],
+  ['#tab-desserts .menu-item:nth-child(2) .tag', '定番人気', 'Fan Favourite'],
+  ['#tab-desserts .menu-item:nth-child(3) h4', 'マンゴ / 白桃 / きなこビンス', 'Mango / White Peach / Kinako Bingsu'],
+  ['#tab-desserts .menu-item:nth-child(3) .menu-item-info > p', '季節のビンス各種。甘さ控えめで食後にぴったり。', 'Seasonal bingsu varieties. Subtly sweet and perfect after a meal.'],
+  ['#tab-desserts .menu-item:nth-child(3) .tag', '各種あり', 'Seasonal Selection'],
+
+  // ── Nomi-hodai (All-You-Can-Drink) ──
+  ['#tab-nomihoudai .menu-note', '<strong>2名様以上よりご利用いただけます。</strong>ご注文は卓上QRコードより。お時間はご注文時刻より計算いたします。', '<strong>Available for groups of 2 or more.</strong> Order via QR code at your table. Time starts from the first order.'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(2) .menu-category-title', '飲み放題コース', 'All-You-Can-Drink Courses'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(2) .menu-list-item:nth-child(1) > div > span', 'スタンダード 90分飲み放題', 'Standard 90-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(2) .menu-list-item:nth-child(1) .plan-note', '生ビール · 生サワー全種 · 角ハイボール · チャミスル · 生マッコリ · ソフトドリンク', 'Draft beer · Fresh sours (all flavours) · Kaku Highball · Chamisul · Fresh makgeolli · Soft drinks'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(2) .menu-list-item:nth-child(2) > div > span', 'プレミアム 120分飲み放題', 'Premium 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(2) .menu-list-item:nth-child(2) .plan-note', 'スタンダード全品 ＋ CASS/TERA · ヌリンマウル生マッコリ · フルーツチャミスル各種', 'Everything in Standard + CASS/TERA · Nulrin Maul makgeolli · Flavoured chamisul'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-category-title', 'セット割引（飲み放題120分込み）', 'Set Discounts (incl. 120-min All-You-Can-Drink)'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-list-item:nth-child(1) span:first-child', 'わら焼きサムギョプサルSET ＋ 120分飲み放題', 'Straw-Smoked Samgyeopsal SET + 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-list-item:nth-child(2) span:first-child', 'ナッコプセSET ＋ 120分飲み放題', 'Nakkopsae SET + 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-list-item:nth-child(3) span:first-child', 'マーラーしゃぶしゃぶSET ＋ 120分飲み放題', 'Maala Shabu-Shabu SET + 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-list-item:nth-child(4) span:first-child', 'プデチゲSET ＋ 120分飲み放題', 'Budae Jjigae SET + 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .menu-category-section:nth-child(3) .menu-list-item:nth-child(5) span:first-child', 'ミナリ豚チュムロクSET ＋ 120分飲み放題', 'Minari Pork Chumuruk SET + 120-min All-You-Can-Drink'],
+  ['#tab-nomihoudai .nomi-note p', '※ ラストオーダーは終了15分前  ／  延長は30分ごとに¥500  ／  お一人様でのご利用はご遠慮ください', '※ Last order 15 min before end &nbsp;/&nbsp; ¥500 per 30-min extension &nbsp;/&nbsp; Not available for solo diners'],
 ];
 
 function applyLang(lang) {
@@ -294,7 +451,9 @@ function applyLang(lang) {
   // Toggle button label
   const toggle = document.getElementById('langToggle');
   if (toggle) {
-    toggle.textContent = lang === 'en' ? 'JA' : 'EN';
+    toggle.innerHTML = lang === 'en'
+      ? '<i class="fas fa-globe"></i> 日本語'
+      : '<i class="fas fa-globe"></i> EN';
     toggle.setAttribute('aria-label', lang === 'en' ? '日本語に切り替え' : 'Switch to English');
   }
 

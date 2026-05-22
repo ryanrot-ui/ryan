@@ -369,20 +369,26 @@ button { border: none; background: none; font-family: inherit; cursor: pointer; 
   gap: 16px;
 }
 .lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   font-size: 10px;
   font-weight: 500;
-  letter-spacing: 0.2em;
-  color: var(--text3);
-  padding: 8px 16px;
-  border: 1px solid var(--border);
+  letter-spacing: 0.15em;
+  color: var(--text2);
+  padding: 9px 18px;
+  border: 1px solid rgba(184,137,58,0.40);
+  background: rgba(184,137,58,0.07);
   border-radius: var(--radius);
   transition: all 0.35s var(--ease);
   white-space: nowrap;
 }
 .lang-toggle:hover {
-  border-color: var(--border-h);
-  color: var(--text2);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(184,137,58,0.14);
 }
+.lang-toggle i { font-size: 11px; opacity: 0.85; }
 
 /* =====================
    HERO
