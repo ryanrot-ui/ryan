@@ -64,6 +64,14 @@ window.addEventListener('scroll', () => {
   });
 }, { passive: true });
 
+// Sliding tab indicator
+function moveTabIndicator(btn) {
+  const indicator = document.getElementById('tabIndicator');
+  if (!indicator || !btn) return;
+  indicator.style.left  = btn.offsetLeft + 'px';
+  indicator.style.width = btn.offsetWidth + 'px';
+}
+
 // Menu tabs
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -72,12 +80,24 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById('tab-' + tab).classList.add('active');
+    moveTabIndicator(btn);
     document.querySelectorAll('#tab-' + tab + ' .reveal').forEach(el => {
       el.classList.remove('visible');
       setTimeout(() => observer.observe(el), 10);
     });
   });
 });
+
+// Init indicator on active tab (no transition on first paint)
+const initTabBtn = document.querySelector('.tab-btn.active');
+if (initTabBtn) {
+  const indicator = document.getElementById('tabIndicator');
+  if (indicator) {
+    indicator.style.transition = 'none';
+    moveTabIndicator(initTabBtn);
+    requestAnimationFrame(() => { indicator.style.transition = ''; });
+  }
+}
 
 // Scroll reveal
 const observer = new IntersectionObserver((entries) => {
