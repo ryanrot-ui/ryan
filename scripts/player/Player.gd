@@ -39,7 +39,7 @@ func _input(event: InputEvent) -> void:
 		camera.rotation.x = cam_pitch
 	if event.is_action_pressed("interact"):
 		_try_interact()
-	if event.is_action_pressed("flashlight_toggle"):
+	if event.is_action_pressed("flashlight_toggle") and flashlight:
 		flashlight.toggle()
 
 func _physics_process(delta: float) -> void:
@@ -48,7 +48,8 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	is_sprinting = Input.is_action_pressed("sprint") and sanity.sanity > 12.0
+	var cur_sanity = sanity.sanity if is_instance_valid(sanity) else 100.0
+	is_sprinting = Input.is_action_pressed("sprint") and cur_sanity > 12.0
 	var speed = SPRINT_SPEED if is_sprinting else WALK_SPEED
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var dir   = (transform.basis * Vector3(input.x, 0.0, input.y)).normalized()
@@ -81,7 +82,7 @@ func _tick_bob(delta: float, speed: float) -> void:
 	camera.position.x = lerpf(camera.position.x, cos(bob_t * 0.5) * BOB_AMP * 0.4, delta * 8.0)
 
 func _apply_sanity_tilt(delta: float) -> void:
-	var s = sanity.sanity
+	var s = sanity.sanity if is_instance_valid(sanity) else 100.0
 	if s < 40.0:
 		var intensity = (40.0 - s) / 40.0
 		var tilt = sin(Time.get_ticks_msec() * 0.0007) * 0.06 * intensity
@@ -113,6 +114,6 @@ func get_flashlight() -> Node:
 	return flashlight
 
 func is_ghost_in_flashlight(ghost_pos: Vector3) -> bool:
-	if not flashlight.is_on or flashlight._dead:
+	if not flashlight or not flashlight.is_on or flashlight._dead:
 		return false
 	return flashlight.is_ghost_in_beam(ghost_pos)

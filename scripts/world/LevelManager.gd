@@ -8,8 +8,8 @@ extends Node
 @export var next_level_path: String = ""
 @export var is_final_level: bool = false
 
-@onready var spawn_point: Node3D = $SpawnPoint
-@onready var fog: WorldEnvironment = $WorldEnvironment
+@onready var spawn_point: Node3D          = get_node_or_null("SpawnPoint")
+@onready var fog:         WorldEnvironment = get_node_or_null("WorldEnvironment")
 
 func _ready() -> void:
 	_setup_player()

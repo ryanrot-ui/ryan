@@ -158,9 +158,10 @@ func _tick_hallucinations(delta: float) -> void:
 		_do_hallucination()
 
 func _do_hallucination() -> void:
-	if overlay_node == null:
+	if not is_instance_valid(overlay_node):
 		return
 	overlay_node.modulate.a = randf_range(0.3, 0.7)
 	overlay_node.visible = true
 	await get_tree().create_timer(randf_range(0.05, 0.12)).timeout
-	overlay_node.visible = false
+	if is_instance_valid(overlay_node):
+		overlay_node.visible = false

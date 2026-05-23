@@ -1,8 +1,6 @@
 extends CanvasLayer
 
 # ─── HUD / UI Manager v2 ──────────────────────────────────────────────────────
-# Manages all HUD elements: note counter, battery/sanity bars,
-# jumpscare effects (flash + static), pause menu, note reader.
 
 @onready var sanity_bar:     ProgressBar    = $HUD/BarsContainer/SanityRow/SanityBar
 @onready var battery_bar:    ProgressBar    = $HUD/BarsContainer/BatteryRow/BatteryBar
@@ -37,22 +35,17 @@ func _ready() -> void:
 	static_overlay.visible  = false
 	halluc_overlay.visible  = false
 
-	# Wire vignette shader to SanitySystem
+	_setup_overlay_materials()
 	_connect_vignette()
 
-	# Wire jumpscare signal
 	JumpscareSystem.jumpscare_fired.connect(_on_jumpscare_fired)
-
-	# Wire notes
 	GameManager.note_collected.connect(_on_note_collected)
 	_refresh_note_counter()
 
 func _process(_delta: float) -> void:
-	# Sanity bar
 	if GameManager.sanity_ref:
 		sanity_bar.value = GameManager.sanity_ref.sanity
 
-	# Battery bar + low-battery icon pulse
 	var flashlight = _get_flashlight()
 	if flashlight:
 		battery_bar.value = flashlight.battery
@@ -62,22 +55,43 @@ func _process(_delta: float) -> void:
 		else:
 			battery_icon.modulate = Color(0.75, 0.72, 0.5)
 
+# ─── Shader Material Setup ────────────────────────────────────────────────────
+
+func _setup_overlay_materials() -> void:
+	_try_assign_shader(vignette,        "res://shaders/sanity_vignette.gdshader")
+	_try_assign_shader(static_overlay,  "res://shaders/static_overlay.gdshader")
+	var rain := get_node_or_null("RainOverlay") as ColorRect
+	if rain:
+		_try_assign_shader(rain, "res://shaders/rain_overlay.gdshader")
+
+func _try_assign_shader(node: ColorRect, shader_path: String) -> void:
+	if node == null:
+		return
+	if node.material is ShaderMaterial:
+		return
+	if not ResourceLoader.exists(shader_path):
+		return
+	var mat := ShaderMaterial.new()
+	mat.shader = load(shader_path)
+	node.material = mat
+
 func _connect_vignette() -> void:
 	await get_tree().process_frame
-	if vignette and vignette.material is ShaderMaterial:
-		var player = get_tree().get_first_node_in_group("player")
-		if player:
-			var sanity = player.get_node_or_null("SanitySystem")
-			if sanity:
-				sanity.vignette_mat  = vignette.material as ShaderMaterial
-				sanity.overlay_node  = halluc_overlay
+	if not is_instance_valid(self):
+		return
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		var sanity = player.get_node_or_null("SanitySystem")
+		if sanity:
+			if vignette and vignette.material is ShaderMaterial:
+				sanity.vignette_mat = vignette.material as ShaderMaterial
+			sanity.overlay_node = halluc_overlay
 
-# ─── Note Counter (always visible, top-right corner) ─────────────────────────
+# ─── Note Counter ─────────────────────────────────────────────────────────────
 
 func _refresh_note_counter() -> void:
 	var n = GameManager.collected_notes.size()
 	note_counter.text = "形見  %d / %d" % [n, GameManager.notes_total]
-	# Color shifts gold as notes are found
 	var t = float(n) / float(GameManager.notes_total)
 	note_counter.add_theme_color_override("font_color",
 		Color(lerpf(0.52, 0.78, t), lerpf(0.46, 0.58, t), lerpf(0.38, 0.25, t)))
@@ -85,7 +99,7 @@ func _refresh_note_counter() -> void:
 func _on_note_collected(_id: int) -> void:
 	_refresh_note_counter()
 
-# ─── Note Notification (bottom-left, 3.5 seconds) ────────────────────────────
+# ─── Note Notification ────────────────────────────────────────────────────────
 
 func show_note_notification(note_id: int) -> void:
 	note_notif_lbl.text = NOTE_JP.get(note_id, "形見")
@@ -93,28 +107,33 @@ func show_note_notification(note_id: int) -> void:
 	var tween = create_tween()
 	tween.tween_property(note_notif, "modulate:a", 1.0, 0.3)
 	await get_tree().create_timer(3.0).timeout
+	if not is_instance_valid(self):
+		return
 	tween = create_tween()
 	tween.tween_property(note_notif, "modulate:a", 0.0, 0.5)
 	await tween.finished
+	if not is_instance_valid(self):
+		return
 	note_notif.visible = false
 	note_notif.modulate.a = 1.0
 
-# ─── Note Reader (fullscreen pause, 7s or manual dismiss) ────────────────────
+# ─── Note Reader ──────────────────────────────────────────────────────────────
 
 func show_note(data: Dictionary) -> void:
-	note_title_lbl.text      = data.get("title_jp", "")
+	note_title_lbl.text       = data.get("title_jp", "")
 	note_body_lbl.bbcode_text = "[i]%s[/i]" % data.get("text_jp", "")
-	note_reader.visible      = true
-	close_hint.text          = "[E] 閉じる — Close"
-	GameManager.state        = GameManager.GameState.CINEMATIC
+	note_reader.visible       = true
+	close_hint.text           = "[E] 閉じる — Close"
+	GameManager.state         = GameManager.GameState.CINEMATIC
 
-	# Auto-dismiss after 7s or on interact press
 	var t = 0.0
 	while t < 7.0:
 		t += get_process_delta_time()
 		if Input.is_action_just_pressed("interact"):
 			break
 		await get_tree().process_frame
+		if not is_instance_valid(self):
+			return
 
 	note_reader.visible = false
 	GameManager.state   = GameManager.GameState.PLAYING
@@ -128,20 +147,22 @@ func _on_jumpscare_fired(intensity: int) -> void:
 func _do_flash(intensity: int) -> void:
 	const FLASH_ALPHAS = [0.35, 0.60, 0.82, 0.96]
 	const FLASH_COLORS = [
-		Color(1.0, 1.0,  1.0),   # SOFT  — pure white
-		Color(1.0, 0.95, 0.88),  # MEDIUM — warm white
-		Color(1.0, 0.90, 0.82),  # HARD  — slightly warm
-		Color(1.0, 0.88, 0.80),  # MAX   — warm orange tint
+		Color(1.0, 1.0,  1.0),
+		Color(1.0, 0.95, 0.88),
+		Color(1.0, 0.90, 0.82),
+		Color(1.0, 0.88, 0.80),
 	]
 	const FLASH_DUR = [0.18, 0.30, 0.48, 0.65]
 
-	flash_overlay.color = FLASH_COLORS[intensity]
+	flash_overlay.color      = FLASH_COLORS[intensity]
 	flash_overlay.modulate.a = FLASH_ALPHAS[intensity]
-	flash_overlay.visible = true
+	flash_overlay.visible    = true
 	var tween = create_tween()
 	tween.tween_property(flash_overlay, "modulate:a", 0.0, FLASH_DUR[intensity])
 	await tween.finished
-	flash_overlay.visible = false
+	if not is_instance_valid(self):
+		return
+	flash_overlay.visible    = false
 	flash_overlay.modulate.a = 1.0
 
 func _do_static(intensity: int) -> void:
@@ -150,6 +171,8 @@ func _do_static(intensity: int) -> void:
 	const STATIC_DURS = [0.0, 0.05, 0.10, 0.18]
 	static_overlay.visible = true
 	await get_tree().create_timer(STATIC_DURS[intensity]).timeout
+	if not is_instance_valid(self):
+		return
 	static_overlay.visible = false
 
 # ─── Pause Menu ───────────────────────────────────────────────────────────────
@@ -160,7 +183,7 @@ func show_pause_menu() -> void:
 func hide_pause_menu() -> void:
 	pause_menu.visible = false
 
-# ─── Helpers ─────────────────────────────────────────────────────────────────
+# ─── Helpers ──────────────────────────────────────────────────────────────────
 
 func _get_flashlight() -> Node:
 	var player = get_tree().get_first_node_in_group("player")

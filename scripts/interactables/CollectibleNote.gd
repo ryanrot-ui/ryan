@@ -1,8 +1,6 @@
 extends StaticBody3D
 
 # ─── Collectible Note / Belonging ─────────────────────────────────────────────
-# Scattered around the forest. Each tied to a Yurei/Onryo story.
-# Collecting all 4 enables the True Ending.
 
 const NOTE_DATA = {
 	0: {
@@ -38,32 +36,34 @@ const NOTE_DATA = {
 @export var note_id: int = 0
 @export var trigger_ghost_on_pickup: bool = true
 
-@onready var mesh:   MeshInstance3D      = $MeshInstance3D
-@onready var prompt: Label3D             = $Prompt
-@onready var light:  OmniLight3D         = $OmniLight3D
-@onready var anim:   AnimationPlayer     = $AnimationPlayer
-@onready var area:   Area3D              = $Area3D
+@onready var mesh:   MeshInstance3D  = $MeshInstance3D
+@onready var prompt: Label3D         = $Prompt
+@onready var light:  OmniLight3D     = $OmniLight3D
+@onready var anim:   AnimationPlayer = $AnimationPlayer
+@onready var area:   Area3D          = $Area3D
 
 var _collected: bool = false
 
 func _ready() -> void:
-	prompt.visible = false
+	if is_instance_valid(prompt):
+		prompt.visible = false
 	if note_id in GameManager.collected_notes:
 		_collected = true
-		visible = false
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
+		visible    = false
+	if is_instance_valid(area):
+		area.body_entered.connect(_on_body_entered)
+		area.body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node3D) -> void:
 	if _collected or not body.is_in_group("player"):
 		return
-	prompt.visible = true
-	var data = NOTE_DATA.get(note_id, {})
-	var lang = "jp"
-	prompt.text = "[E] %s" % data.get("title_" + lang, "拾う")
+	if is_instance_valid(prompt):
+		prompt.visible = true
+		var data = NOTE_DATA.get(note_id, {})
+		prompt.text = "[E] %s" % data.get("title_jp", "拾う")
 
 func _on_body_exited(body: Node3D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and is_instance_valid(prompt):
 		prompt.visible = false
 
 func interact(_player: CharacterBody3D) -> void:
@@ -71,25 +71,25 @@ func interact(_player: CharacterBody3D) -> void:
 		return
 	_collected = true
 	GameManager.collect_note(note_id)
-	prompt.visible = false
+	if is_instance_valid(prompt):
+		prompt.visible = false
 
-	# Show note content via UI
 	var data = NOTE_DATA.get(note_id, {})
 	if GameManager.ui_ref and GameManager.ui_ref.has_method("show_note"):
 		GameManager.ui_ref.show_note(data)
 
-	# Trigger linked ghost event
 	if trigger_ghost_on_pickup:
 		_spawn_linked_ghost()
 
-	# Animate pickup
-	if anim.has_animation("pickup"):
+	if is_instance_valid(anim) and anim.has_animation("pickup"):
 		anim.play("pickup")
 	await get_tree().create_timer(0.8).timeout
+	if not is_instance_valid(self):
+		return
 	visible = false
 
 func _spawn_linked_ghost() -> void:
-	var data = NOTE_DATA.get(note_id, {})
+	var data       = NOTE_DATA.get(note_id, {})
 	var ghost_name = data.get("yurei", "")
 	if ghost_name.is_empty():
 		return

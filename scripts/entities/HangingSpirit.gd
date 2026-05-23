@@ -1,14 +1,13 @@
 extends Node3D
 
 # ─── Hanging Spirit v2 ────────────────────────────────────────────────────────
-# Suspended from a tree. Snaps to face player (wrong orientation — head down).
-# Normal descent: slow, creepy, building dread.
-# force_fast_drop(): used by GhostSpawnDirector for Scare 4 — drops FAST.
+# Suspended from a tree. Faces player (head downward).
+# Normal descent: slow, creepy. force_fast_drop(): Scare 4 drop.
 
 enum State { HIDDEN, TRIGGERED, DESCENDING, GRABBING }
 
 const DESCEND_SPEED_NORMAL = 0.28
-const DESCEND_SPEED_FAST   = 2.8   # Scare 4: drops like a stone
+const DESCEND_SPEED_FAST   = 2.8
 const TRIGGER_DIST         = 10.0
 const GRAB_DIST            = 1.3
 const LINGER_TIME          = 3.5
@@ -16,15 +15,15 @@ const LINGER_TIME          = 3.5
 @export var hang_height: float = 4.5
 
 var state: State    = State.HIDDEN
-var _ground_y: float = 0.0
-var _linger_t: float = 0.0
+var _ground_y: float     = 0.0
+var _linger_t: float     = 0.0
 var _descent_speed: float = DESCEND_SPEED_NORMAL
-var _triggered: bool = false
+var _triggered: bool     = false
 var _player: CharacterBody3D = null
 
-@onready var mesh:  MeshInstance3D      = $MeshInstance3D
-@onready var anim:  AnimationPlayer     = $AnimationPlayer
-@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var mesh:  MeshInstance3D  = get_node_or_null("MeshInstance3D")
+@onready var anim:  AnimationPlayer = get_node_or_null("AnimationPlayer")
+@onready var audio: AudioStreamPlayer3D = get_node_or_null("AudioStreamPlayer3D")
 
 func _ready() -> void:
 	_ground_y = global_position.y
@@ -51,25 +50,23 @@ func _check_trigger() -> void:
 
 func _trigger_normal() -> void:
 	_triggered = true
-	state   = State.TRIGGERED
-	visible = true
+	state      = State.TRIGGERED
+	visible    = true
 	_play_anim("hang_idle")
 	AudioManager.play_ghost_sound("whisper_jp_1")
 	JumpscareSystem.trigger(JumpscareSystem.Intensity.MEDIUM)
 	if GameManager.sanity_ref:
 		GameManager.sanity_ref.drain(12.0)
 
-# Called by GhostSpawnDirector for Scare 4 — immediate fast drop
 func force_fast_drop() -> void:
-	_triggered = true
-	state   = State.DESCENDING
-	visible = true
+	_triggered     = true
+	state          = State.DESCENDING
+	visible        = true
 	_descent_speed = DESCEND_SPEED_FAST
 	_play_anim("descend")
 	AudioManager.play_ghost_sound("hair_drag")
 
 func _tick_triggered(delta: float) -> void:
-	# Face player (upside-down — head toward floor)
 	var look_pos = Vector3(_player.global_position.x, global_position.y, _player.global_position.z)
 	look_at(look_pos, Vector3.DOWN)
 
@@ -84,7 +81,6 @@ func _tick_triggered(delta: float) -> void:
 
 func _tick_descend(delta: float) -> void:
 	global_position.y -= _descent_speed * delta
-
 	var dist = global_position.distance_to(_player.global_position)
 	if dist <= GRAB_DIST or global_position.y <= _ground_y + 0.1:
 		_grab()
@@ -96,14 +92,13 @@ func _grab() -> void:
 	JumpscareSystem.trigger(JumpscareSystem.Intensity.MAX)
 	AudioManager.play_ghost_sound("yurei_shriek")
 	if _descent_speed >= DESCEND_SPEED_FAST:
-		# High-speed drop is always a scare, not always a kill
 		if global_position.distance_to(_player.global_position) <= GRAB_DIST:
-			if _player.has_method("die"):
+			if _player and _player.has_method("die"):
 				_player.die()
 	else:
-		if _player.has_method("die"):
+		if _player and _player.has_method("die"):
 			_player.die()
 
 func _play_anim(anim_name: String) -> void:
-	if anim.has_animation(anim_name):
+	if is_instance_valid(anim) and anim.has_animation(anim_name):
 		anim.play(anim_name)
