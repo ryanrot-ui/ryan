@@ -19,8 +19,8 @@ extends Control
 @onready var perf_toggle:    CheckButton = $SettingsPanel/VBox/PerfToggle
 @onready var master_slider:  HSlider     = $SettingsPanel/VBox/MasterSlider
 @onready var sfx_slider:     HSlider     = $SettingsPanel/VBox/SFXSlider
-@onready var title_label:    Label       = $TitleLabel
-@onready var subtitle_label: Label       = $SubtitleLabel
+@onready var title_label:    Label       = $VBoxContainer/TitleLabel
+@onready var subtitle_label: Label       = $VBoxContainer/SubtitleLabel
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
