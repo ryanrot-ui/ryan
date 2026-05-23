@@ -1,0 +1,152 @@
+[gd_scene load_steps=14 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/LevelManager.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/TreeSpawner.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/RibbonSpawner.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/entities/StalkerAI.gd" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Player.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/YureiEntity.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/entities/OnryoEntity.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/entities/HangingSpirit.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/CollectibleNote.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Shrine.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="11"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.008, 0.006, 0.02)
+sky_horizon_color = Color(0.02, 0.015, 0.04)
+sky_curve = 0.06
+ground_bottom_color = Color(0.01, 0.008, 0.01)
+ground_horizon_color = Color(0.02, 0.015, 0.02)
+
+[sub_resource type="Sky" id="Sky_2"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env_2"]
+background_mode = 2
+sky = SubResource("Sky_2")
+ambient_light_source = 2
+ambient_light_color = Color(0.02, 0.015, 0.04)
+ambient_light_energy = 0.10
+fog_enabled = true
+fog_light_color = Color(0.04, 0.03, 0.08)
+fog_density = 0.028
+fog_aerial_perspective = 0.5
+volumetric_fog_enabled = false
+glow_enabled = true
+glow_intensity = 0.55
+glow_bloom = 0.08
+glow_blend_mode = 2
+adjustment_enabled = true
+adjustment_contrast = 1.25
+adjustment_saturation = 0.65
+
+[sub_resource type="BoxShape3D" id="Floor_shape"]
+size = Vector3(140.0, 0.4, 140.0)
+
+[sub_resource type="BoxShape3D" id="Exit_trigger"]
+size = Vector3(8.0, 4.0, 2.0)
+
+[node name="DenseTreeSea" type="Node3D"]
+script = ExtResource("1")
+level_ambient_key = "deep_forest"
+next_level_path = "res://scenes/levels/RibbonPathCave.tscn"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0.0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 35, 0)
+light_color = Color(0.05, 0.04, 0.10)
+light_energy = 0.04
+shadow_enabled = false
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+position = Vector3(0, 1.0, 5.0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+[node name="FloorShape" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("Floor_shape")
+position = Vector3(0, -0.2, 0)
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
+position = Vector3(0, -0.2, 0)
+
+[node name="Player" parent="." instance=ExtResource("5")]
+position = Vector3(0, 1.0, 5.0)
+
+[node name="TreeSpawner" type="MultiMeshInstance3D" parent="."]
+script = ExtResource("2")
+count = 280
+area_size = Vector2(110, 110)
+avoid_center_radius = 3.5
+min_scale = 0.8
+max_scale = 2.2
+random_seed = 202
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawner"]
+
+[node name="RibbonSpawner" type="MultiMeshInstance3D" parent="."]
+script = ExtResource("3")
+ribbon_count = 55
+area_size = Vector2(90, 90)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="RibbonSpawner"]
+
+[node name="Shrine_2" parent="." instance=ExtResource("10")]
+position = Vector3(-18.0, 0.0, -12.0)
+shrine_id = 1
+
+[node name="Note_1" parent="." instance=ExtResource("9")]
+position = Vector3(20.0, 0.0, -5.0)
+note_id = 1
+trigger_ghost_on_pickup = true
+
+[node name="Note_2" parent="." instance=ExtResource("9")]
+position = Vector3(-14.0, 0.0, 28.0)
+note_id = 2
+trigger_ghost_on_pickup = true
+
+[node name="Yurei_2" parent="." instance=ExtResource("6")]
+name = "Yurei_2"
+position = Vector3(22.0, 0.0, -10.0)
+
+[node name="HangingSpirit_1" parent="." instance=ExtResource("8")]
+name = "HangingSpirit_1"
+position = Vector3(-14.0, 0.0, 28.0)
+hang_height = 5.0
+
+[node name="OnryoSpawn" parent="." instance=ExtResource("7")]
+name = "Onryo_1"
+position = Vector3(8.0, 0.0, -20.0)
+spawn_on_sanity_drop = true
+
+[node name="StalkerEnemy" type="CharacterBody3D" parent="."]
+position = Vector3(30.0, 0.0, 30.0)
+script = ExtResource("4")
+activation_sanity = 55.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StalkerEnemy"]
+
+[node name="StalkerShape" type="CollisionShape3D" parent="StalkerEnemy"]
+
+[node name="LavaRocks" type="Node3D" parent="."]
+[node name="Rock_1" type="MeshInstance3D" parent="LavaRocks"]
+position = Vector3(4.0, 0.2, 8.0)
+[node name="Rock_2" type="MeshInstance3D" parent="LavaRocks"]
+position = Vector3(-9.0, 0.3, -3.0)
+[node name="Rock_3" type="MeshInstance3D" parent="LavaRocks"]
+position = Vector3(15.0, 0.15, 12.0)
+[node name="Rock_4" type="MeshInstance3D" parent="LavaRocks"]
+position = Vector3(-6.0, 0.25, 20.0)
+
+[node name="ExitTrigger" type="Area3D" parent="."]
+position = Vector3(0, 1.5, -60.0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="ExitShape" type="CollisionShape3D" parent="ExitTrigger"]
+shape = SubResource("Exit_trigger")
+
+[node name="HUD" parent="." instance=ExtResource("11")]
+
+[connection signal="body_entered" from="ExitTrigger" to="." method="_on_exit_area_body_entered"]

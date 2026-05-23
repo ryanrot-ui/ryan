@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/interactables/CollectibleNote.gd" id="1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1"]
+radius = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_body"]
+size = Vector3(0.2, 0.3, 0.02)
+
+[node name="CollectibleNote" type="StaticBody3D" groups=["interactable"]]
+collision_layer = 4
+script = ExtResource("1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_body")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="Prompt" type="Label3D" parent="."]
+position = Vector3(0, 0.5, 0)
+pixel_size = 0.004
+billboard = 2
+text = "[E] 拾う"
+font_size = 24
+modulate = Color(0.95, 0.88, 0.65, 1.0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.8, 0.75, 0.55)
+light_energy = 0.6
+omni_range = 2.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 1
+
+[node name="AreaShape" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_1")

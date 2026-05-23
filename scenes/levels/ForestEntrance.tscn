@@ -1,0 +1,120 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://scripts/world/LevelManager.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/world/TreeSpawner.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/RibbonSpawner.gd" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Player.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/YureiEntity.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/CollectibleNote.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Shrine.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.01, 0.01, 0.04)
+sky_horizon_color = Color(0.04, 0.03, 0.06)
+sky_curve = 0.09
+ground_bottom_color = Color(0.02, 0.015, 0.01)
+ground_horizon_color = Color(0.03, 0.02, 0.03)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("SkyMat")
+
+[sub_resource type="Environment" id="Env_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+ambient_light_source = 2
+ambient_light_color = Color(0.03, 0.02, 0.05)
+ambient_light_energy = 0.15
+fog_enabled = true
+fog_light_color = Color(0.06, 0.05, 0.09)
+fog_density = 0.018
+fog_aerial_perspective = 0.3
+volumetric_fog_enabled = false
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.05
+glow_blend_mode = 2
+adjustment_enabled = true
+adjustment_contrast = 1.15
+adjustment_saturation = 0.75
+
+[sub_resource type="BoxShape3D" id="Floor_shape"]
+size = Vector3(120.0, 0.4, 120.0)
+
+[sub_resource type="BoxShape3D" id="Exit_trigger"]
+size = Vector3(8.0, 4.0, 2.0)
+
+[node name="ForestEntrance" type="Node3D"]
+script = ExtResource("1")
+level_ambient_key = "forest_night"
+next_level_path = "res://scenes/levels/DenseTreeSea.tscn"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.866, -0.354, 0.354, 0.0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 30, 0)
+light_color = Color(0.08, 0.06, 0.12)
+light_energy = 0.08
+shadow_enabled = false
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+position = Vector3(0, 1.0, 0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+[node name="FloorShape" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("Floor_shape")
+position = Vector3(0, -0.2, 0)
+[node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
+position = Vector3(0, -0.2, 0)
+
+[node name="Player" parent="." instance=ExtResource("4")]
+position = Vector3(0, 1.0, 0)
+
+[node name="TreeSpawner" type="MultiMeshInstance3D" parent="."]
+script = ExtResource("2")
+count = 180
+area_size = Vector2(90, 90)
+avoid_center_radius = 5.0
+random_seed = 101
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawner"]
+
+[node name="RibbonSpawner" type="MultiMeshInstance3D" parent="."]
+script = ExtResource("3")
+ribbon_count = 30
+area_size = Vector2(70, 70)
+
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="RibbonSpawner"]
+
+[node name="Shrine_1" parent="." instance=ExtResource("7")]
+position = Vector3(12.0, 0.0, 8.0)
+shrine_id = 0
+
+[node name="Note_0" parent="." instance=ExtResource("6")]
+position = Vector3(-8.0, 0.0, 15.0)
+note_id = 0
+trigger_ghost_on_pickup = true
+
+[node name="Yurei_1" parent="." instance=ExtResource("5")]
+name = "Yurei_1"
+position = Vector3(-15.0, 0.0, 20.0)
+note_id = 0
+
+[node name="ForestEntrance_Lava_1" type="MeshInstance3D" parent="."]
+position = Vector3(5.0, 0.05, 12.0)
+
+[node name="ForestEntrance_Lava_2" type="MeshInstance3D" parent="."]
+position = Vector3(-3.0, 0.05, -8.0)
+
+[node name="ExitTrigger" type="Area3D" parent="."]
+position = Vector3(0, 1.5, -45.0)
+collision_layer = 0
+collision_mask = 1
+
+[node name="ExitShape" type="CollisionShape3D" parent="ExitTrigger"]
+shape = SubResource("Exit_trigger")
+
+[node name="HUD" parent="." instance=ExtResource("8")]
+
+[connection signal="body_entered" from="ExitTrigger" to="." method="_on_exit_area_body_entered"]
