@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/FlashlightBeamController.gd" id="1"]
+
+[sub_resource type="CylinderMesh" id="ConeMesh"]
+top_radius = 0.0
+bottom_radius = 0.52
+height = 16.0
+radial_segments = 8
+rings = 1
+
+[sub_resource type="ShaderMaterial" id="BeamMat"]
+shader = "res://shaders/flashlight_volumetric.gdshader"
+shader_parameter/beam_color = Color(0.88, 0.84, 0.72, 1.0)
+shader_parameter/density = 0.28
+shader_parameter/dust_speed = 0.25
+shader_parameter/dust_scale = 9.0
+shader_parameter/flicker_amount = 0.0
+
+[node name="FlashlightBeam" type="MeshInstance3D"]
+# Rotated so cone tip points forward from the SpotLight3D
+# CylinderMesh -Y is the tip (top_radius=0), +Y is the base
+# Rotate 90° around X so cone opens toward -Z (forward in local space)
+transform = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, -8, 0)
+mesh = SubResource("ConeMesh")
+material_override = SubResource("BeamMat")
+cast_shadow = 0
+script = ExtResource("1")

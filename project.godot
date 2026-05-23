@@ -1,6 +1,6 @@
 ; Engine configuration file.
 ; Jukai No Yami — Sea of Trees Darkness
-; Godot 4.3 | GDScript | macOS (Intel) optimized
+; Godot 4.3 | GDScript | macOS (Intel) optimized — v2
 
 config_version=5
 
@@ -8,7 +8,7 @@ config_version=5
 
 config/name="Jukai No Yami"
 config/description="Sea of Trees Darkness — A Japanese Folklore Horror Experience"
-config/version="1.0.0"
+config/version="1.1.0"
 run/main_scene="res://scenes/main/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://scripts/autoload/GameManager.gd"
 AudioManager="*res://scripts/autoload/AudioManager.gd"
+JumpscareSystem="*res://scripts/autoload/JumpscareSystem.gd"
 
 [display]
 
@@ -69,7 +70,7 @@ common/max_physics_steps_per_frame=4
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-environment/defaults/default_clear_color=Color(0.01, 0.008, 0.004, 1)
+environment/defaults/default_clear_color=Color(0.008, 0.006, 0.012, 1)
 anti_aliasing/quality/msaa_3d=0
 scaling_3d/fsr_sharpness=0.2
 lights_and_shadows/directional_shadow/size=1024

@@ -1,21 +1,33 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://scripts/ui/UIManager.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/ui/PauseMenu.gd" id="2"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar"]
-bg_color = Color(0.12, 0.08, 0.04, 0.85)
+[sub_resource type="StyleBoxFlat" id="SB_Panel"]
+bg_color = Color(0.04, 0.03, 0.02, 0.78)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.72, 0.54, 0.23, 0.3)
 corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sanity"]
-bg_color = Color(0.45, 0.55, 0.9, 0.9)
-corner_radius_top_left = 2
-corner_radius_top_right = 2
-corner_radius_bottom_right = 2
-corner_radius_bottom_left = 2
+[sub_resource type="StyleBoxFlat" id="SB_SanityFill"]
+bg_color = Color(0.42, 0.50, 0.88, 0.85)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+
+[sub_resource type="StyleBoxFlat" id="SB_BatteryFill"]
+bg_color = Color(0.76, 0.66, 0.28, 0.88)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1")
@@ -25,13 +37,25 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-material = null
 
-[node name="SanityOverlay" type="ColorRect" parent="."]
+[node name="HallucinationOverlay" type="ColorRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.12, 0.0, 0.25, 0.0)
+color = Color(0.15, 0.0, 0.30, 0.65)
+mouse_filter = 2
+visible = false
+
+[node name="RainOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="StaticOverlay" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 visible = false
 
@@ -43,62 +67,65 @@ color = Color(1, 1, 1, 0)
 mouse_filter = 2
 visible = false
 
-[node name="RainOverlay" type="ColorRect" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-
 [node name="HUD" type="Control" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
-[node name="SanityContainer" type="VBoxContainer" parent="HUD"]
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 160.0
-offset_bottom = 52.0
+[node name="BarsContainer" type="VBoxContainer" parent="HUD"]
+offset_left = 14.0
+offset_top = 14.0
+offset_right = 170.0
+offset_bottom = 70.0
+theme_override_constants/separation = 7
 
-[node name="SanityLabel" type="Label" parent="HUD/SanityContainer"]
-text = "精神力"
+[node name="SanityRow" type="HBoxContainer" parent="HUD/BarsContainer"]
+theme_override_constants/separation = 6
+
+[node name="SanityIcon" type="Label" parent="HUD/BarsContainer/SanityRow"]
+text = "精"
 theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.55, 0.60, 0.88)
+custom_minimum_size = Vector2(14, 0)
 
-[node name="SanityBar" type="ProgressBar" parent="HUD/SanityContainer"]
+[node name="SanityBar" type="ProgressBar" parent="HUD/BarsContainer/SanityRow"]
+custom_minimum_size = Vector2(130, 6)
 min_value = 0.0
 max_value = 100.0
 value = 100.0
 show_percentage = false
-custom_minimum_size = Vector2(140, 8)
+size_flags_vertical = 4
 
-[node name="BatteryContainer" type="VBoxContainer" parent="HUD"]
-offset_left = 16.0
-offset_top = 58.0
-offset_right = 160.0
-offset_bottom = 94.0
+[node name="BatteryRow" type="HBoxContainer" parent="HUD/BarsContainer"]
+theme_override_constants/separation = 6
 
-[node name="BatteryLabel" type="Label" parent="HUD/BatteryContainer"]
-text = "懐中電灯"
+[node name="BatteryIcon" type="Label" parent="HUD/BarsContainer/BatteryRow"]
+text = "◉"
 theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.75, 0.68, 0.28)
+custom_minimum_size = Vector2(14, 0)
 
-[node name="BatteryBar" type="ProgressBar" parent="HUD/BatteryContainer"]
+[node name="BatteryBar" type="ProgressBar" parent="HUD/BarsContainer/BatteryRow"]
+custom_minimum_size = Vector2(130, 6)
 min_value = 0.0
 max_value = 100.0
 value = 100.0
 show_percentage = false
-custom_minimum_size = Vector2(140, 8)
+size_flags_vertical = 4
 
 [node name="NoteCounter" type="Label" parent="HUD"]
-anchors_preset = 3
+anchors_preset = 1
 anchor_left = 1.0
-anchor_top = 0.0
-offset_left = -120.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 36.0
-text = "形見: 0 / 4"
-horizontal_alignment = 1
+anchor_right = 1.0
+offset_left = -130.0
+offset_top = 14.0
+offset_right = -14.0
+offset_bottom = 34.0
+text = "形見  0 / 4"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.52, 0.46, 0.38)
 
 [node name="Crosshair" type="Label" parent="HUD"]
 anchors_preset = 8
@@ -106,42 +133,40 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
 text = "·"
 horizontal_alignment = 1
 vertical_alignment = 1
-theme_override_colors/font_color = Color(0.9, 0.85, 0.7, 0.6)
-theme_override_font_sizes/font_size = 14
-
-[node name="InteractHint" type="Label" parent="HUD"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-offset_left = -80.0
-offset_top = 20.0
-offset_right = 80.0
-offset_bottom = 40.0
-text = ""
-horizontal_alignment = 1
+theme_override_colors/font_color = Color(0.85, 0.80, 0.65, 0.45)
 theme_override_font_sizes/font_size = 12
 
 [node name="NoteNotification" type="PanelContainer" parent="HUD"]
-anchors_preset = 2
+anchors_preset = 7
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -70.0
-offset_right = 320.0
-offset_bottom = -16.0
+offset_left = 14.0
+offset_top = -80.0
+offset_right = 310.0
+offset_bottom = -14.0
+theme_override_styles/panel = SubResource("SB_Panel")
 visible = false
 
-[node name="Label" type="Label" parent="HUD/NoteNotification"]
-text = "拾得: —"
+[node name="VBox" type="VBoxContainer" parent="HUD/NoteNotification"]
+theme_override_constants/separation = 2
+
+[node name="PickupLabel" type="Label" parent="HUD/NoteNotification/VBox"]
+text = "形見を拾った"
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.72, 0.54, 0.23)
+
+[node name="NoteName" type="Label" parent="HUD/NoteNotification/VBox"]
+text = "—"
 theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.88, 0.82, 0.70)
 
 [node name="NoteReader" type="PanelContainer" parent="HUD"]
 anchors_preset = 8
@@ -149,16 +174,38 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -240.0
-offset_top = -180.0
-offset_right = 240.0
-offset_bottom = 180.0
+offset_left = -260.0
+offset_top = -200.0
+offset_right = 260.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("SB_Panel")
 visible = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD/NoteReader"]
+[node name="VBox" type="VBoxContainer" parent="HUD/NoteReader"]
+theme_override_constants/separation = 14
+
+[node name="TitleLabel" type="Label" parent="HUD/NoteReader/VBox"]
+text = "—"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.72, 0.54, 0.23)
+
+[node name="Divider" type="HSeparator" parent="HUD/NoteReader/VBox"]
+
+[node name="BodyText" type="RichTextLabel" parent="HUD/NoteReader/VBox"]
+custom_minimum_size = Vector2(480, 130)
 bbcode_enabled = true
 text = ""
+theme_override_font_sizes/normal_font_size = 14
+theme_override_colors/default_color = Color(0.85, 0.80, 0.70)
+scroll_active = false
 fit_content = true
+
+[node name="CloseHint" type="Label" parent="HUD/NoteReader/VBox"]
+text = "[E] 閉じる — Close"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(0.52, 0.46, 0.38)
 
 [node name="PauseMenu" type="Control" parent="."]
 anchors_preset = 15
@@ -171,7 +218,7 @@ script = ExtResource("2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0.02, 0.015, 0.01, 0.85)
+color = Color(0.02, 0.015, 0.01, 0.88)
 mouse_filter = 0
 
 [node name="VBox" type="VBoxContainer" parent="PauseMenu"]
@@ -180,38 +227,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -110.0
+offset_top = -130.0
+offset_right = 110.0
+offset_bottom = 130.0
+theme_override_constants/separation = 12
 
 [node name="PauseTitle" type="Label" parent="PauseMenu/VBox"]
 text = "一時停止"
 horizontal_alignment = 1
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.72, 0.54, 0.23)
+
+[node name="Spacer" type="Control" parent="PauseMenu/VBox"]
+custom_minimum_size = Vector2(0, 8)
 
 [node name="ResumeButton" type="Button" parent="PauseMenu/VBox"]
+custom_minimum_size = Vector2(220, 42)
 text = "再開 / Resume"
+theme_override_font_sizes/font_size = 15
 
 [node name="SettingsButton" type="Button" parent="PauseMenu/VBox"]
+custom_minimum_size = Vector2(220, 42)
 text = "設定 / Settings"
+theme_override_font_sizes/font_size = 15
 
 [node name="MainMenuButton" type="Button" parent="PauseMenu/VBox"]
+custom_minimum_size = Vector2(220, 42)
 text = "メインメニュー / Main Menu"
+theme_override_font_sizes/font_size = 15
 
 [node name="SettingsSubPanel" type="VBoxContainer" parent="PauseMenu/VBox"]
 visible = false
+theme_override_constants/separation = 8
 
 [node name="PerfLabel" type="Label" parent="PauseMenu/VBox/SettingsSubPanel"]
-text = "パフォーマンスモード / Performance Mode"
+text = "Performance Mode (Intel i3)"
 theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.60, 0.55, 0.45)
 
 [node name="PerfToggle" type="CheckButton" parent="PauseMenu/VBox/SettingsSubPanel"]
-text = "Low-Poly Mode"
+text = "有効 / Enable"
 
 [node name="MasterLabel" type="Label" parent="PauseMenu/VBox/SettingsSubPanel"]
-text = "マスター音量 / Master Volume"
+text = "マスター音量 / Volume"
 theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.60, 0.55, 0.45)
 
 [node name="MasterSlider" type="HSlider" parent="PauseMenu/VBox/SettingsSubPanel"]
 min_value = 0.0

@@ -1,20 +1,22 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=14 format=3]
 
 [ext_resource type="Script" path="res://scripts/world/LevelManager.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/world/TreeSpawner.gd" id="2"]
-[ext_resource type="Script" path="res://scripts/world/RibbonSpawner.gd" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/entities/Player.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/entities/YureiEntity.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/CollectibleNote.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://scenes/interactables/Shrine.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="8"]
+[ext_resource type="Script" path="res://scripts/world/GhostSpawnDirector.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/world/ClearingArea.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/world/TreeSpawner.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/world/RibbonSpawner.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/entities/Player.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/entities/YureiEntity.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/CollectibleNote.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/interactables/Shrine.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="10"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
-sky_top_color = Color(0.01, 0.01, 0.04)
-sky_horizon_color = Color(0.04, 0.03, 0.06)
-sky_curve = 0.09
-ground_bottom_color = Color(0.02, 0.015, 0.01)
-ground_horizon_color = Color(0.03, 0.02, 0.03)
+sky_top_color = Color(0.008, 0.006, 0.018)
+sky_horizon_color = Color(0.03, 0.022, 0.05)
+sky_curve = 0.08
+ground_bottom_color = Color(0.015, 0.010, 0.012)
+ground_horizon_color = Color(0.025, 0.018, 0.030)
 
 [sub_resource type="Sky" id="Sky_1"]
 sky_material = SubResource("SkyMat")
@@ -23,26 +25,29 @@ sky_material = SubResource("SkyMat")
 background_mode = 2
 sky = SubResource("Sky_1")
 ambient_light_source = 2
-ambient_light_color = Color(0.03, 0.02, 0.05)
-ambient_light_energy = 0.15
+ambient_light_color = Color(0.025, 0.018, 0.042)
+ambient_light_energy = 0.12
 fog_enabled = true
-fog_light_color = Color(0.06, 0.05, 0.09)
-fog_density = 0.018
-fog_aerial_perspective = 0.3
+fog_light_color = Color(0.055, 0.042, 0.085)
+fog_density = 0.016
+fog_aerial_perspective = 0.28
 volumetric_fog_enabled = false
 glow_enabled = true
-glow_intensity = 0.4
-glow_bloom = 0.05
+glow_intensity = 0.42
+glow_bloom = 0.06
 glow_blend_mode = 2
 adjustment_enabled = true
-adjustment_contrast = 1.15
-adjustment_saturation = 0.75
+adjustment_contrast = 1.12
+adjustment_saturation = 0.72
 
 [sub_resource type="BoxShape3D" id="Floor_shape"]
 size = Vector3(120.0, 0.4, 120.0)
 
-[sub_resource type="BoxShape3D" id="Exit_trigger"]
-size = Vector3(8.0, 4.0, 2.0)
+[sub_resource type="BoxShape3D" id="Exit_shape"]
+size = Vector3(10.0, 4.0, 2.0)
+
+[sub_resource type="BoxShape3D" id="Clearing_shape"]
+size = Vector3(22.0, 4.0, 18.0)
 
 [node name="ForestEntrance" type="Node3D"]
 script = ExtResource("1")
@@ -53,9 +58,9 @@ next_level_path = "res://scenes/levels/DenseTreeSea.tscn"
 environment = SubResource("Env_1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866, -0.354, 0.354, 0.0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 30, 0)
-light_color = Color(0.08, 0.06, 0.12)
-light_energy = 0.08
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 28, 0)
+light_color = Color(0.06, 0.04, 0.10)
+light_energy = 0.06
 shadow_enabled = false
 
 [node name="SpawnPoint" type="Node3D" parent="."]
@@ -68,53 +73,82 @@ position = Vector3(0, -0.2, 0)
 [node name="FloorMesh" type="MeshInstance3D" parent="Floor"]
 position = Vector3(0, -0.2, 0)
 
-[node name="Player" parent="." instance=ExtResource("4")]
+[node name="Player" parent="." instance=ExtResource("6")]
 position = Vector3(0, 1.0, 0)
 
 [node name="TreeSpawner" type="MultiMeshInstance3D" parent="."]
-script = ExtResource("2")
+script = ExtResource("4")
 count = 180
 area_size = Vector2(90, 90)
-avoid_center_radius = 5.0
+avoid_center_radius = 5.5
 random_seed = 101
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TreeSpawner"]
 
 [node name="RibbonSpawner" type="MultiMeshInstance3D" parent="."]
-script = ExtResource("3")
-ribbon_count = 30
+script = ExtResource("5")
+ribbon_count = 28
 area_size = Vector2(70, 70)
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="RibbonSpawner"]
 
-[node name="Shrine_1" parent="." instance=ExtResource("7")]
-position = Vector3(12.0, 0.0, 8.0)
+# ─── Shrine (Recharge Point) ──────────────────────────────────────────────────
+[node name="Shrine_1" parent="." instance=ExtResource("9")]
+position = Vector3(14.0, 0.0, 9.0)
 shrine_id = 0
 
-[node name="Note_0" parent="." instance=ExtResource("6")]
-position = Vector3(-8.0, 0.0, 15.0)
+# ─── Note 0 (triggers Scare 2 via GhostSpawnDirector) ────────────────────────
+[node name="Note_0" parent="." instance=ExtResource("8")]
+position = Vector3(-9.0, 0.0, 16.0)
 note_id = 0
-trigger_ghost_on_pickup = true
+trigger_ghost_on_pickup = false  # Director handles it
 
-[node name="Yurei_1" parent="." instance=ExtResource("5")]
-name = "Yurei_1"
-position = Vector3(-15.0, 0.0, 20.0)
-note_id = 0
+# ─── Ghost Instances ──────────────────────────────────────────────────────────
+# Yurei_Edge: used for Scare 1 (edge-of-beam reveal, placed by Director)
+[node name="Yurei_Edge" parent="." instance=ExtResource("7")]
+name = "Yurei_Edge"
+position = Vector3(0.0, 0.0, 0.0)  # placed at runtime by Director
+ghost_id = 1
 
-[node name="ForestEntrance_Lava_1" type="MeshInstance3D" parent="."]
-position = Vector3(5.0, 0.05, 12.0)
+# Yurei_Behind: used for Scare 2 (spawns behind player after Note 0)
+[node name="Yurei_Behind" parent="." instance=ExtResource("7")]
+name = "Yurei_Behind"
+position = Vector3(0.0, 0.0, 50.0)  # off-map until Director activates
+ghost_id = 2
 
-[node name="ForestEntrance_Lava_2" type="MeshInstance3D" parent="."]
-position = Vector3(-3.0, 0.05, -8.0)
+# ─── Ghost Spawn Director — Manages Scares 1 & 2 ─────────────────────────────
+[node name="GhostSpawnDirector" type="Node" parent="."]
+script = ExtResource("2")
+scare_1_ghost_path = NodePath("../Yurei_Edge")
+scare_1_delay = 88.0
+scare_2_ghost_path = NodePath("../Yurei_Behind")
+scare_2_note_id = 0
+scare_3_onryo_path = NodePath("")
+scare_3_delay = 9999.0
+scare_4_hang_path = NodePath("")
+scare_4_note_id = -1
+scare_5_yurei_path = NodePath("")
+scare_5_note_id = -1
 
+# ─── Clearing Area (open path near entrance — faster battery drain) ────────────
+[node name="ClearingArea" type="Area3D" parent="."]
+position = Vector3(0.0, 2.0, -8.0)
+script = ExtResource("3")
+collision_layer = 0
+collision_mask = 1
+
+[node name="ClearingShape" type="CollisionShape3D" parent="ClearingArea"]
+shape = SubResource("Clearing_shape")
+
+# ─── Level Exit ───────────────────────────────────────────────────────────────
 [node name="ExitTrigger" type="Area3D" parent="."]
-position = Vector3(0, 1.5, -45.0)
+position = Vector3(0, 1.5, -52.0)
 collision_layer = 0
 collision_mask = 1
 
 [node name="ExitShape" type="CollisionShape3D" parent="ExitTrigger"]
-shape = SubResource("Exit_trigger")
+shape = SubResource("Exit_shape")
 
-[node name="HUD" parent="." instance=ExtResource("8")]
+[node name="HUD" parent="." instance=ExtResource("10")]
 
 [connection signal="body_entered" from="ExitTrigger" to="." method="_on_exit_area_body_entered"]

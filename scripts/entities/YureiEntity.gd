@@ -1,151 +1,231 @@
 extends CharacterBody3D
 
-# ─── Yurei Entity ─────────────────────────────────────────────────────────────
-# Classic J-horror ghost: appears suddenly, crawls toward player,
-# vanishes when player looks directly at it for 0.5+ seconds.
+# ─── Yurei Entity v2 ──────────────────────────────────────────────────────────
+# Pale woman in white kimono, long wet black hair, crawls forward.
+# REVEALED IN BEAM  → jumpscare → then vanishes or crawls.
+# APPEARS BEHIND    → jumpscare when player turns.
+# LOOK-TO-BANISH    → must stare for LOOK_KILL_TIME to send away.
 
-enum State { DORMANT, APPROACHING, CRAWLING, FLEEING, VANISHED }
+enum State { DORMANT, IDLE_DISTANT, REVEALED, CRAWLING, BANISHED, GONE }
 
-const CRAWL_SPEED   = 1.6
-const DETECT_RANGE  = 22.0
-const KILL_RANGE    = 1.2
-const LOOK_THRESHOLD = 0.92   # dot product — how "directly" player must look
-const LOOK_KILL_TIME = 0.55   # seconds player must look to banish
-const REAPPEAR_TIME  = 18.0
+const CRAWL_SPEED      = 1.5
+const DETECT_RANGE     = 24.0
+const KILL_RANGE       = 1.1
+const LOOK_BANISH_TIME = 0.6   # seconds of direct gaze to banish
+const LOOK_THRESHOLD   = 0.91  # dot product for "looking directly at me"
+const REAPPEAR_DELAY   = 20.0
 
-@export var spawn_trigger_radius: float = 16.0
-@export var note_id: int = -1
+@export var ghost_id: int = 0   # unique per scene, used for beam tracking
 
 var state: State = State.DORMANT
-var _look_timer: float = 0.0
-var _reappear_timer: float = 0.0
-var _gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-var _original_position: Vector3
-var _player: CharacterBody3D = null
+var _look_t:    float = 0.0
+var _gone_t:    float = 0.0
+var _gravity:   float = ProjectSettings.get_setting("physics/3d/default_gravity")
+var _origin:    Vector3
+var _player:    CharacterBody3D = null
+var _revealed_once: bool = false   # only trigger "first reveal" jumpscare once
 
-@onready var anim:    AnimationPlayer = $AnimationPlayer
-@onready var mesh:    MeshInstance3D  = $MeshInstance3D
-@onready var audio:   AudioStreamPlayer3D = $AudioStreamPlayer3D
+@onready var anim:  AnimationPlayer     = $AnimationPlayer
+@onready var audio: AudioStreamPlayer3D = $AudioStreamPlayer3D
 
 func _ready() -> void:
-	_original_position = global_position
-	visible = false
+	_origin = global_position
+	visible  = false
 	set_physics_process(false)
 
+# ─── Activation API ───────────────────────────────────────────────────────────
+
+# Standard activation: place at position, begin idle at distance
 func activate() -> void:
 	if state != State.DORMANT:
 		return
-	state = State.APPROACHING
+	state   = State.IDLE_DISTANT
 	visible = true
 	set_physics_process(true)
+	_play_anim("idle")
 	AudioManager.play_ghost_sound("hair_drag")
-	AudioManager.play_jumpscare_sting()
-	if anim.has_animation("crawl"):
-		anim.play("crawl")
-	# Sanity hit on spawn
+
+# Scare variant: spawn directly behind player (note-triggered scares)
+func spawn_behind_player() -> void:
+	if not GameManager.player_ref:
+		return
+	var p = GameManager.player_ref
+	var behind = p.global_position - p.get_look_direction() * randf_range(0.8, 1.5)
+	behind.y = p.global_position.y
+	global_position = behind
+	state   = State.IDLE_DISTANT
+	visible = true
+	set_physics_process(true)
+	_play_anim("idle")
+	# Hair drag sound is the audio cue for player to turn around
+	AudioManager.play_ghost_sound("hair_drag")
 	if GameManager.sanity_ref:
-		GameManager.sanity_ref.drain(12.0)
+		GameManager.sanity_ref.drain(8.0)
+
+# Scare variant: teleport very close for a forced reveal (used by Director)
+func force_reveal_close() -> void:
+	if not GameManager.player_ref:
+		return
+	var p = GameManager.player_ref
+	var close = p.global_position + p.get_look_direction() * 1.2
+	close.y   = p.global_position.y
+	global_position = close
+	state   = State.REVEALED
+	visible = true
+	set_physics_process(true)
+	_do_jumpscare(JumpscareSystem.Intensity.MAX)
+
+# ─── Physics Loop ─────────────────────────────────────────────────────────────
 
 func _physics_process(delta: float) -> void:
 	_player = GameManager.player_ref
 	if not _player:
 		return
+	if not is_on_floor():
+		velocity.y -= _gravity * delta
 
 	match state:
-		State.APPROACHING:
-			_handle_approaching(delta)
-		State.CRAWLING:
-			_handle_crawling(delta)
-		State.FLEEING:
-			_handle_flee(delta)
-		State.VANISHED:
-			_handle_reappear(delta)
+		State.IDLE_DISTANT:  _handle_idle(delta)
+		State.REVEALED:      _handle_revealed(delta)
+		State.CRAWLING:      _handle_crawl(delta)
+		State.BANISHED:      _handle_banished(delta)
+		State.GONE:          _handle_gone(delta)
 
-func _handle_approaching(delta: float) -> void:
+func _handle_idle(delta: float) -> void:
 	var dist = global_position.distance_to(_player.global_position)
 	if dist > DETECT_RANGE:
 		_vanish()
 		return
 
-	if _is_player_looking_at_me():
-		_look_timer += delta
-		if _look_timer >= LOOK_KILL_TIME:
-			_banish()
-			return
-	else:
-		_look_timer = max(0.0, _look_timer - delta * 2.0)
-
-	state = State.CRAWLING
-	_handle_crawling(delta)
-
-func _handle_crawling(delta: float) -> void:
-	var dist = global_position.distance_to(_player.global_position)
-
-	if dist <= KILL_RANGE:
-		_kill_player()
+	# Check if flashlight just entered the ghost
+	var flashlight = _player.get_node_or_null("Camera3D/Flashlight")
+	if flashlight and flashlight.check_beam_entry(ghost_id, global_position):
+		_on_beam_reveal()
 		return
 
-	if _is_player_looking_at_me():
-		_look_timer += delta
+	# Even without flashlight reveal, close enough triggers crawl
+	if dist < 6.0:
+		state = State.CRAWLING
+		_play_anim("crawl")
+
+func _on_beam_reveal() -> void:
+	state = State.REVEALED
+	if not _revealed_once:
+		_revealed_once = true
+		_do_jumpscare(JumpscareSystem.Intensity.HARD)
+	else:
+		_do_jumpscare(JumpscareSystem.Intensity.MEDIUM)
+
+func _handle_revealed(delta: float) -> void:
+	# Ghost stands in the beam — player must look away or fight banish timer
+	var in_beam = _is_in_flashlight_beam()
+	var looking = _is_looked_at()
+
+	if looking:
+		_look_t += delta
 		GameManager.sanity_ref.set_ghost_visible(true)
-		if _look_timer >= LOOK_KILL_TIME:
+		if _look_t >= LOOK_BANISH_TIME:
 			_banish()
 			return
 	else:
-		_look_timer = max(0.0, _look_timer - delta * 1.5)
+		_look_t = max(0.0, _look_t - delta * 2.0)
 		GameManager.sanity_ref.set_ghost_visible(false)
 
-	# Crawl toward player
-	var dir = (_player.global_position - global_position).normalized()
+	if not in_beam:
+		# Flashlight moved away — ghost begins crawling in darkness
+		state = State.CRAWLING
+		_play_anim("crawl")
+
+	_check_kill()
+
+func _handle_crawl(delta: float) -> void:
+	var flashlight = _player.get_node_or_null("Camera3D/Flashlight")
+	if flashlight and flashlight.check_beam_entry(ghost_id, global_position):
+		# Revealed mid-crawl
+		_on_beam_reveal()
+		return
+
+	if _is_looked_at():
+		_look_t += delta
+		GameManager.sanity_ref.set_ghost_visible(true)
+		if _look_t >= LOOK_BANISH_TIME:
+			_banish()
+			return
+	else:
+		_look_t = max(0.0, _look_t - delta * 1.5)
+		GameManager.sanity_ref.set_ghost_visible(false)
+
+	# Move toward player
+	var dir = (_player.global_position - global_position)
 	dir.y = 0.0
-	velocity.x = dir.x * CRAWL_SPEED
-	velocity.z = dir.z * CRAWL_SPEED
-	velocity.y -= _gravity * delta
-
-	look_at(_player.global_position, Vector3.UP)
+	if dir.length() > 0.1:
+		dir = dir.normalized()
+		velocity.x = dir.x * CRAWL_SPEED
+		velocity.z = dir.z * CRAWL_SPEED
+		look_at(Vector3(_player.global_position.x, global_position.y, _player.global_position.z), Vector3.UP)
 	move_and_slide()
+	_check_kill()
 
-func _handle_flee(delta: float) -> void:
-	# Ghost fled from player's gaze — drift away then vanish
-	velocity = velocity.move_toward(Vector3.ZERO, delta * 3.0)
+func _handle_banished(delta: float) -> void:
+	# Float backward and fade
+	var away = (global_position - _player.global_position).normalized()
+	velocity = velocity.move_toward(away * 3.0, delta * 5.0)
 	move_and_slide()
-	_look_timer += delta
-	if _look_timer >= 1.5:
+	_look_t += delta
+	if _look_t >= 1.5:
 		_vanish()
 
-func _handle_reappear(delta: float) -> void:
-	_reappear_timer += delta
-	if _reappear_timer >= REAPPEAR_TIME:
+func _handle_gone(delta: float) -> void:
+	_gone_t += delta
+	if _gone_t >= REAPPEAR_DELAY:
 		_reset()
 
-func _is_player_looking_at_me() -> bool:
+# ─── Helpers ──────────────────────────────────────────────────────────────────
+
+func _is_looked_at() -> bool:
 	if not _player:
 		return false
-	var to_ghost = (global_position - _player.global_position).normalized()
-	var player_look = _player.get_look_direction()
-	return player_look.dot(to_ghost) > LOOK_THRESHOLD
+	return _player.get_look_direction().dot((global_position - _player.global_position).normalized()) > LOOK_THRESHOLD
+
+func _is_in_flashlight_beam() -> bool:
+	if not _player:
+		return false
+	return _player.is_ghost_in_flashlight(global_position)
+
+func _check_kill() -> void:
+	if global_position.distance_to(_player.global_position) <= KILL_RANGE:
+		_kill()
+
+func _do_jumpscare(intensity: int) -> void:
+	JumpscareSystem.trigger_flashlight_reveal("yurei", intensity)
+	AudioManager.play_ghost_sound("yurei_shriek")
 
 func _banish() -> void:
-	state = State.FLEEING
-	_look_timer = 0.0
+	state  = State.BANISHED
+	_look_t = 0.0
 	GameManager.sanity_ref.set_ghost_visible(false)
-	if anim.has_animation("flee"):
-		anim.play("flee")
+	_play_anim("flee")
 
 func _vanish() -> void:
-	state = State.VANISHED
+	state   = State.GONE
 	visible = false
-	_reappear_timer = 0.0
+	_gone_t = 0.0
 	set_physics_process(false)
-	GameManager.sanity_ref.set_ghost_visible(false)
+	if GameManager.sanity_ref:
+		GameManager.sanity_ref.set_ghost_visible(false)
 
 func _reset() -> void:
-	global_position = _original_position
-	state = State.DORMANT
+	global_position = _origin
+	state   = State.DORMANT
 	visible = false
+	_look_t = 0.0
 
-func _kill_player() -> void:
+func _kill() -> void:
+	_do_jumpscare(JumpscareSystem.Intensity.MAX)
 	AudioManager.play_ghost_sound("yurei_shriek")
-	AudioManager.play_jumpscare_sting()
 	if _player.has_method("die"):
 		_player.die()
+
+func _play_anim(name: String) -> void:
+	if anim.has_animation(name):
+		anim.play(name)

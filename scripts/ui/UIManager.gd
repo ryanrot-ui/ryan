@@ -1,22 +1,26 @@
 extends CanvasLayer
 
-# ─── HUD / UI Manager ─────────────────────────────────────────────────────────
+# ─── HUD / UI Manager v2 ──────────────────────────────────────────────────────
+# Manages all HUD elements: note counter, battery/sanity bars,
+# jumpscare effects (flash + static), pause menu, note reader.
 
-@onready var sanity_bar:     ProgressBar  = $HUD/SanityBar
-@onready var battery_bar:    ProgressBar  = $HUD/BatteryBar
-@onready var note_counter:   Label        = $HUD/NoteCounter
-@onready var crosshair:      TextureRect  = $HUD/Crosshair
-@onready var interact_hint:  Label        = $HUD/InteractHint
+@onready var sanity_bar:     ProgressBar    = $HUD/BarsContainer/SanityRow/SanityBar
+@onready var battery_bar:    ProgressBar    = $HUD/BarsContainer/BatteryRow/BatteryBar
+@onready var battery_icon:   Label          = $HUD/BarsContainer/BatteryRow/BatteryIcon
+@onready var note_counter:   Label          = $HUD/NoteCounter
 @onready var note_notif:     PanelContainer = $HUD/NoteNotification
-@onready var note_notif_lbl: Label        = $HUD/NoteNotification/Label
+@onready var note_notif_lbl: Label          = $HUD/NoteNotification/VBox/NoteName
 @onready var note_reader:    PanelContainer = $HUD/NoteReader
-@onready var note_reader_txt: RichTextLabel = $HUD/NoteReader/RichTextLabel
-@onready var pause_menu:     Control      = $PauseMenu
-@onready var sanity_overlay: ColorRect    = $SanityOverlay
-@onready var vignette:       ColorRect    = $Vignette
-@onready var flash_overlay:  ColorRect    = $FlashOverlay
+@onready var note_title_lbl: Label          = $HUD/NoteReader/VBox/TitleLabel
+@onready var note_body_lbl:  RichTextLabel  = $HUD/NoteReader/VBox/BodyText
+@onready var close_hint:     Label          = $HUD/NoteReader/VBox/CloseHint
+@onready var pause_menu:     Control        = $PauseMenu
+@onready var vignette:       ColorRect      = $Vignette
+@onready var flash_overlay:  ColorRect      = $FlashOverlay
+@onready var static_overlay: ColorRect      = $StaticOverlay
+@onready var halluc_overlay: ColorRect      = $HallucinationOverlay
 
-const NOTE_NAMES = {
+const NOTE_JP = {
 	0: "山田花子の手紙",
 	1: "壊れた小物",
 	2: "錆びた鍵",
@@ -26,36 +30,129 @@ const NOTE_NAMES = {
 func _ready() -> void:
 	GameManager.ui_ref = self
 	add_to_group("hud")
-	pause_menu.visible = false
-	note_notif.visible = false
-	note_reader.visible = false
-	flash_overlay.visible = false
+	pause_menu.visible      = false
+	note_notif.visible      = false
+	note_reader.visible     = false
+	flash_overlay.visible   = false
+	static_overlay.visible  = false
+	halluc_overlay.visible  = false
 
-	# Wire up sanity shader to sanity system
+	# Wire vignette shader to SanitySystem
+	_connect_vignette()
+
+	# Wire jumpscare signal
+	JumpscareSystem.jumpscare_fired.connect(_on_jumpscare_fired)
+
+	# Wire notes
+	GameManager.note_collected.connect(_on_note_collected)
+	_refresh_note_counter()
+
+func _process(_delta: float) -> void:
+	# Sanity bar
+	if GameManager.sanity_ref:
+		sanity_bar.value = GameManager.sanity_ref.sanity
+
+	# Battery bar + low-battery icon pulse
+	var flashlight = _get_flashlight()
+	if flashlight:
+		battery_bar.value = flashlight.battery
+		if flashlight.battery < 25.0:
+			var pulse = abs(sin(Time.get_ticks_msec() * 0.004))
+			battery_icon.modulate = Color(1.0, lerpf(0.2, 0.9, pulse), lerpf(0.1, 0.2, pulse))
+		else:
+			battery_icon.modulate = Color(0.75, 0.72, 0.5)
+
+func _connect_vignette() -> void:
+	await get_tree().process_frame
 	if vignette and vignette.material is ShaderMaterial:
 		var player = get_tree().get_first_node_in_group("player")
 		if player:
 			var sanity = player.get_node_or_null("SanitySystem")
 			if sanity:
-				sanity.vignette_mat = vignette.material as ShaderMaterial
-				sanity.overlay_node = sanity_overlay
+				sanity.vignette_mat  = vignette.material as ShaderMaterial
+				sanity.overlay_node  = halluc_overlay
 
-	# Connect signals
-	GameManager.note_collected.connect(_on_note_collected)
-	_update_note_counter()
+# ─── Note Counter (always visible, top-right corner) ─────────────────────────
 
-func _process(_delta: float) -> void:
-	if GameManager.sanity_ref:
-		sanity_bar.value = GameManager.sanity_ref.sanity
-	var flashlight = _get_flashlight()
-	if flashlight:
-		battery_bar.value = flashlight.battery
+func _refresh_note_counter() -> void:
+	var n = GameManager.collected_notes.size()
+	note_counter.text = "形見  %d / %d" % [n, GameManager.notes_total]
+	# Color shifts gold as notes are found
+	var t = float(n) / float(GameManager.notes_total)
+	note_counter.add_theme_color_override("font_color",
+		Color(lerpf(0.52, 0.78, t), lerpf(0.46, 0.58, t), lerpf(0.38, 0.25, t)))
 
-func _get_flashlight() -> Node:
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		return player.get_node_or_null("Camera3D/Flashlight")
-	return null
+func _on_note_collected(_id: int) -> void:
+	_refresh_note_counter()
+
+# ─── Note Notification (bottom-left, 3.5 seconds) ────────────────────────────
+
+func show_note_notification(note_id: int) -> void:
+	note_notif_lbl.text = NOTE_JP.get(note_id, "形見")
+	note_notif.visible = true
+	var tween = create_tween()
+	tween.tween_property(note_notif, "modulate:a", 1.0, 0.3)
+	await get_tree().create_timer(3.0).timeout
+	tween = create_tween()
+	tween.tween_property(note_notif, "modulate:a", 0.0, 0.5)
+	await tween.finished
+	note_notif.visible = false
+	note_notif.modulate.a = 1.0
+
+# ─── Note Reader (fullscreen pause, 7s or manual dismiss) ────────────────────
+
+func show_note(data: Dictionary) -> void:
+	note_title_lbl.text      = data.get("title_jp", "")
+	note_body_lbl.bbcode_text = "[i]%s[/i]" % data.get("text_jp", "")
+	note_reader.visible      = true
+	close_hint.text          = "[E] 閉じる — Close"
+	GameManager.state        = GameManager.GameState.CINEMATIC
+
+	# Auto-dismiss after 7s or on interact press
+	var t = 0.0
+	while t < 7.0:
+		t += get_process_delta_time()
+		if Input.is_action_just_pressed("interact"):
+			break
+		await get_tree().process_frame
+
+	note_reader.visible = false
+	GameManager.state   = GameManager.GameState.PLAYING
+
+# ─── Jumpscare Effects ────────────────────────────────────────────────────────
+
+func _on_jumpscare_fired(intensity: int) -> void:
+	_do_flash(intensity)
+	_do_static(intensity)
+
+func _do_flash(intensity: int) -> void:
+	const FLASH_ALPHAS = [0.35, 0.60, 0.82, 0.96]
+	const FLASH_COLORS = [
+		Color(1.0, 1.0,  1.0),   # SOFT  — pure white
+		Color(1.0, 0.95, 0.88),  # MEDIUM — warm white
+		Color(1.0, 0.90, 0.82),  # HARD  — slightly warm
+		Color(1.0, 0.88, 0.80),  # MAX   — warm orange tint
+	]
+	const FLASH_DUR = [0.18, 0.30, 0.48, 0.65]
+
+	flash_overlay.color = FLASH_COLORS[intensity]
+	flash_overlay.modulate.a = FLASH_ALPHAS[intensity]
+	flash_overlay.visible = true
+	var tween = create_tween()
+	tween.tween_property(flash_overlay, "modulate:a", 0.0, FLASH_DUR[intensity])
+	await tween.finished
+	flash_overlay.visible = false
+	flash_overlay.modulate.a = 1.0
+
+func _do_static(intensity: int) -> void:
+	if intensity < 1:
+		return
+	const STATIC_DURS = [0.0, 0.05, 0.10, 0.18]
+	static_overlay.visible = true
+	await get_tree().create_timer(STATIC_DURS[intensity]).timeout
+	static_overlay.visible = false
+
+# ─── Pause Menu ───────────────────────────────────────────────────────────────
 
 func show_pause_menu() -> void:
 	pause_menu.visible = true
@@ -63,37 +160,8 @@ func show_pause_menu() -> void:
 func hide_pause_menu() -> void:
 	pause_menu.visible = false
 
-func show_note_notification(note_id: int) -> void:
-	var name_jp = NOTE_NAMES.get(note_id, "形見")
-	note_notif_lbl.text = "拾得: " + name_jp
-	note_notif.visible = true
-	_update_note_counter()
-	await get_tree().create_timer(3.5).timeout
-	note_notif.visible = false
+# ─── Helpers ─────────────────────────────────────────────────────────────────
 
-func show_note(data: Dictionary) -> void:
-	var lang_key = "jp"
-	note_reader_txt.bbcode_text = "[b]%s[/b]\n\n%s" % [
-		data.get("title_" + lang_key, ""),
-		data.get("text_" + lang_key, "")
-	]
-	note_reader.visible = true
-	GameManager.state = GameManager.GameState.CINEMATIC
-	await get_tree().create_timer(6.0).timeout
-	note_reader.visible = false
-	GameManager.state = GameManager.GameState.PLAYING
-
-func do_jumpscare_flash() -> void:
-	flash_overlay.modulate = Color(1.0, 1.0, 1.0, 0.9)
-	flash_overlay.visible = true
-	var tween = create_tween()
-	tween.tween_property(flash_overlay, "modulate:a", 0.0, 0.4)
-	await tween.finished
-	flash_overlay.visible = false
-
-func _update_note_counter() -> void:
-	var count = GameManager.collected_notes.size()
-	note_counter.text = "形見: %d / %d" % [count, GameManager.notes_total]
-
-func _on_note_collected(_id: int) -> void:
-	_update_note_counter()
+func _get_flashlight() -> Node:
+	var player = get_tree().get_first_node_in_group("player")
+	return player.get_node_or_null("Camera3D/Flashlight") if player else null
